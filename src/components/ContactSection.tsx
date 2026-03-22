@@ -33,27 +33,27 @@ const ContactSection = () => {
             className="space-y-8"
           >
             <div className="flex items-start gap-4">
-              <div className="w-12 h-12 rounded-lg gradient-cyan flex items-center justify-center flex-shrink-0">
+              <div className="w-12 h-12 rounded-lg gradient-orange flex items-center justify-center flex-shrink-0">
                 <MapPin className="w-6 h-6 text-primary-foreground" />
               </div>
               <div>
                 <h4 className="font-display font-bold text-foreground mb-1">Our Office</h4>
                 <p className="text-muted-foreground font-body text-sm">
-                  Asaf Ali Road, New Delhi - 110002, India
+                  1/22, Asaf Ali Road, Delhi - 110002
                 </p>
               </div>
             </div>
             <div className="flex items-start gap-4">
-              <div className="w-12 h-12 rounded-lg gradient-cyan flex items-center justify-center flex-shrink-0">
+              <div className="w-12 h-12 rounded-lg gradient-orange flex items-center justify-center flex-shrink-0">
                 <Phone className="w-6 h-6 text-primary-foreground" />
               </div>
               <div>
                 <h4 className="font-display font-bold text-foreground mb-1">Phone</h4>
-                <p className="text-muted-foreground font-body text-sm">+91 123 456 7890</p>
+                <p className="text-muted-foreground font-body text-sm">8700513200</p>
               </div>
             </div>
             <div className="flex items-start gap-4">
-              <div className="w-12 h-12 rounded-lg gradient-cyan flex items-center justify-center flex-shrink-0">
+              <div className="w-12 h-12 rounded-lg gradient-orange flex items-center justify-center flex-shrink-0">
                 <Mail className="w-6 h-6 text-primary-foreground" />
               </div>
               <div>
@@ -62,7 +62,7 @@ const ContactSection = () => {
               </div>
             </div>
             <div className="flex items-start gap-4">
-              <div className="w-12 h-12 rounded-lg gradient-cyan flex items-center justify-center flex-shrink-0">
+              <div className="w-12 h-12 rounded-lg gradient-orange flex items-center justify-center flex-shrink-0">
                 <Clock className="w-6 h-6 text-primary-foreground" />
               </div>
               <div>
@@ -113,7 +113,7 @@ const ContactSection = () => {
               />
               <button
                 type="submit"
-                className="w-full gradient-cyan text-primary-foreground font-display font-bold py-3.5 rounded-lg text-sm tracking-wide hover:opacity-90 transition-all"
+                className="w-full gradient-orange text-primary-foreground font-display font-bold py-3.5 rounded-lg text-sm tracking-wide hover:opacity-90 transition-all"
               >
                 Send Message
               </button>

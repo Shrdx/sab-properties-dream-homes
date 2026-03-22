@@ -8,13 +8,7 @@ const Footer = () => {
           {/* Brand */}
           <div>
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 rounded-lg gradient-cyan flex items-center justify-center">
-                <span className="font-display font-bold text-primary-foreground text-lg">S</span>
-              </div>
-              <div>
-                <span className="font-display font-extrabold text-primary-foreground text-lg">SAB PROPERTIES</span>
-                <span className="block text-primary text-[10px] font-body tracking-[0.2em] uppercase -mt-1">Private Limited</span>
-              </div>
+              <img src="/logo-footer.png" alt="SAB Properties Logo" className="h-20 w-auto" />
             </div>
             <p className="text-primary-foreground/60 font-body text-sm leading-relaxed">
               A trusted and reputable name in the real estate sector, delivering exceptional services since establishment.
@@ -53,11 +47,11 @@ const Footer = () => {
             <ul className="space-y-3">
               <li className="flex items-start gap-2 text-primary-foreground/60 font-body text-sm">
                 <MapPin className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
-                Asaf Ali Road, New Delhi - 110002
+                1/22, Asaf Ali Road, Delhi - 110002
               </li>
               <li className="flex items-center gap-2 text-primary-foreground/60 font-body text-sm">
                 <Phone className="w-4 h-4 text-primary flex-shrink-0" />
-                +91 123 456 7890
+                8700513200
               </li>
               <li className="flex items-center gap-2 text-primary-foreground/60 font-body text-sm">
                 <Mail className="w-4 h-4 text-primary flex-shrink-0" />

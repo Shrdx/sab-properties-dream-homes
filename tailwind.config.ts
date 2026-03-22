@@ -18,9 +18,9 @@ export default {
         body: ["DM Sans", "sans-serif"],
       },
       colors: {
-        cyan: {
-          DEFAULT: "hsl(var(--cyan))",
-          light: "hsl(var(--cyan-light))",
+        orange: {
+          DEFAULT: "hsl(var(--orange))",
+          light: "hsl(var(--orange-light))",
         },
         "section-bg": "hsl(var(--section-bg))",
         border: "hsl(var(--border))",

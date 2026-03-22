@@ -88,7 +88,7 @@ const PricingSection = () => {
               transition={{ duration: 0.5, delay: i * 0.15 }}
               className="bg-card rounded-xl border border-border overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
             >
-              <div className="gradient-cyan p-6 text-center">
+              <div className="gradient-orange p-6 text-center">
                 <h3 className="font-display font-extrabold text-xl text-primary-foreground">{plan.title}</h3>
               </div>
               <div className="p-8">
@@ -96,7 +96,7 @@ const PricingSection = () => {
                   <span className="font-display font-extrabold text-4xl text-foreground">{plan.price}</span>
                   <span className="text-muted-foreground font-body text-sm">{plan.unit}</span>
                 </div>
-                <a href="#contact" className="block w-full gradient-cyan text-primary-foreground font-display font-bold text-sm py-3 rounded-md text-center hover:opacity-90 transition-all mb-6">
+                <a href="#contact" className="block w-full gradient-orange text-primary-foreground font-display font-bold text-sm py-3 rounded-md text-center hover:opacity-90 transition-all mb-6">
                   Book Now
                 </a>
                 <ul className="space-y-3">

@@ -30,7 +30,7 @@ const AboutSection = () => {
             <p className="text-muted-foreground font-body leading-relaxed mb-6">
               At SAB Properties, we're more than just a real estate company — we're your partners in success. 
               With a commitment to innovation, excellence, and personalized service, we provide tailored 
-              real estate solutions that foster growth and build lasting relationships. Based on Asaf Ali Road, 
+              real estate solutions that foster growth and build lasting relationships. Based at 1/22, Asaf Ali Road, 
               in the heart of Delhi's commercial hub, we bring expertise and integrity to every transaction.
             </p>
             <a href="#services" className="inline-flex items-center gap-2 text-primary font-display font-bold text-sm hover:gap-3 transition-all">

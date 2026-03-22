@@ -22,8 +22,8 @@ const CTASection = () => {
             Wish to explore our properties?
           </p>
           <a
-            href="#contact"
-            className="inline-flex items-center gap-2 gradient-cyan text-primary-foreground font-display font-bold px-8 py-4 rounded-md hover:opacity-90 transition-all shadow-lg"
+            href="/contact"
+            className="inline-flex items-center gap-2 gradient-orange text-primary-foreground font-display font-bold px-8 py-4 rounded-md hover:opacity-90 transition-all shadow-lg"
           >
             Contact Us →
           </a>

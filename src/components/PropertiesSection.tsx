@@ -1,5 +1,7 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { MapPin, Maximize, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
+import { MapPin, Maximize, ArrowRight, Lock, User, Phone, CheckCircle } from "lucide-react";
 import residentialImg from "@/assets/property-residential.jpg";
 import commercialImg from "@/assets/property-commercial.jpg";
 import retailImg from "@/assets/property-retail.jpg";
@@ -11,15 +13,13 @@ const properties = [
     title: "Premium Office Space",
     location: "Connaught Place, New Delhi",
     area: "2,500 sq ft",
-    price: "₹1.8 Cr",
   },
   {
     image: residentialImg,
     type: "Residential",
     title: "Luxury Apartment Complex",
-    location: "Asaf Ali Road, New Delhi",
+    location: "1/22, Asaf Ali Road, Delhi",
     area: "1,800 sq ft",
-    price: "₹2.4 Cr",
   },
   {
     image: retailImg,
@@ -27,13 +27,37 @@ const properties = [
     title: "Prime Retail Showroom",
     location: "Karol Bagh, New Delhi",
     area: "3,200 sq ft",
-    price: "₹3.1 Cr",
   },
 ];
 
 const PropertiesSection = () => {
+  const [selectedProperty, setSelectedProperty] = useState<number | null>(null);
+  const [formData, setFormData] = useState({ name: "", phone: "" });
+  const [showDetails, setShowDetails] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+
+  const handlePropertyClick = (index: number) => {
+    setSelectedProperty(index);
+    setShowDetails(false);
+    setSubmitted(false);
+    setFormData({ name: "", phone: "" });
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setSubmitted(true);
+  };
+
+  const closeModal = () => {
+    setSelectedProperty(null);
+    setShowDetails(false);
+    setSubmitted(false);
+  };
+
+  const priceOptions = ["₹1.8 Cr", "₹2.4 Cr", "₹3.1 Cr"];
+
   return (
-    <section id="properties" className="py-24 bg-section">
+    <section className="py-24 bg-section">
       <div className="container mx-auto px-4 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -61,7 +85,8 @@ const PropertiesSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.15 }}
-              className="group bg-card rounded-xl overflow-hidden border border-border hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+              className="group bg-card rounded-xl overflow-hidden border border-border hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer"
+              onClick={() => handlePropertyClick(i)}
             >
               <div className="relative h-56 overflow-hidden">
                 <img
@@ -69,11 +94,18 @@ const PropertiesSection = () => {
                   alt={property.title}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
-                <span className="absolute top-4 left-4 gradient-cyan text-primary-foreground font-display font-bold text-xs px-3 py-1.5 rounded-md">
+                <div className="absolute inset-0 bg-black/30 group-hover:bg-black/50 transition-colors flex items-center justify-center">
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileHover={{ opacity: 1, scale: 1 }}
+                    className="bg-white/90 backdrop-blur-sm rounded-full px-4 py-2 flex items-center gap-2"
+                  >
+                    <Lock className="w-4 h-4 text-primary" />
+                    <span className="font-display font-semibold text-sm text-foreground">View Details</span>
+                  </motion.div>
+                </div>
+                <span className="absolute top-4 left-4 gradient-orange text-primary-foreground font-display font-bold text-xs px-3 py-1.5 rounded-md">
                   {property.type}
-                </span>
-                <span className="absolute top-4 right-4 bg-foreground/80 backdrop-blur-sm text-primary-foreground font-display font-bold text-sm px-3 py-1.5 rounded-md">
-                  {property.price}
                 </span>
               </div>
               <div className="p-6">
@@ -91,15 +123,125 @@ const PropertiesSection = () => {
                     <Maximize className="w-4 h-4" />
                     {property.area}
                   </span>
-                  <a href="#contact" className="flex items-center gap-1 text-primary font-display font-bold text-sm hover:gap-2 transition-all">
-                    Enquire <ArrowRight className="w-4 h-4" />
-                  </a>
+                  <span className="flex items-center gap-1 text-primary font-display font-bold text-sm group-hover:gap-2 transition-all">
+                    Click to View
+                    <ArrowRight className="w-4 h-4" />
+                  </span>
                 </div>
               </div>
             </motion.div>
           ))}
         </div>
       </div>
+
+      {/* Modal */}
+      {selectedProperty !== null && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="fixed inset-0 z-[100] flex items-center justify-center p-4"
+          onClick={closeModal}
+        >
+          <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" />
+          
+          <motion.div
+            initial={{ scale: 0.9, y: 20 }}
+            animate={{ scale: 1, y: 0 }}
+            className="relative w-full max-w-md bg-white rounded-2xl overflow-hidden shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {!submitted ? (
+              <>
+                <div className="relative h-32">
+                  <img
+                    src={properties[selectedProperty].image}
+                    alt={properties[selectedProperty].title}
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                  <button onClick={closeModal} className="absolute top-3 right-3 w-8 h-8 bg-white/20 rounded-full flex items-center justify-center text-white hover:bg-white/40">
+                    <ArrowRight className="w-4 h-4 rotate-45" />
+                  </button>
+                  <div className="absolute bottom-3 left-4">
+                    <span className="gradient-orange text-white text-xs px-2 py-1 rounded-full">{properties[selectedProperty].type}</span>
+                  </div>
+                </div>
+                
+                <div className="p-6">
+                  <div className="flex items-center gap-2 mb-4 text-primary">
+                    <Lock className="w-5 h-5" />
+                    <span className="font-display font-bold">Unlock Property Details</span>
+                  </div>
+                  
+                  <form onSubmit={handleSubmit} className="space-y-4">
+                    <div>
+                      <input
+                        type="text"
+                        required
+                        placeholder="Your Name"
+                        value={formData.name}
+                        onChange={(e) => setFormData({...formData, name: e.target.value})}
+                        className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 text-sm focus:outline-none focus:border-primary"
+                      />
+                    </div>
+                    <div>
+                      <input
+                        type="tel"
+                        required
+                        placeholder="Phone Number"
+                        value={formData.phone}
+                        onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                        className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 text-sm focus:outline-none focus:border-primary"
+                      />
+                    </div>
+                    <button type="submit" className="w-full gradient-orange text-white font-display font-bold py-3 rounded-xl">
+                      Unlock Details
+                    </button>
+                  </form>
+                </div>
+              </>
+            ) : (
+              <div className="p-6">
+                <div className="text-center mb-6">
+                  <div className="w-16 h-16 rounded-full gradient-orange flex items-center justify-center mx-auto mb-4">
+                    <CheckCircle className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="font-display font-bold text-xl text-foreground">Details Unlocked!</h3>
+                </div>
+                
+                <div className="space-y-4 mb-6">
+                  <div className="flex justify-between py-2 border-b">
+                    <span className="text-muted-foreground">Property</span>
+                    <span className="font-semibold text-foreground">{properties[selectedProperty].title}</span>
+                  </div>
+                  <div className="flex justify-between py-2 border-b">
+                    <span className="text-muted-foreground">Location</span>
+                    <span className="font-semibold text-foreground">{properties[selectedProperty].location}</span>
+                  </div>
+                  <div className="flex justify-between py-2 border-b">
+                    <span className="text-muted-foreground">Area</span>
+                    <span className="font-semibold text-foreground">{properties[selectedProperty].area}</span>
+                  </div>
+                  <div className="flex justify-between py-2 border-b">
+                    <span className="text-muted-foreground">Price</span>
+                    <span className="font-bold text-xl text-primary">{priceOptions[selectedProperty]}</span>
+                  </div>
+                </div>
+                
+                <div className="flex gap-3">
+                  <Link to="/contact" onClick={closeModal} className="flex-1 text-center gradient-orange text-white font-display font-bold py-3 rounded-xl">
+                    Schedule Visit
+                  </Link>
+                  <button onClick={closeModal} className="px-4 py-3 border border-gray-300 rounded-xl text-foreground font-display font-semibold">
+                    Close
+                  </button>
+                </div>
+              </div>
+            )}
+          </motion.div>
+        </motion.div>
+      )}
     </section>
   );
 };
