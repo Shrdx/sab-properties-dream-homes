@@ -132,6 +132,23 @@ const PropertiesSection = () => {
             </motion.div>
           ))}
         </div>
+
+        {/* View More Button */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          className="text-center mt-12"
+        >
+          <Link
+            to="/properties"
+            className="inline-flex items-center gap-2 gradient-orange text-white font-display font-bold px-8 py-4 rounded-xl hover:opacity-90 transition-all shadow-lg"
+          >
+            View More Properties
+            <ArrowRight className="w-5 h-5" />
+          </Link>
+        </motion.div>
       </div>
 
       {/* Modal */}
