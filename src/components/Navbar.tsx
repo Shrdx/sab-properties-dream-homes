@@ -38,13 +38,13 @@ const Navbar = () => {
         <div className={`absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-primary to-transparent transition-opacity duration-500 ${scrolled ? "opacity-100" : "opacity-0"}`} />
         
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="flex items-center justify-between h-28">
+          <div className="flex items-center justify-between h-24">
             {/* Logo */}
             <Link to="/" className="flex items-center group">
               <img 
                 src="/logo.png" 
                 alt="SAB Properties Logo" 
-                className="h-28 w-auto transition-transform duration-300 group-hover:scale-105" 
+                className="h-24 w-auto transition-transform duration-300 group-hover:scale-105" 
               />
             </Link>
 

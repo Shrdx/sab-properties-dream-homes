@@ -8,7 +8,7 @@ const Footer = () => {
           {/* Brand */}
           <div>
             <div className="flex items-center gap-3 mb-4">
-              <img src="/logo-footer.png" alt="SAB Properties Logo" className="h-20 w-auto" />
+              <img src="/logo-footer.png" alt="SAB Properties Logo" className="h-24 w-auto" />
             </div>
             <p className="text-primary-foreground/60 font-body text-sm leading-relaxed">
               A trusted and reputable name in the real estate sector, delivering exceptional services since establishment.
