@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 
-const clients = [
+const clientLogos = [
   "/clients/Amul.jpg",
   "/clients/Aquila.jfif",
   "/clients/Gostops.png",
@@ -39,23 +39,14 @@ const TrustedBy = () => {
         </h2>
       </motion.div>
 
-      <div className="relative">
-        {/* Gradient masks for smooth edges */}
+      <div className="relative overflow-hidden">
         <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-white to-transparent z-10" />
         <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-white to-transparent z-10" />
 
-        {/* First set of logos */}
         <div className="flex animate-marquee">
-          {[...clients, ...clients, ...clients].map((logo, i) => (
-            <div
-              key={i}
-              className="flex-shrink-0 mx-12 my-4"
-            >
-              <img
-                src={logo}
-                alt={`Client ${i + 1}`}
-                className="h-16 w-auto object-contain"
-              />
+          {[...clientLogos, ...clientLogos].map((logo, i) => (
+            <div key={i} className="flex-shrink-0 mx-8 my-4">
+              <img src={logo} alt={`Client ${i + 1}`} className="h-14 md:h-16 w-auto object-contain" />
             </div>
           ))}
         </div>
@@ -67,11 +58,11 @@ const TrustedBy = () => {
             transform: translateX(0);
           }
           100% {
-            transform: translateX(-33.33%);
+            transform: translateX(-50%);
           }
         }
         .animate-marquee {
-          animation: marquee 30s linear infinite;
+          animation: marquee 25s linear infinite;
         }
       `}</style>
     </section>

@@ -7,23 +7,24 @@ import Footer from "@/components/Footer";
 import propertiesImg from "@/assets/properties.jpg";
 
 const locations = ["All Locations", "Connaught Place", "Karol Bagh", "Okhla", "Cyber Hub Gurugram", "Golf Course Road", "Vasant Kunj"];
-const propertyTypes = ["All Types", "Office Space", "Retail", "Godown", "Co-Working", "Residential"];
-const furnishedOptions = ["All", "Fully Furnished", "Semi-Furnished", "Unfurnished"];
-const priceRanges = ["Any Price", "Under ₹50K", "₹50K - ₹1 Lac", "₹1 Lac - ₹5 Lac", "₹5 Lac+"];
+const propertyTypes = ["All Types", "Office Space", "Retail", "Godown", "Co-Working", "Serviced Office"];
+const statusOptions = ["All", "Raw", "Furnished", "Unfurnished"];
+const priceRanges = [];
 const sizeRanges = ["Any Size", "Under 1000 sq.ft", "1000-5000 sq.ft", "5000-10000 sq.ft", "10000+ sq.ft"];
 
 const allProperties = [
   {
     id: 1,
     image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=600&fit=crop",
-    type: "Office Space",
+    category: "Office Space",
+    status: "Raw",
     title: "Premium Office at Connaught Place",
     location: "Connaught Place, New Delhi",
+    address: "Connaught Place, New Delhi",
     area: "5,000 sq ft",
     size: 5000,
     price: "₹4.5 Lac/month",
     priceValue: 4.5,
-    furnished: "Fully Furnished",
     featured: true,
     description: "Experience luxury at its finest with this premium office space located in the heart of Connaught Place. Features include modern glass facades, central air conditioning, 24/7 security, and dedicated parking spaces.",
     amenities: ["Central AC", "Power Backup", "Security 24/7", "Lift", "Parking", "Pantry"],
@@ -34,14 +35,15 @@ const allProperties = [
   {
     id: 2,
     image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&h=600&fit=crop",
-    type: "Retail",
+    category: "Retail",
+    status: "Raw",
     title: "High Street Retail Space",
     location: "Karol Bagh, New Delhi",
+    address: "Karol Bagh, New Delhi",
     area: "2,500 sq ft",
     size: 2500,
     price: "₹3.2 Lac/month",
     priceValue: 3.2,
-    furnished: "Fully Furnished",
     featured: true,
     description: "Prime retail location on the busiest high street in Karol Bagh. Perfect for flagship stores, boutiques, or restaurants with high footfall throughout the day.",
     amenities: ["Showcase Windows", "Storage Room", "Staff Room", "Toilets", "Street Access"],
@@ -52,14 +54,15 @@ const allProperties = [
   {
     id: 3,
     image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=600&fit=crop",
-    type: "Godown",
+    category: "Godown",
+    status: "Raw",
     title: "Warehouse in Industrial Area",
     location: "Okhla, New Delhi",
+    address: "Okhla, New Delhi",
     area: "10,000 sq ft",
     size: 10000,
     price: "₹2.8 Lac/month",
     priceValue: 2.8,
-    furnished: "Unfurnished",
     featured: false,
     description: "Spacious warehouse facility in Okhla Industrial Area with easy access to major highways. Ideal for storage, logistics, or manufacturing operations.",
     amenities: ["High Ceiling", "Loading Dock", "Power Capacity 50KW", "Fire Safety", "CCTV"],
@@ -70,14 +73,15 @@ const allProperties = [
   {
     id: 4,
     image: "https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=800&h=600&fit=crop",
-    type: "Co-Working",
+    category: "Co-Working",
+    status: "Furnished",
     title: "Flexible Co-Working Space",
     location: "Cyber Hub Gurugram",
+    address: "Cyber Hub Gurugram",
     area: "10 - 100 Seats",
     size: 100,
     price: "₹8,000/desk/month",
     priceValue: 0.008,
-    furnished: "Fully Furnished",
     featured: true,
     description: "Modern co-working space at Cyber Hub with flexible seating options. Includes high-speed internet, meeting rooms, and a vibrant community of startups and enterprises.",
     amenities: ["High-Speed WiFi", "Meeting Rooms", "Printer Access", "Lounge", "Kitchen", "Events Space"],
@@ -88,14 +92,15 @@ const allProperties = [
   {
     id: 5,
     image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&h=600&fit=crop",
-    type: "Residential",
-    title: "Luxury Apartment Complex",
+category: "Office Space",
+    status: "Raw",
+    title: "Office Space in Vasant Kunj",
     location: "Vasant Kunj, New Delhi",
+    address: "Vasant Kunj, New Delhi",
     area: "2,400 sq ft",
     size: 2400,
     price: "₹2.4 Cr",
     priceValue: 24,
-    furnished: "Semi-Furnished",
     featured: false,
     description: "Stunning 4BHK luxury apartment in Vasant Kunj with premium finishes, modular kitchen, and access to world-class amenities including pool and gym.",
     amenities: ["Swimming Pool", "Gym", "Club House", "Garden", "Kids Play Area", "24/7 Security"],
@@ -106,50 +111,53 @@ const allProperties = [
   {
     id: 6,
     image: "https://images.unsplash.com/photo-1494526585095-c41746248156?w=800&h=600&fit=crop",
-    type: "Office Space",
+    category: "Office Space",
+    status: "Furnished",
     title: "IT Park Office Suite",
     location: "Golf Course Road, Gurugram",
+    address: "Golf Course Road, Gurugram",
     area: "8,000 sq ft",
     size: 8000,
     price: "₹6.5 Lac/month",
     priceValue: 6.5,
-    furnished: "Fully Furnished",
-    featured: false,
-    description: "Premium IT park office space with world-class infrastructure, dedicated internet bandwidth, and round-the-clock support staff.",
-    amenities: ["Central AC", "Server Room", "Conference Rooms", "Cafeteria", "Parking", "Security"],
-    floor: "15th Floor",
-    facing: "North",
-    age: "New Construction",
+    featured: true,
+    description: "State-of-the-art IT park office with world-class amenities, high-speed internet, and professional environment ideal for IT/ITES companies.",
+    amenities: ["High-Speed WiFi", "Server Room", "Conference Rooms", "Cafeteria", "Gym", "24/7 Security"],
+    floor: "5th Floor",
+    facing: "East",
+    age: "New Setup",
   },
   {
     id: 7,
-    image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&h=600&fit=crop",
-    type: "Office Space",
-    title: "Modern Studio Office",
-    location: "Cyber Hub Gurugram",
-    area: "1,500 sq ft",
-    size: 1500,
-    price: "₹75,000/month",
-    priceValue: 0.75,
-    furnished: "Semi-Furnished",
+    image: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&h=600&fit=crop",
+    category: "Godown",
+    status: "Raw",
+    title: "Industrial Warehouse",
+    location: "Okhla Phase 2, New Delhi",
+    address: "Okhla Phase 2, New Delhi",
+    area: "15,000 sq ft",
+    size: 15000,
+    price: "₹4.5 Lac/month",
+    priceValue: 4.5,
     featured: false,
-    description: "Contemporary studio office perfect for startups and small teams. Located in the heart of Cyber Hub with excellent connectivity.",
-    amenities: ["AC", "Workstations", "Meeting Room", "Pantry", "WiFi"],
-    floor: "4th Floor",
-    facing: "West",
-    age: "3 Years Old",
+    description: "Large industrial warehouse in Okhla with excellent loading facilities and proximity to major highways. Perfect for manufacturing or logistics operations.",
+    amenities: ["Loading Dock", "High Ceiling", "Power 100KW", "CCTV", "Fire Safety", "Office Space"],
+    floor: "Ground Floor",
+    facing: "North",
+    age: "10 Years Old",
   },
   {
     id: 8,
-    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&h=600&fit=crop",
-    type: "Residential",
-    title: "Premium Villa",
+    image: "https://images.unsplash.com/photo-1560185127-6a8c4f0e8c8c?w=800&h=600&fit=crop",
+category: "Serviced Office",
+    status: "Furnished",
+    title: "Premium Serviced Office Space",
     location: "Vasant Kunj, New Delhi",
+    address: "Vasant Kunj, New Delhi",
     area: "4,500 sq ft",
     size: 4500,
     price: "₹4.5 Cr",
     priceValue: 45,
-    furnished: "Fully Furnished",
     featured: true,
     description: "Exquisite independent villa with private garden and terrace. Premium neighborhood with top-notch security and privacy.",
     amenities: ["Private Garden", "Terrace", "Driver Room", "Servant Quarters", "Smart Home", "Pool"],
@@ -160,14 +168,15 @@ const allProperties = [
   {
     id: 9,
     image: "https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?w=800&h=600&fit=crop",
-    type: "Retail",
+    category: "Retail",
+    status: "Raw",
     title: "Mall Retail Space",
     location: "Connaught Place, New Delhi",
+    address: "Connaught Place, New Delhi",
     area: "3,200 sq ft",
     size: 3200,
     price: "₹5.5 Lac/month",
     priceValue: 5.5,
-    furnished: "Unfurnished",
     featured: false,
     description: "Premium mall retail space with excellent visibility and footfall. Perfect for premium brands looking to establish presence in CP.",
     amenities: ["Escalator Access", "Central AC", "Storage", "Staff Room", "Attractive Display Area"],
@@ -176,14 +185,12 @@ const allProperties = [
     age: "New Setup",
   },
 ];
-
 const Properties = () => {
   const [searchParams] = useSearchParams();
   const [showFilters, setShowFilters] = useState(false);
   const [selectedLocation, setSelectedLocation] = useState("All Locations");
   const [selectedType, setSelectedType] = useState("All Types");
-  const [selectedFurnished, setSelectedFurnished] = useState("All");
-  const [selectedPrice, setSelectedPrice] = useState("Any Price");
+  const [selectedStatus, setSelectedStatus] = useState("All");
   const [selectedSize, setSelectedSize] = useState("Any Size");
   const [filteredProperties, setFilteredProperties] = useState(allProperties);
   const [activeFiltersCount, setActiveFiltersCount] = useState(0);
@@ -193,11 +200,11 @@ const Properties = () => {
   const [formSubmitted, setFormSubmitted] = useState(false);
 
   useEffect(() => {
-    const typeParam = searchParams.get("type");
-    if (typeParam) {
-      setSelectedType(typeParam);
+    const categoryParam = searchParams.get("category");
+    if (categoryParam) {
+      setSelectedType(categoryParam);
       setShowFilters(true);
-      const filtered = allProperties.filter(p => p.type === typeParam);
+      const filtered = allProperties.filter(p => p.category === categoryParam);
       setFilteredProperties(filtered);
       setActiveFiltersCount(1);
     }
@@ -212,18 +219,11 @@ const Properties = () => {
       count++;
     }
     if (selectedType !== "All Types") {
-      filtered = filtered.filter(p => p.type === selectedType);
+      filtered = filtered.filter(p => p.category === selectedType);
       count++;
     }
-    if (selectedFurnished !== "All") {
-      filtered = filtered.filter(p => p.furnished === selectedFurnished);
-      count++;
-    }
-    if (selectedPrice !== "Any Price") {
-      if (selectedPrice === "Under ₹50K") filtered = filtered.filter(p => p.priceValue < 0.05);
-      else if (selectedPrice === "₹50K - ₹1 Lac") filtered = filtered.filter(p => p.priceValue >= 0.05 && p.priceValue < 1);
-      else if (selectedPrice === "₹1 Lac - ₹5 Lac") filtered = filtered.filter(p => p.priceValue >= 1 && p.priceValue < 5);
-      else if (selectedPrice === "₹5 Lac+") filtered = filtered.filter(p => p.priceValue >= 5);
+    if (selectedStatus !== "All") {
+      filtered = filtered.filter(p => p.status === selectedStatus);
       count++;
     }
     if (selectedSize !== "Any Size") {
@@ -241,8 +241,7 @@ const Properties = () => {
   const clearFilters = () => {
     setSelectedLocation("All Locations");
     setSelectedType("All Types");
-    setSelectedFurnished("All");
-    setSelectedPrice("Any Price");
+    setSelectedStatus("All");
     setSelectedSize("Any Size");
     setFilteredProperties(allProperties);
     setActiveFiltersCount(0);
@@ -256,7 +255,7 @@ const Properties = () => {
       const filtered = allProperties.filter(p => 
         p.title.toLowerCase().includes(query) || 
         p.location.toLowerCase().includes(query) ||
-        p.type.toLowerCase().includes(query)
+        p.category.toLowerCase().includes(query)
       );
       setFilteredProperties(filtered);
     }
@@ -313,7 +312,7 @@ const Properties = () => {
               <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
               <input
                 type="text"
-                placeholder="Search by name, location, or type..."
+                placeholder="Search by name, location, or category..."
                 onChange={handleSearch}
                 className="w-full pl-12 pr-4 py-3 rounded-xl bg-section border border-gray-200 text-foreground placeholder:text-muted-foreground font-body text-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all"
               />
@@ -357,7 +356,7 @@ const Properties = () => {
                     <label className="block text-xs font-display font-semibold text-muted-foreground mb-2 uppercase tracking-wider">Location</label>
                     <select
                       value={selectedLocation}
-                      onChange={(e) => setSelectedLocation(e.target.value)}
+                      onChange={(e) => { setSelectedLocation(e.target.value); applyFilters(); }}
                       className="w-full px-4 py-2.5 rounded-lg bg-section border border-gray-200 text-foreground font-body text-sm focus:outline-none focus:border-primary transition-colors appearance-none cursor-pointer"
                     >
                       {locations.map(loc => (
@@ -371,39 +370,25 @@ const Properties = () => {
                     <label className="block text-xs font-display font-semibold text-muted-foreground mb-2 uppercase tracking-wider">Property Type</label>
                     <select
                       value={selectedType}
-                      onChange={(e) => setSelectedType(e.target.value)}
+                      onChange={(e) => { setSelectedType(e.target.value); applyFilters(); }}
                       className="w-full px-4 py-2.5 rounded-lg bg-section border border-gray-200 text-foreground font-body text-sm focus:outline-none focus:border-primary transition-colors appearance-none cursor-pointer"
                     >
-                      {propertyTypes.map(type => (
-                        <option key={type} value={type}>{type}</option>
+                      {propertyTypes.map(category => (
+                        <option key={category} value={category}>{category}</option>
                       ))}
                     </select>
                     <ChevronDown className="absolute right-3 bottom-3 w-4 h-4 text-muted-foreground pointer-events-none" />
                   </div>
 
                   <div className="relative">
-                    <label className="block text-xs font-display font-semibold text-muted-foreground mb-2 uppercase tracking-wider">Furnished</label>
+                    <label className="block text-xs font-display font-semibold text-muted-foreground mb-2 uppercase tracking-wider">Status</label>
                     <select
-                      value={selectedFurnished}
-                      onChange={(e) => setSelectedFurnished(e.target.value)}
+                      value={selectedStatus}
+                      onChange={(e) => { setSelectedStatus(e.target.value); applyFilters(); }}
                       className="w-full px-4 py-2.5 rounded-lg bg-section border border-gray-200 text-foreground font-body text-sm focus:outline-none focus:border-primary transition-colors appearance-none cursor-pointer"
                     >
-                      {furnishedOptions.map(opt => (
+                      {statusOptions.map(opt => (
                         <option key={opt} value={opt}>{opt}</option>
-                      ))}
-                    </select>
-                    <ChevronDown className="absolute right-3 bottom-3 w-4 h-4 text-muted-foreground pointer-events-none" />
-                  </div>
-
-                  <div className="relative">
-                    <label className="block text-xs font-display font-semibold text-muted-foreground mb-2 uppercase tracking-wider">Price Range</label>
-                    <select
-                      value={selectedPrice}
-                      onChange={(e) => setSelectedPrice(e.target.value)}
-                      className="w-full px-4 py-2.5 rounded-lg bg-section border border-gray-200 text-foreground font-body text-sm focus:outline-none focus:border-primary transition-colors appearance-none cursor-pointer"
-                    >
-                      {priceRanges.map(range => (
-                        <option key={range} value={range}>{range}</option>
                       ))}
                     </select>
                     <ChevronDown className="absolute right-3 bottom-3 w-4 h-4 text-muted-foreground pointer-events-none" />
@@ -413,7 +398,7 @@ const Properties = () => {
                     <label className="block text-xs font-display font-semibold text-muted-foreground mb-2 uppercase tracking-wider">Size</label>
                     <select
                       value={selectedSize}
-                      onChange={(e) => setSelectedSize(e.target.value)}
+                      onChange={(e) => { setSelectedSize(e.target.value); applyFilters(); }}
                       className="w-full px-4 py-2.5 rounded-lg bg-section border border-gray-200 text-foreground font-body text-sm focus:outline-none focus:border-primary transition-colors appearance-none cursor-pointer"
                     >
                       {sizeRanges.map(size => (
@@ -446,14 +431,14 @@ const Properties = () => {
                         <X className="w-3 h-3 cursor-pointer" onClick={() => setSelectedType("All Types")} />
                       </motion.span>
                     )}
-                    {selectedFurnished !== "All" && (
+                    {selectedStatus !== "All" && (
                       <motion.span
                         initial={{ scale: 0.8 }}
                         animate={{ scale: 1 }}
                         className="inline-flex items-center gap-1 px-3 py-1 bg-primary/10 text-primary rounded-full text-xs font-semibold"
                       >
-                        {selectedFurnished}
-                        <X className="w-3 h-3 cursor-pointer" onClick={() => setSelectedFurnished("All")} />
+                        {selectedStatus}
+                        <X className="w-3 h-3 cursor-pointer" onClick={() => setSelectedStatus("All")} />
                       </motion.span>
                     )}
                   </div>
@@ -473,24 +458,41 @@ const Properties = () => {
       </section>
 
       {/* Results Count */}
+      {(selectedLocation !== "Faridabad" && selectedLocation !== "East of Kailash") && (
       <section className="py-6 bg-section">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="flex items-center justify-between">
             <p className="text-muted-foreground font-body">
-              Showing <span className="font-semibold text-foreground">{filteredProperties.length}</span> properties
+              {filteredProperties.length === 0 
+                ? "Showing 0 properties" 
+                : `Showing ${filteredProperties.length} properties`}
             </p>
           </div>
         </div>
       </section>
+      )}
 
       {/* Properties Grid */}
-      <section className="py-12 relative">
+      <section className={`py-12 ${(selectedLocation === "Faridabad" || selectedLocation === "East of Kailash") ? "bg-section" : "relative"}`}>
+        {(selectedLocation !== "Faridabad" && selectedLocation !== "East of Kailash") && (
         <div className="absolute inset-0">
           <img src={propertiesImg} alt="Properties" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-white/85" />
         </div>
+        )}
         <div className="relative container mx-auto px-4 lg:px-8">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {(selectedLocation === "Faridabad" || selectedLocation === "East of Kailash") ? (
+            <div className="flex flex-col items-center justify-center py-32">
+              <h2 className="font-display font-extrabold text-5xl md:text-6xl text-primary mb-4">Coming Soon!</h2>
+              <p className="text-muted-foreground font-body text-lg">Properties in {selectedLocation} will be available soon.</p>
+            </div>
+          ) : filteredProperties.length === 0 ? (
+            <div className="flex flex-col items-center justify-center py-32">
+              <h2 className="font-display font-extrabold text-5xl md:text-6xl text-primary mb-4">Coming Soon!</h2>
+              <p className="text-muted-foreground font-body text-lg">No properties available at the moment.</p>
+            </div>
+          ) : (
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredProperties.map((property, i) => (
               <motion.div
                 key={property.title}
@@ -518,7 +520,7 @@ const Properties = () => {
                     </motion.div>
                   </div>
                   <span className="absolute top-4 left-4 gradient-orange text-white font-display font-bold text-xs px-4 py-1.5 rounded-full uppercase tracking-wider">
-                    {property.type}
+                    {property.category}
                   </span>
                   {property.featured && (
                     <span className="absolute top-4 right-4 bg-white text-foreground font-display font-bold text-xs px-3 py-1.5 rounded-full">
@@ -532,7 +534,7 @@ const Properties = () => {
                   </h3>
                   <div className="flex items-center gap-2 text-muted-foreground text-sm font-body mb-3">
                     <MapPin className="w-4 h-4 text-primary" />
-                    {property.location}
+                    {property.address || property.location}
                   </div>
                   <div className="flex items-center gap-4 text-sm text-muted-foreground mb-4">
                     <span className="flex items-center gap-1.5">
@@ -541,7 +543,7 @@ const Properties = () => {
                     </span>
                     <span className="flex items-center gap-1.5">
                       <Check className="w-4 h-4 text-primary" />
-                      {property.furnished}
+                      {property.category}
                     </span>
                   </div>
                   <div className="flex items-center justify-end pt-4 border-t border-gray-100">
@@ -550,10 +552,11 @@ const Properties = () => {
                       <ArrowRight className="w-4 h-4" />
                     </span>
                   </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
@@ -601,7 +604,7 @@ const Properties = () => {
                     </button>
                     <div className="absolute bottom-4 left-4 right-4">
                       <span className="gradient-orange text-white font-display font-bold text-xs px-3 py-1 rounded-full uppercase tracking-wider">
-                        {selectedProperty.type}
+                        {selectedProperty.category}
                       </span>
                       <h3 className="font-display font-extrabold text-xl text-white mt-2">
                         {selectedProperty.title}
@@ -690,7 +693,7 @@ const Properties = () => {
                     </button>
                     <div className="absolute bottom-4 left-4 right-4">
                       <span className="gradient-orange text-white font-display font-bold text-xs px-3 py-1 rounded-full uppercase tracking-wider">
-                        {selectedProperty.type}
+                        {selectedProperty.category}
                       </span>
                       <h3 className="font-display font-extrabold text-2xl text-white mt-2">
                         {selectedProperty.title}
@@ -712,7 +715,7 @@ const Properties = () => {
                       </div>
                       <div className="text-center p-3 bg-section rounded-xl">
                         <Check className="w-5 h-5 text-primary mx-auto mb-1" />
-                        <p className="font-display font-bold text-sm text-foreground">{selectedProperty.furnished}</p>
+                        <p className="font-display font-bold text-sm text-foreground">{selectedProperty.category}</p>
                         <p className="text-xs text-muted-foreground">Condition</p>
                       </div>
                       <div className="text-center p-3 bg-section rounded-xl">
@@ -764,7 +767,7 @@ const Properties = () => {
                         <p className="font-display font-extrabold text-2xl text-primary">{selectedProperty.price}</p>
                       </div>
                       <Link
-                        to={`/contact?property=${encodeURIComponent(selectedProperty.title)}&type=${encodeURIComponent(selectedProperty.type)}&location=${encodeURIComponent(selectedProperty.location)}`}
+                        to={`/contact?property=${encodeURIComponent(selectedProperty.title)}&category=${encodeURIComponent(selectedProperty.category)}&location=${encodeURIComponent(selectedProperty.location)}`}
                         onClick={closeModal}
                         className="gradient-orange text-white font-display font-bold px-6 py-3 rounded-xl hover:opacity-90 transition-all shadow-lg flex items-center gap-2"
                       >
