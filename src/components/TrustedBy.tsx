@@ -44,8 +44,8 @@ const TrustedBy = () => {
         <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-white to-transparent z-10" />
 
         <div className="flex animate-marquee">
-          {[...clientLogos, ...clientLogos].map((logo, i) => (
-            <div key={i} className="flex-shrink-0 mx-8 my-4">
+          {[...clientLogos, ...clientLogos, ...clientLogos, ...clientLogos].map((logo, i) => (
+            <div key={i} className="flex-shrink-0 mx-10 my-4">
               <img src={logo} alt={`Client ${i + 1}`} className="h-14 md:h-16 w-auto object-contain" />
             </div>
           ))}
@@ -58,11 +58,11 @@ const TrustedBy = () => {
             transform: translateX(0);
           }
           100% {
-            transform: translateX(-50%);
+            transform: translateX(-25%);
           }
         }
         .animate-marquee {
-          animation: marquee 15s linear infinite;
+          animation: marquee 20s linear infinite;
         }
       `}</style>
     </section>
