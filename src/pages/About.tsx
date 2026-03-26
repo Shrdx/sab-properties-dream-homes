@@ -6,28 +6,19 @@ import heroImg from "@/assets/picture.jpg";
 
 const team = [
   {
-    name: "Sahil Bansal",
-    role: "Director",
-    description: "Visionary leader with 15+ years in commercial real estate",
-    image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=400&fit=crop",
+    name: "Sanjay Gupta",
+    role: "Designation",
+    description: "With extensive experience in the real estate industry, they bring a wealth of knowledge and expertise to the team, ensuring exceptional service and results for all clients.",
   },
   {
-    name: "Arjun Mehta",
-    role: "Leasing Head",
-    description: "Expert in premium office space solutions across Delhi NCR",
-    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop",
+    name: "Kushagra Gupta",
+    role: "Designation",
+    description: "Dedicated professional committed to transforming your workspace experience with personalized solutions and attention to detail.",
   },
   {
-    name: "Priya Sharma",
-    role: "Business Development Manager",
-    description: "Strategic partnerships and client relationship specialist",
-    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop",
-  },
-  {
-    name: "Rahul Gupta",
-    role: "Operations Head",
-    description: "Ensuring seamless execution of all property operations",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop",
+    name: "Kashish Gupta",
+    role: "Designation",
+    description: "Focused on delivering outstanding results and building lasting relationships with clients through transparency and reliability.",
   },
 ];
 
@@ -195,11 +186,7 @@ const About = () => {
                 transition={{ duration: 0.5, delay: i * 0.1 }}
                 className="bg-white rounded-2xl p-6 text-center shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-gray-100"
               >
-                <img
-                  src={member.image}
-                  alt={member.name}
-                  className="w-28 h-28 rounded-full mx-auto mb-4 object-cover ring-4 ring-orange/10"
-                />
+                <div className="w-28 h-28 rounded-full mx-auto mb-4 bg-gray-200" />
                 <h3 className="font-display font-bold text-xl text-foreground mb-1">
                   {member.name}
                 </h3>
