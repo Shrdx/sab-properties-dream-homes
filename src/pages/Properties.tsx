@@ -262,7 +262,10 @@ const Properties = () => {
   };
 
   const handlePropertyClick = (property: typeof allProperties[0]) => {
-    window.location.href = `/property/${property.id}`;
+    setSelectedProperty(property);
+    setShowLeadForm(true);
+    setFormSubmitted(false);
+    setLeadFormData({ name: "", phone: "" });
   };
 
   const handleLeadSubmit = (e: React.FormEvent) => {
@@ -506,6 +509,16 @@ const Properties = () => {
                     alt={property.title}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                   />
+                  <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-300 flex items-center justify-center">
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      whileHover={{ opacity: 1, scale: 1 }}
+                      className="bg-white/90 backdrop-blur-sm rounded-full px-4 py-2 flex items-center gap-2"
+                    >
+                      <Lock className="w-4 h-4 text-primary" />
+                      <span className="font-display font-semibold text-sm text-foreground">Click to Enquire</span>
+                    </motion.div>
+                  </div>
                   <span className="absolute top-4 left-4 gradient-orange text-white font-display font-bold text-xs px-4 py-1.5 rounded-full uppercase tracking-wider">
                     {property.category}
                   </span>
