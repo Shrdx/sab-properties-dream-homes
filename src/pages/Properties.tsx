@@ -12,7 +12,7 @@ const statusOptions = ["All", "Raw", "Furnished", "Unfurnished"];
 const priceRanges = [];
 const sizeRanges = ["Any Size", "Under 1000 sq.ft", "1000-5000 sq.ft", "5000-10000 sq.ft", "10000+ sq.ft"];
 
-const allProperties = [
+export const allProperties = [
   {
     id: 1,
     image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=600&fit=crop",
@@ -262,10 +262,7 @@ const Properties = () => {
   };
 
   const handlePropertyClick = (property: typeof allProperties[0]) => {
-    setSelectedProperty(property);
-    setShowLeadForm(true);
-    setFormSubmitted(false);
-    setLeadFormData({ name: "", phone: "" });
+    window.location.href = `/property/${property.id}`;
   };
 
   const handleLeadSubmit = (e: React.FormEvent) => {

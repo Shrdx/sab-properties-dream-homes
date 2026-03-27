@@ -7,6 +7,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import Index from "./pages/Index.tsx";
 import About from "./pages/About.tsx";
 import Properties from "./pages/Properties.tsx";
+import PropertyDetail from "./pages/PropertyDetail.tsx";
 import Contact from "./pages/Contact.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import ServicesPage from "./pages/ServicesPage.tsx";
@@ -54,6 +55,7 @@ const AnimatedRoutes = () => {
           <Route path="/about" element={<About />} />
           <Route path="/services" element={<ServicesPage />} />
           <Route path="/properties" element={<Properties />} />
+          <Route path="/property/:id" element={<PropertyDetail />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
