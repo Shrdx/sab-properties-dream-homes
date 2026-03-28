@@ -60,10 +60,10 @@ const PropertiesSection = () => {
     <section className="py-24 bg-section">
       <div className="container mx-auto px-4 lg:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          initial={{ opacity: 0, scale: 0.95, y: 15 }}
+          whileInView={{ opacity: 1, scale: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ type: "spring", stiffness: 100, damping: 20, duration: 0.3 }}
           className="text-center mb-16"
         >
           <span className="text-primary font-display font-bold text-sm tracking-[0.2em] uppercase">
@@ -81,11 +81,11 @@ const PropertiesSection = () => {
           {properties.map((property, i) => (
             <motion.div
               key={property.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.15 }}
-              className="group bg-card rounded-xl overflow-hidden border border-border hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer"
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              whileInView={{ opacity: 1, scale: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ type: "spring", stiffness: 120, damping: 20, delay: i * 0.05 }}
+              className="group bg-card rounded-xl overflow-hidden border border-border hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 cursor-pointer card-3d"
               onClick={() => handlePropertyClick(i)}
             >
               <div className="relative h-56 overflow-hidden">
@@ -135,10 +135,10 @@ const PropertiesSection = () => {
 
         {/* View More Button */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.3 }}
+          initial={{ opacity: 0, scale: 0.95, y: 15 }}
+          whileInView={{ opacity: 1, scale: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ type: "spring", stiffness: 100, damping: 20, duration: 0.3, delay: 0.1 }}
           className="text-center mt-12"
         >
           <Link

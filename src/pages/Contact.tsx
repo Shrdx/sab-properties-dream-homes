@@ -4,7 +4,7 @@ import { useSearchParams } from "react-router-dom";
 import { MapPin, Phone, Mail, Clock, Send, Building2, X, CheckCircle } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import heroImg from "@/assets/property.jpg";
+import contactHeroImg from "@/assets/contact-hero.png";
 
 const Contact = () => {
   const [searchParams] = useSearchParams();
@@ -27,15 +27,15 @@ const Contact = () => {
       <Navbar />
 
       {/* Hero Section with Image */}
-      <section className="relative h-[50vh] flex items-center justify-center">
+      <section className="relative h-[50vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
-          <img src={heroImg} alt="Office Building" className="w-full h-full object-cover" />
+          <img src={contactHeroImg} alt="Contact Us" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-black/60" />
         </div>
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          initial={{ opacity: 0, scale: 0.95, y: 20 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          transition={{ type: "spring", stiffness: 100, damping: 20, duration: 0.3 }}
           className="relative text-center px-4"
         >
           <h1 className="font-display font-extrabold text-5xl md:text-6xl lg:text-7xl text-white mb-6">
@@ -85,10 +85,10 @@ const Contact = () => {
           <div className="grid lg:grid-cols-2 gap-16">
             {/* Contact Info */}
             <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
+              initial={{ opacity: 0, scale: 0.95, x: -30 }}
+              whileInView={{ opacity: 1, scale: 1, x: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ type: "spring", stiffness: 100, damping: 20, duration: 0.3 }}
               className="bg-white rounded-2xl p-10 shadow-xl"
             >
               <h2 className="font-display font-extrabold text-4xl text-foreground mb-6">
@@ -165,10 +165,10 @@ const Contact = () => {
 
             {/* Contact Form */}
             <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
+              initial={{ opacity: 0, scale: 0.95, x: 30 }}
+              whileInView={{ opacity: 1, scale: 1, x: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ type: "spring", stiffness: 100, damping: 20, duration: 0.3 }}
             >
               <div className="bg-white rounded-2xl p-8 lg:p-10 shadow-xl">
                 {hasProperty ? (

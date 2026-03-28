@@ -1,64 +1,109 @@
 import { MapPin, Phone, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+
+const colVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: { type: "spring", stiffness: 120, damping: 20, delay: i * 0.07 },
+  }),
+};
 
 const Footer = () => {
   return (
     <footer className="gradient-dark pt-16 pb-8">
       <div className="container mx-auto px-4 lg:px-8">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+
           {/* Brand */}
-          <div>
+          <motion.div
+            custom={0}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-60px" }}
+            variants={colVariants}
+          >
             <div className="flex items-center gap-3 mb-4">
-              <img src="/logo-footer.png" alt="SAB Properties Logo" className="h-24 w-auto" />
+              <img src="/newlogo.png" alt="SAB Properties Logo" className="h-24 w-auto" />
             </div>
             <p className="text-primary-foreground/60 font-body text-sm leading-relaxed">
               A trusted and reputable name in the real estate sector, delivering exceptional services since establishment.
             </p>
-          </div>
+          </motion.div>
 
           {/* Quick Links */}
-          <div>
+          <motion.div
+            custom={1}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-60px" }}
+            variants={colVariants}
+          >
             <h4 className="font-display font-bold text-primary-foreground mb-4">Quick Links</h4>
             <ul className="space-y-2">
-              <li>
-                <Link to="/" className="text-primary-foreground/60 hover:text-primary font-body text-sm transition-colors">Home</Link>
-              </li>
-              <li>
-                <Link to="/about" className="text-primary-foreground/60 hover:text-primary font-body text-sm transition-colors">About Us</Link>
-              </li>
-              <li>
-                <Link to="/services" className="text-primary-foreground/60 hover:text-primary font-body text-sm transition-colors">Services</Link>
-              </li>
-              <li>
-                <Link to="/properties" className="text-primary-foreground/60 hover:text-primary font-body text-sm transition-colors">Properties</Link>
-              </li>
-              <li>
-                <Link to="/contact" className="text-primary-foreground/60 hover:text-primary font-body text-sm transition-colors">Contact</Link>
-              </li>
+              {[
+                { to: "/", label: "Home" },
+                { to: "/about", label: "About Us" },
+                { to: "/services", label: "Services" },
+                { to: "/properties", label: "Properties" },
+                { to: "/contact", label: "Contact" },
+              ].map((link, i) => (
+                <motion.li
+                  key={link.label}
+                  initial={{ opacity: 0, x: -10 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ type: "spring", stiffness: 150, damping: 20, delay: 0.1 + i * 0.04 }}
+                >
+                  <Link to={link.to} className="text-primary-foreground/60 hover:text-primary font-body text-sm transition-colors">
+                    {link.label}
+                  </Link>
+                </motion.li>
+              ))}
             </ul>
-          </div>
+          </motion.div>
 
           {/* Services */}
-          <div>
+          <motion.div
+            custom={2}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-60px" }}
+            variants={colVariants}
+          >
             <h4 className="font-display font-bold text-primary-foreground mb-4">Our Services</h4>
             <ul className="space-y-2">
-              <li>
-                <Link to="/services#property-consultancy" className="text-primary-foreground/60 hover:text-primary font-body text-sm transition-colors">Property Consultancy</Link>
-              </li>
-              <li>
-                <Link to="/services#portfolio-management" className="text-primary-foreground/60 hover:text-primary font-body text-sm transition-colors">Portfolio Management</Link>
-              </li>
-              <li>
-                <Link to="/services#legal-assistance" className="text-primary-foreground/60 hover:text-primary font-body text-sm transition-colors">Legal Assistance</Link>
-              </li>
-              <li>
-                <Link to="/services#market-insights" className="text-primary-foreground/60 hover:text-primary font-body text-sm transition-colors">Market Insights</Link>
-              </li>
+              {[
+                { to: "/services#property-consultancy", label: "Property Consultancy" },
+                { to: "/services#portfolio-management", label: "Portfolio Management" },
+                { to: "/services#legal-assistance", label: "Legal Assistance" },
+                { to: "/services#market-insights", label: "Market Insights" },
+              ].map((link, i) => (
+                <motion.li
+                  key={link.label}
+                  initial={{ opacity: 0, x: -10 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ type: "spring", stiffness: 150, damping: 20, delay: 0.15 + i * 0.04 }}
+                >
+                  <Link to={link.to} className="text-primary-foreground/60 hover:text-primary font-body text-sm transition-colors">
+                    {link.label}
+                  </Link>
+                </motion.li>
+              ))}
             </ul>
-          </div>
+          </motion.div>
 
           {/* Contact */}
-          <div>
+          <motion.div
+            custom={3}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-60px" }}
+            variants={colVariants}
+          >
             <h4 className="font-display font-bold text-primary-foreground mb-4">Contact Info</h4>
             <ul className="space-y-3">
               <li className="flex items-start gap-2 text-primary-foreground/60 font-body text-sm">
@@ -76,14 +121,20 @@ const Footer = () => {
                 </a>
               </li>
             </ul>
-          </div>
+          </motion.div>
         </div>
 
-        <div className="border-t border-primary-foreground/10 pt-8 text-center">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          className="border-t border-primary-foreground/10 pt-8 text-center"
+        >
           <p className="text-primary-foreground/40 font-body text-sm">
             © {new Date().getFullYear()} SAB Properties Private Limited. All rights reserved.
           </p>
-        </div>
+        </motion.div>
       </div>
     </footer>
   );

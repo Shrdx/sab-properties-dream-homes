@@ -61,15 +61,23 @@ const About = () => {
       <Navbar />
 
       {/* Hero Section */}
-      <section className="relative h-[60vh] flex items-center justify-center">
+      <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
-          <img src={heroImg} alt="Office Building" className="w-full h-full object-cover" />
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="w-full h-full object-cover"
+          >
+            <source src="/about-hero.mp4" type="video/mp4" />
+          </video>
           <div className="absolute inset-0 bg-black/60" />
         </div>
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          initial={{ opacity: 0, scale: 0.95, y: 20 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          transition={{ type: "spring", stiffness: 100, damping: 20, duration: 0.3 }}
           className="relative text-center px-4"
         >
           <h1 className="font-display font-extrabold text-5xl md:text-6xl lg:text-7xl text-white mb-6">
@@ -86,10 +94,10 @@ const About = () => {
         <div className="container mx-auto px-4 lg:px-8">
           <div className="grid md:grid-cols-2 gap-16">
             <motion.div
-              initial={{ opacity: 0, x: -30 }}
+              initial={{ opacity: 0, x: -40 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ type: "spring", stiffness: 100, damping: 20, duration: 0.3 }}
               className="bg-gradient-to-br from-orange-50 to-orange-100/50 p-10 rounded-2xl"
             >
               <div className="w-16 h-16 rounded-full bg-orange flex items-center justify-center mb-6">
@@ -106,10 +114,10 @@ const About = () => {
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, x: 30 }}
+              initial={{ opacity: 0, x: 40 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ type: "spring", stiffness: 100, damping: 20, duration: 0.3 }}
               className="bg-gradient-to-br from-gray-50 to-gray-100/50 p-10 rounded-2xl"
             >
               <div className="w-16 h-16 rounded-full bg-foreground flex items-center justify-center mb-6">
@@ -132,10 +140,10 @@ const About = () => {
       <section className="py-24 bg-section">
         <div className="container mx-auto px-4 lg:px-8 max-w-4xl">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            initial={{ opacity: 0, scale: 0.95, y: 20 }}
+            whileInView={{ opacity: 1, scale: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ type: "spring", stiffness: 100, damping: 20, duration: 0.3 }}
             className="text-center"
           >
             <p className="text-muted-foreground font-body text-lg md:text-xl leading-relaxed mb-8">
@@ -162,10 +170,10 @@ const About = () => {
       <section className="py-24 bg-white">
         <div className="container mx-auto px-4 lg:px-8">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            initial={{ opacity: 0, scale: 0.95, y: 15 }}
+            whileInView={{ opacity: 1, scale: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ type: "spring", stiffness: 100, damping: 20, duration: 0.3 }}
             className="text-center mb-16"
           >
             <h2 className="font-display font-extrabold text-4xl md:text-5xl text-foreground mb-4">
@@ -180,10 +188,10 @@ const About = () => {
             {team.map((member, i) => (
               <motion.div
                 key={member.name}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
+                initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ type: "spring", stiffness: 120, damping: 20, delay: i * 0.05 }}
                 className="bg-white rounded-2xl p-6 text-center shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-gray-100"
               >
                 <div className="w-28 h-28 rounded-full mx-auto mb-4 bg-gray-200" />
@@ -204,10 +212,10 @@ const About = () => {
       <section className="py-24 bg-section">
         <div className="container mx-auto px-4 lg:px-8">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            initial={{ opacity: 0, scale: 0.95, y: 15 }}
+            whileInView={{ opacity: 1, scale: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ type: "spring", stiffness: 100, damping: 20, duration: 0.3 }}
             className="text-center mb-16"
           >
             <h2 className="font-display font-extrabold text-4xl md:text-5xl text-foreground mb-4">
@@ -222,10 +230,10 @@ const About = () => {
             {testimonials.map((testimonial, i) => (
               <motion.div
                 key={testimonial.name}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
+                initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ type: "spring", stiffness: 120, damping: 20, delay: i * 0.05 }}
                 className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100"
               >
                 <div className="w-12 h-1 bg-orange mb-6 rounded-full" />
@@ -246,10 +254,10 @@ const About = () => {
       <section className="py-24 bg-white">
         <div className="container mx-auto px-4 lg:px-8">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            initial={{ opacity: 0, scale: 0.95, y: 15 }}
+            whileInView={{ opacity: 1, scale: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ type: "spring", stiffness: 100, damping: 20, duration: 0.3 }}
             className="text-center mb-16"
           >
             <h2 className="font-display font-extrabold text-4xl md:text-5xl text-foreground mb-4">
@@ -264,10 +272,10 @@ const About = () => {
             {blogPosts.map((post, i) => (
               <motion.div
                 key={post.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
+                initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ type: "spring", stiffness: 120, damping: 20, delay: i * 0.05 }}
                 className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-gray-100"
               >
                 <div className="relative h-48 overflow-hidden">

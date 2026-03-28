@@ -25,10 +25,10 @@ const TrustedBy = () => {
   return (
     <section className="py-16 bg-white overflow-hidden">
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
+        initial={{ opacity: 0, scale: 0.95, y: 15 }}
+        whileInView={{ opacity: 1, scale: 1, y: 0 }}
+        viewport={{ once: true, margin: "-50px" }}
+        transition={{ type: "spring", stiffness: 100, damping: 20, duration: 0.3 }}
         className="text-center mb-12"
       >
         <span className="text-primary font-display font-bold text-sm tracking-[0.2em] uppercase">

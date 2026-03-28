@@ -5,6 +5,11 @@ import { Building2, Shield, TrendingUp, Briefcase, MapPin, Phone, Mail, Clock, A
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import servicesImg from "@/assets/services.jpg";
+import servicesHeroImg from "@/assets/services-hero.png";
+import propertyConsultancyImg from "@/assets/property-consultancy.jpg";
+import portfolioManagementImg from "@/assets/portfolio-management.jpg";
+import legalAssistanceImg from "@/assets/legal-assistance.jpg";
+import marketInsightsImg from "@/assets/market-insights.jpg";
 
 const services = [
   {
@@ -12,6 +17,7 @@ const services = [
     icon: Building2,
     title: "Property Consultancy",
     description: "Our expert team provides comprehensive property consultancy services tailored to your specific needs. We guide you through every step of your real estate journey, from property selection to final acquisition.",
+    image: propertyConsultancyImg,
     features: [
       "Personalized property recommendations",
       "Market analysis and trends",
@@ -25,6 +31,7 @@ const services = [
     icon: FileText,
     title: "Legal Assistance",
     description: "Navigate the complexities of real estate transactions with our expert legal support. We ensure transparency and compliance throughout every legal process.",
+    image: legalAssistanceImg,
     features: [
       "Title verification",
       "Agreement drafting and review",
@@ -38,6 +45,7 @@ const services = [
     icon: BarChart3,
     title: "Market Insights",
     description: "Stay ahead with our data-driven market intelligence. We provide valuable insights to help you make informed real estate investment decisions.",
+    image: marketInsightsImg,
     features: [
       "Price trend analysis",
       "Location analytics",
@@ -51,6 +59,7 @@ const services = [
     icon: Briefcase,
     title: "Portfolio Management",
     description: "Maximize your real estate investments with our professional portfolio management services. We handle all aspects of property management for optimal returns.",
+    image: portfolioManagementImg,
     features: [
       "Tenant management",
       "Rent collection",
@@ -81,15 +90,15 @@ const ServicesPage = () => {
       <Navbar />
 
       {/* Hero Section */}
-      <section className="relative h-[50vh] flex items-center justify-center">
+      <section className="relative h-[50vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
-          <img src={servicesImg} alt="Our Services" className="w-full h-full object-cover" />
+          <img src={servicesHeroImg} alt="Our Services" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-black/60" />
         </div>
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          initial={{ opacity: 0, scale: 0.95, y: 20 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          transition={{ type: "spring", stiffness: 100, damping: 20, duration: 0.3 }}
           className="relative text-center px-4"
         >
           <h1 className="font-display font-extrabold text-5xl md:text-6xl lg:text-7xl text-white mb-4">
@@ -109,10 +118,10 @@ const ServicesPage = () => {
         </div>
         <div className="relative container mx-auto px-4 lg:px-8">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            initial={{ opacity: 0, scale: 0.95, y: 15 }}
+            whileInView={{ opacity: 1, scale: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ type: "spring", stiffness: 100, damping: 20, duration: 0.3 }}
             className="text-center mb-16"
           >
             <span className="inline-block text-primary font-display font-bold text-sm tracking-[0.2em] uppercase mb-4">
@@ -134,15 +143,15 @@ const ServicesPage = () => {
                 id={service.id}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: i * 0.1 }}
-                className={`bg-white rounded-3xl overflow-hidden shadow-xl ${
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ type: "spring", stiffness: 120, damping: 20, delay: i * 0.1 }}
+                className={`bg-white rounded-3xl overflow-hidden shadow-xl border border-gray-100/50 ${
                   i % 2 === 1 ? "bg-white" : "bg-white"
                 }`}
               >
-                <div className={`grid lg:grid-cols-2 ${i % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}>
+                <div className="flex flex-col lg:flex-row items-stretch lg:h-[600px]">
                   {/* Content */}
-                  <div className="p-8 lg:p-12">
+                  <div className="w-full lg:w-1/2 p-8 lg:p-12 flex flex-col justify-center h-full">
                     <div className="w-16 h-16 rounded-2xl gradient-orange flex items-center justify-center mb-6">
                       <service.icon className="w-8 h-8 text-white" />
                     </div>
@@ -153,11 +162,18 @@ const ServicesPage = () => {
                       {service.description}
                     </p>
                     <ul className="space-y-3 mb-8">
-                      {service.features.map((feature) => (
-                        <li key={feature} className="flex items-center gap-3">
+                      {service.features.map((feature, index) => (
+                        <motion.li
+                          key={feature}
+                          initial={{ opacity: 0, x: -10 }}
+                          whileInView={{ opacity: 1, x: 0 }}
+                          viewport={{ once: true }}
+                          transition={{ type: "spring", stiffness: 150, damping: 20, delay: 0.2 + index * 0.05 }}
+                          className="flex items-center gap-3"
+                        >
                           <CheckCircle className="w-5 h-5 text-primary flex-shrink-0" />
                           <span className="text-foreground font-body text-sm">{feature}</span>
-                        </li>
+                        </motion.li>
                       ))}
                     </ul>
                     <Link
@@ -170,11 +186,18 @@ const ServicesPage = () => {
                   </div>
 
                   {/* Image Placeholder */}
-                  <div className="relative min-h-[300px] lg:min-h-full bg-gradient-to-br from-primary/10 to-orange-50 flex items-center justify-center">
-                    <div className="text-center p-8">
-                      <service.icon className="w-24 h-24 text-primary/20 mx-auto mb-4" />
-                      <p className="text-primary/40 font-display font-bold text-lg">Expert {service.title}</p>
-                    </div>
+                  {/* Service Image */}
+                  <div className="w-full lg:w-1/2 relative min-h-[400px] lg:h-full overflow-hidden">
+                    <motion.img
+                      src={service.image}
+                      alt={service.title}
+                      className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
+                      initial={{ scale: 1.1, opacity: 0 }}
+                      whileInView={{ scale: 1, opacity: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ type: "spring", stiffness: 100, damping: 20, delay: 0.1 }}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
                   </div>
                 </div>
               </motion.div>

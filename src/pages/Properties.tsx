@@ -5,6 +5,7 @@ import { MapPin, Maximize, ArrowRight, Building2, Home, Store, Warehouse, Users,
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import propertiesImg from "@/assets/properties.jpg";
+import propertyHeroImg from "@/assets/property-hero.png";
 
 const locations = ["All Locations", "Connaught Place", "Karol Bagh", "Okhla", "Cyber Hub Gurugram", "Golf Course Road", "Vasant Kunj"];
 const propertyTypes = ["All Types", "Office Space", "Retail", "Godown", "Co-Working", "Serviced Office"];
@@ -147,25 +148,6 @@ category: "Office Space",
     age: "10 Years Old",
   },
   {
-    id: 8,
-    image: "https://images.unsplash.com/photo-1560185127-6a8c4f0e8c8c?w=800&h=600&fit=crop",
-category: "Serviced Office",
-    status: "Furnished",
-    title: "Premium Serviced Office Space",
-    location: "Vasant Kunj, New Delhi",
-    address: "Vasant Kunj, New Delhi",
-    area: "4,500 sq ft",
-    size: 4500,
-    price: "₹4.5 Cr",
-    priceValue: 45,
-    featured: true,
-    description: "Exquisite independent villa with private garden and terrace. Premium neighborhood with top-notch security and privacy.",
-    amenities: ["Private Garden", "Terrace", "Driver Room", "Servant Quarters", "Smart Home", "Pool"],
-    floor: "Ground + 2 Floors",
-    facing: "East",
-    age: "New Construction",
-  },
-  {
     id: 9,
     image: "https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?w=800&h=600&fit=crop",
     category: "Retail",
@@ -184,6 +166,26 @@ category: "Serviced Office",
     facing: "Mall Interior",
     age: "New Setup",
   },
+  {
+    id: 10,
+    image: "https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=800&h=600&fit=crop",
+    category: "Co-Working",
+    status: "Furnished",
+    title: "Premium Startup Hub",
+    location: "Sector 44, Gurugram",
+    address: "Sector 44, Gurugram",
+    area: "20 - 150 Seats",
+    size: 150,
+    price: "₹10,500/desk/month",
+    priceValue: 0.0105,
+    featured: false,
+    description: "Modern vibrant co-working hub specifically designed for fast-growing startups and creative agencies. Features expansive glass windows, phone booths, and an artisan coffee bar.",
+    amenities: ["High-Speed WiFi", "Artisan Coffee", "Phone Booths", "Meeting Rooms", "Biometric Access"],
+    floor: "3rd & 4th Floors",
+    facing: "North East",
+    age: "1 Year Old",
+  },
+
 ];
 const Properties = () => {
   const [searchParams] = useSearchParams();
@@ -284,15 +286,15 @@ const Properties = () => {
       <Navbar />
 
       {/* Hero Section */}
-      <section className="relative h-[50vh] flex items-center justify-center">
+      <section className="relative h-[50vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
-          <img src={propertiesImg} alt="Properties" className="w-full h-full object-cover" />
+          <img src={propertyHeroImg} alt="Our Properties" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-black/60" />
         </div>
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, scale: 0.95, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ type: "spring", stiffness: 100, damping: 20, duration: 0.3 }}
           className="relative text-center px-4"
         >
           <h1 className="font-display font-extrabold text-5xl md:text-6xl lg:text-7xl text-white mb-4">
@@ -348,7 +350,7 @@ const Properties = () => {
                 initial={{ height: 0, opacity: 0 }}
                 animate={{ height: "auto", opacity: 1 }}
                 exit={{ height: 0, opacity: 0 }}
-                transition={{ duration: 0.3 }}
+                transition={{ type: "spring", stiffness: 150, damping: 25 }}
                 className="overflow-hidden"
               >
                 <div className="grid grid-cols-2 md:grid-cols-5 gap-4 py-6 border-t">
@@ -496,10 +498,10 @@ const Properties = () => {
             {filteredProperties.map((property, i) => (
               <motion.div
                 key={property.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.05 }}
+                initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ type: "spring", stiffness: 120, damping: 20, delay: i * 0.05 }}
                 className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer"
                 onClick={() => handlePropertyClick(property)}
               >
