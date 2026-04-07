@@ -41,7 +41,9 @@ const Navbar = () => {
       }`}
       >
         <div className="container mx-auto px-4 lg:px-6">
-          <div className="flex items-center justify-between h-24 sm:h-28 transition-all duration-300">
+          <div className={`flex items-center justify-between transition-all duration-300 ${
+            scrolled ? "h-16 sm:h-20" : "h-24 sm:h-28"
+          }`}>
             
             {/* Left: Logo */}
             <div className="flex-1 flex justify-start">
@@ -49,7 +51,9 @@ const Navbar = () => {
                 <img 
                   src={!scrolled ? "/newlogo.png" : "/logo.png"}
                   alt="SAB Properties Logo" 
-                  className={`h-16 sm:h-20 lg:h-24 w-auto transition-all duration-300 group-hover:scale-105 ${
+                  className={`w-auto transition-all duration-300 group-hover:scale-105 ${
+                    scrolled ? "h-10 sm:h-12 lg:h-14" : "h-16 sm:h-20 lg:h-24"
+                  } ${
                     !scrolled ? "drop-shadow-[0_2px_10px_rgba(0,0,0,0.3)]" : ""
                   }`} 
                 />

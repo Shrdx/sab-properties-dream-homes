@@ -7,36 +7,44 @@ import heroImg from "@/assets/picture.jpg";
 const team = [
   {
     name: "Sanjay Gupta",
-    role: "Designation",
-    description: "With extensive experience in the real estate industry, they bring a wealth of knowledge and expertise to the team, ensuring exceptional service and results for all clients.",
+    role: "Founder & Managing Director",
+    image: "/images/team/sanjay.jpeg",
+    description: "With over two decades of extensive experience in the commercial real estate industry, Sanjay is the visionary behind SAB Properties. He brings a wealth of market knowledge, strategic foresight, and unparalleled expertise to the team. His leadership ensures exceptional service delivery, driving high-value transactions and securing optimal results for all premium clients.",
   },
   {
     name: "Kushagra Gupta",
-    role: "Designation",
-    description: "Dedicated professional committed to transforming your workspace experience with personalized solutions and attention to detail.",
+    role: "Executive Director",
+    image: "/images/team/kushagra.jpeg",
+    description: "A dedicated and innovative professional, Kushagra is committed to transforming the modern workspace experience. He specializes in providing personalized commercial solutions, with a meticulous attention to detail that aligns perfectly with client objectives. His focus on operational excellence ensures seamless execution and sustained business growth.",
   },
   {
     name: "Kashish Gupta",
-    role: "Designation",
-    description: "Focused on delivering outstanding results and building lasting relationships with clients through transparency and reliability.",
+    role: "Director of Operations",
+    image: "/images/team/kashish.jpg",
+    description: "Kashish is focused on delivering outstanding end-to-end results and building enduring relationships with clients. Through a steadfast commitment to transparency, reliability, and client-first strategies, he ensures that every portfolio is managed impeccably. His proactive approach is instrumental in scaling SAB Properties' expanding commercial footprint.",
   },
 ];
 
 const testimonials = [
   {
-    quote: "SAB Properties transformed our workspace experience. Their attention to detail and understanding of our business needs was exceptional.",
-    name: "Vikram Malhotra",
-    position: "CEO, TechNova Solutions",
+    quote: "Our growing business needed a large warehouse in the NCR region, and Sab Properties was the perfect partner. Their expertise made the entire process straightforward and hassle-free.",
+    name: "Vivek Patel",
+    position: "Logistics Manager",
   },
   {
-    quote: "Professional, transparent, and client-focused. The team at SAB made our entire office relocation seamless and stress-free.",
-    name: "Ananya Patel",
-    position: "Director, Finance Hub",
+    quote: "I was looking to rent office space in Delhi, and Sab Properties came highly recommended. The lease terms were fair, and the support from their team was outstanding.",
+    name: "Suman Arora",
+    position: "Entrepreneur",
   },
   {
-    quote: "Outstanding service from start to finish. They found us the perfect commercial space that matched our requirements perfectly.",
-    name: "Rajesh Kumar",
-    position: "Managing Partner, Legal Eagles",
+    quote: "As a first-time commercial property investor, I was nervous about the process. Sab Properties guided me through every step, explaining all the details clearly.",
+    name: "Rajesh Mehta",
+    position: "Investor",
+  },
+  {
+    quote: "Finding the perfect retail location in Mumbai was challenging until we worked with Sab Properties. Their market knowledge and negotiation skills secured us a prime location.",
+    name: "Priya Sharma",
+    position: "Retail Chain Owner",
   },
 ];
 
@@ -167,41 +175,70 @@ const About = () => {
       </section>
 
       {/* Team Section */}
-      <section className="py-24 bg-white">
-        <div className="container mx-auto px-4 lg:px-8">
+      <section className="py-24 bg-white relative">
+        <div className="absolute top-10 left-10 w-64 h-64 bg-orange/5 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-10 right-10 w-64 h-64 bg-primary/5 rounded-full blur-3xl pointer-events-none" />
+        
+        <div className="container mx-auto px-4 lg:px-8 relative z-10">
           <motion.div
-            initial={{ opacity: 0, scale: 0.95, y: 15 }}
-            whileInView={{ opacity: 1, scale: 1, y: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
-            transition={{ type: "spring", stiffness: 100, damping: 20, duration: 0.3 }}
-            className="text-center mb-16"
+            transition={{ duration: 0.6 }}
+            className="text-center mb-20"
           >
-            <h2 className="font-display font-extrabold text-4xl md:text-5xl text-foreground mb-4">
-              Meet Our Team
+            <span className="text-primary font-display font-bold text-sm tracking-[0.2em] uppercase mb-4 inline-block">
+              Leadership
+            </span>
+            <h2 className="font-display font-black text-4xl md:text-6xl text-foreground mb-6">
+              Meet Our Visionaries
             </h2>
-            <p className="text-muted-foreground font-body text-lg max-w-2xl mx-auto">
-              Dedicated professionals committed to transforming your workspace experience
+            <div className="w-24 h-1.5 bg-orange mx-auto rounded-full mb-8" />
+            <p className="text-muted-foreground font-body text-xl max-w-3xl mx-auto leading-relaxed">
+              Our dedicated leadership team brings decades of combined experience, 
+              committed to transforming your commercial real estate journey.
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid lg:grid-cols-3 gap-16 max-w-7xl mx-auto">
             {team.map((member, i) => (
               <motion.div
                 key={member.name}
-                initial={{ opacity: 0, scale: 0.9, y: 20 }}
-                whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
-                transition={{ type: "spring", stiffness: 120, damping: 20, delay: i * 0.05 }}
-                className="bg-white rounded-2xl p-6 text-center shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-gray-100"
+                transition={{ duration: 0.6, delay: i * 0.15 }}
+                className="group relative rounded-3xl overflow-hidden card-3d bg-white shadow-xl hover:shadow-orange/20 border border-gray-100 flex flex-col h-full max-w-[340px] mx-auto border-glow"
               >
-                <div className="w-28 h-28 rounded-full mx-auto mb-4 bg-gray-200" />
-                <h3 className="font-display font-bold text-xl text-foreground mb-1">
-                  {member.name}
-                </h3>
-                <p className="text-primary font-semibold text-sm mb-2">{member.role}</p>
-                <p className="text-muted-foreground font-body text-sm">
-                  {member.description}
-                </p>
+                {/* Image Area */}
+                <div className="relative aspect-square overflow-hidden bg-gray-100 shrink-0">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent z-10 opacity-40 group-hover:opacity-10 transition-opacity duration-500" />
+                  <img 
+                    src={member.image} 
+                    alt={member.name} 
+                    className="w-full h-full object-cover object-top filter grayscale-[20%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 ease-in-out"
+                  />
+                </div>
+
+                {/* Information Body */}
+                <div className="relative p-8 flex-grow flex flex-col items-center text-center">
+                  <span className="text-orange font-body font-bold text-[10px] tracking-[0.3em] uppercase mb-2 inline-block">
+                    {member.role}
+                  </span>
+                  <h3 className="font-display font-black text-2xl text-foreground mb-4 leading-tight">
+                    {member.name}
+                  </h3>
+                  
+                  {/* Decorative Spacer */}
+                  <div className="w-8 h-[2px] bg-orange/30 mb-5 rounded-full group-hover:w-16 transition-all duration-500" />
+                  
+                  <p className="text-muted-foreground font-body text-sm leading-relaxed mb-6 italic opacity-90 group-hover:opacity-100 transition-opacity">
+                    "{member.description}"
+                  </p>
+                  
+                  {/* Bottom Border Glow Hint */}
+                  <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[2px] gradient-orange group-hover:w-full transition-all duration-700" />
+                </div>
               </motion.div>
             ))}
           </div>
@@ -226,7 +263,7 @@ const About = () => {
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {testimonials.map((testimonial, i) => (
               <motion.div
                 key={testimonial.name}

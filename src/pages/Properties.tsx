@@ -7,186 +7,14 @@ import Footer from "@/components/Footer";
 import propertiesImg from "@/assets/properties.jpg";
 import propertyHeroImg from "@/assets/property-hero.png";
 
-const locations = ["All Locations", "Connaught Place", "Karol Bagh", "Okhla", "Cyber Hub Gurugram", "Golf Course Road", "Vasant Kunj"];
+const locations = ["All Locations", "Asaf Ali Road", "Connaught Place", "Karol Bagh", "Okhla", "Cyber Hub Gurugram", "Golf Course Road", "Vasant Kunj"];
 const propertyTypes = ["All Types", "Office Space", "Retail", "Godown", "Co-Working", "Serviced Office"];
-const statusOptions = ["All", "Raw", "Furnished", "Unfurnished"];
+const statusOptions = ["All", "Raw", "Furnished", "Unfurnished", "Co-Work"];
 const priceRanges = [];
 const sizeRanges = ["Any Size", "Under 1000 sq.ft", "1000-5000 sq.ft", "5000-10000 sq.ft", "10000+ sq.ft"];
 
-export const allProperties = [
-  {
-    id: 1,
-    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=600&fit=crop",
-    category: "Office Space",
-    status: "Raw",
-    title: "Premium Office at Connaught Place",
-    location: "Connaught Place, New Delhi",
-    address: "Connaught Place, New Delhi",
-    area: "5,000 sq ft",
-    size: 5000,
-    price: "₹4.5 Lac/month",
-    priceValue: 4.5,
-    featured: true,
-    description: "Experience luxury at its finest with this premium office space located in the heart of Connaught Place. Features include modern glass facades, central air conditioning, 24/7 security, and dedicated parking spaces.",
-    amenities: ["Central AC", "Power Backup", "Security 24/7", "Lift", "Parking", "Pantry"],
-    floor: "12th Floor",
-    facing: "East",
-    age: "New Construction",
-  },
-  {
-    id: 2,
-    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&h=600&fit=crop",
-    category: "Retail",
-    status: "Raw",
-    title: "High Street Retail Space",
-    location: "Karol Bagh, New Delhi",
-    address: "Karol Bagh, New Delhi",
-    area: "2,500 sq ft",
-    size: 2500,
-    price: "₹3.2 Lac/month",
-    priceValue: 3.2,
-    featured: true,
-    description: "Prime retail location on the busiest high street in Karol Bagh. Perfect for flagship stores, boutiques, or restaurants with high footfall throughout the day.",
-    amenities: ["Showcase Windows", "Storage Room", "Staff Room", "Toilets", "Street Access"],
-    floor: "Ground Floor",
-    facing: "Main Road",
-    age: "5 Years Old",
-  },
-  {
-    id: 3,
-    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=600&fit=crop",
-    category: "Godown",
-    status: "Raw",
-    title: "Warehouse in Industrial Area",
-    location: "Okhla, New Delhi",
-    address: "Okhla, New Delhi",
-    area: "10,000 sq ft",
-    size: 10000,
-    price: "₹2.8 Lac/month",
-    priceValue: 2.8,
-    featured: false,
-    description: "Spacious warehouse facility in Okhla Industrial Area with easy access to major highways. Ideal for storage, logistics, or manufacturing operations.",
-    amenities: ["High Ceiling", "Loading Dock", "Power Capacity 50KW", "Fire Safety", "CCTV"],
-    floor: "Ground Floor",
-    facing: "North",
-    age: "8 Years Old",
-  },
-  {
-    id: 4,
-    image: "https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=800&h=600&fit=crop",
-    category: "Co-Working",
-    status: "Furnished",
-    title: "Flexible Co-Working Space",
-    location: "Cyber Hub Gurugram",
-    address: "Cyber Hub Gurugram",
-    area: "10 - 100 Seats",
-    size: 100,
-    price: "₹8,000/desk/month",
-    priceValue: 0.008,
-    featured: true,
-    description: "Modern co-working space at Cyber Hub with flexible seating options. Includes high-speed internet, meeting rooms, and a vibrant community of startups and enterprises.",
-    amenities: ["High-Speed WiFi", "Meeting Rooms", "Printer Access", "Lounge", "Kitchen", "Events Space"],
-    floor: "Multiple Floors",
-    facing: "Open Layout",
-    age: "New Setup",
-  },
-  {
-    id: 5,
-    image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&h=600&fit=crop",
-category: "Office Space",
-    status: "Raw",
-    title: "Office Space in Vasant Kunj",
-    location: "Vasant Kunj, New Delhi",
-    address: "Vasant Kunj, New Delhi",
-    area: "2,400 sq ft",
-    size: 2400,
-    price: "₹2.4 Cr",
-    priceValue: 24,
-    featured: false,
-    description: "Stunning 4BHK luxury apartment in Vasant Kunj with premium finishes, modular kitchen, and access to world-class amenities including pool and gym.",
-    amenities: ["Swimming Pool", "Gym", "Club House", "Garden", "Kids Play Area", "24/7 Security"],
-    floor: "8th Floor",
-    facing: "East",
-    age: "2 Years Old",
-  },
-  {
-    id: 6,
-    image: "https://images.unsplash.com/photo-1494526585095-c41746248156?w=800&h=600&fit=crop",
-    category: "Office Space",
-    status: "Furnished",
-    title: "IT Park Office Suite",
-    location: "Golf Course Road, Gurugram",
-    address: "Golf Course Road, Gurugram",
-    area: "8,000 sq ft",
-    size: 8000,
-    price: "₹6.5 Lac/month",
-    priceValue: 6.5,
-    featured: true,
-    description: "State-of-the-art IT park office with world-class amenities, high-speed internet, and professional environment ideal for IT/ITES companies.",
-    amenities: ["High-Speed WiFi", "Server Room", "Conference Rooms", "Cafeteria", "Gym", "24/7 Security"],
-    floor: "5th Floor",
-    facing: "East",
-    age: "New Setup",
-  },
-  {
-    id: 7,
-    image: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&h=600&fit=crop",
-    category: "Godown",
-    status: "Raw",
-    title: "Industrial Warehouse",
-    location: "Okhla Phase 2, New Delhi",
-    address: "Okhla Phase 2, New Delhi",
-    area: "15,000 sq ft",
-    size: 15000,
-    price: "₹4.5 Lac/month",
-    priceValue: 4.5,
-    featured: false,
-    description: "Large industrial warehouse in Okhla with excellent loading facilities and proximity to major highways. Perfect for manufacturing or logistics operations.",
-    amenities: ["Loading Dock", "High Ceiling", "Power 100KW", "CCTV", "Fire Safety", "Office Space"],
-    floor: "Ground Floor",
-    facing: "North",
-    age: "10 Years Old",
-  },
-  {
-    id: 9,
-    image: "https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?w=800&h=600&fit=crop",
-    category: "Retail",
-    status: "Raw",
-    title: "Mall Retail Space",
-    location: "Connaught Place, New Delhi",
-    address: "Connaught Place, New Delhi",
-    area: "3,200 sq ft",
-    size: 3200,
-    price: "₹5.5 Lac/month",
-    priceValue: 5.5,
-    featured: false,
-    description: "Premium mall retail space with excellent visibility and footfall. Perfect for premium brands looking to establish presence in CP.",
-    amenities: ["Escalator Access", "Central AC", "Storage", "Staff Room", "Attractive Display Area"],
-    floor: "1st Floor",
-    facing: "Mall Interior",
-    age: "New Setup",
-  },
-  {
-    id: 10,
-    image: "https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=800&h=600&fit=crop",
-    category: "Co-Working",
-    status: "Furnished",
-    title: "Premium Startup Hub",
-    location: "Sector 44, Gurugram",
-    address: "Sector 44, Gurugram",
-    area: "20 - 150 Seats",
-    size: 150,
-    price: "₹10,500/desk/month",
-    priceValue: 0.0105,
-    featured: false,
-    description: "Modern vibrant co-working hub specifically designed for fast-growing startups and creative agencies. Features expansive glass windows, phone booths, and an artisan coffee bar.",
-    amenities: ["High-Speed WiFi", "Artisan Coffee", "Phone Booths", "Meeting Rooms", "Biometric Access"],
-    floor: "3rd & 4th Floors",
-    facing: "North East",
-    age: "1 Year Old",
-  },
+import { allProperties } from "@/data/properties";
 
-];
 const Properties = () => {
   const [searchParams] = useSearchParams();
   const [showFilters, setShowFilters] = useState(false);
@@ -270,8 +98,30 @@ const Properties = () => {
     setLeadFormData({ name: "", phone: "" });
   };
 
-  const handleLeadSubmit = (e: React.FormEvent) => {
+  const handleLeadSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    try {
+      const targetUrl = import.meta.env.VITE_GOOGLE_SHEETS_URL;
+      
+      if (targetUrl) {
+        const urlEncodedData = new URLSearchParams();
+        urlEncodedData.append("fullName", leadFormData.name);
+        urlEncodedData.append("phone", leadFormData.phone);
+        urlEncodedData.append("service", "Property Unlock");
+        urlEncodedData.append("message", `Property: ${selectedProperty?.title} | Category: ${selectedProperty?.category} | Location: ${selectedProperty?.location}`);
+        
+        await fetch(targetUrl, {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: urlEncodedData.toString(),
+        });
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+    }
+    
     setFormSubmitted(true);
   };
 
@@ -518,7 +368,7 @@ const Properties = () => {
                       className="bg-white/90 backdrop-blur-sm rounded-full px-4 py-2 flex items-center gap-2"
                     >
                       <Lock className="w-4 h-4 text-primary" />
-                      <span className="font-display font-semibold text-sm text-foreground">Click to Enquire</span>
+                      <span className="font-display font-semibold text-sm text-foreground">Enquire Now</span>
                     </motion.div>
                   </div>
                   <span className="absolute top-4 left-4 gradient-orange text-white font-display font-bold text-xs px-4 py-1.5 rounded-full uppercase tracking-wider">
@@ -550,7 +400,7 @@ const Properties = () => {
                   </div>
                   <div className="flex items-center justify-end pt-4 border-t border-gray-100">
                     <span className="flex items-center gap-2 text-primary font-display font-semibold text-sm group-hover:gap-3 transition-all">
-                      Click to View
+                      Enquire Now
                       <ArrowRight className="w-4 h-4" />
                     </span>
                   </div>
@@ -765,8 +615,8 @@ const Properties = () => {
                     {/* Price & CTA */}
                     <div className="flex items-center justify-between p-4 bg-gradient-to-r from-primary/10 to-orange-50 rounded-xl mb-6">
                       <div>
-                        <p className="text-muted-foreground text-xs">Price</p>
-                        <p className="font-display font-extrabold text-2xl text-primary">{selectedProperty.price}</p>
+                        <p className="text-muted-foreground text-xs uppercase tracking-wider mb-1">Asking Price</p>
+                        <p className="font-display font-extrabold text-3xl text-primary">{selectedProperty.price}</p>
                       </div>
                       <Link
                         to={`/contact?property=${encodeURIComponent(selectedProperty.title)}&category=${encodeURIComponent(selectedProperty.category)}&location=${encodeURIComponent(selectedProperty.location)}`}

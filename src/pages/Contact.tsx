@@ -1,10 +1,27 @@
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as z from "zod";
 import { motion } from "framer-motion";
 import { useSearchParams } from "react-router-dom";
-import { MapPin, Phone, Mail, Clock, Send, Building2, X, CheckCircle } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, Send, Building2, X, CheckCircle, Loader2 } from "lucide-react";
+import { toast } from "sonner";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import contactHeroImg from "@/assets/contact-hero.png";
+
+const formSchema = z.object({
+  firstName: z.string().min(2, "First name must be at least 2 characters"),
+  lastName: z.string().min(2, "Last name must be at least 2 characters"),
+  phone: z.string().min(10, "Phone number must be at least 10 digits"),
+  email: z.string().email("Please enter a valid email address").or(z.literal("")).optional(),
+  companyName: z.string().optional(),
+  requirement: z.string().min(1, "Please select a given requirement"),
+  visitDate: z.string().optional(),
+  message: z.string().optional(),
+});
+
+type FormData = z.infer<typeof formSchema>;
 
 const Contact = () => {
   const [searchParams] = useSearchParams();
@@ -13,14 +30,70 @@ const Contact = () => {
   const propertyLocation = searchParams.get("location");
   const hasProperty = propertyName || propertyType;
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const {
+    register,
+    handleSubmit,
+    reset,
+    setValue,
+    formState: { errors },
+  } = useForm<FormData>({
+    resolver: zodResolver(formSchema),
+    mode: "onTouched",
+  });
+
+  const onSubmit = async (data: FormData) => {
+    setIsSubmitting(true);
+    try {
+      const targetUrl = import.meta.env.VITE_GOOGLE_SHEETS_URL;
+      
+      if (!targetUrl) {
+        alert("Error: Google Sheets URL is missing from your .env file!");
+        setIsSubmitting(false);
+        return;
+      }
+
+      const fullMessage = hasProperty 
+        ? `[Inquiry for: ${propertyName || propertyType} ${propertyLocation ? `at ${propertyLocation}` : ''}] ${data.message || ''}` 
+        : data.message;
+
+      const urlEncodedData = new URLSearchParams();
+      urlEncodedData.append("fullName", `${data.firstName} ${data.lastName}`);
+      urlEncodedData.append("email", data.email || "");
+      urlEncodedData.append("phone", data.phone);
+      urlEncodedData.append("service", data.requirement);
+      urlEncodedData.append("message", fullMessage || "");
+      urlEncodedData.append("company", data.companyName || "");
+      urlEncodedData.append("visitDate", data.visitDate || "");
+
+      await fetch(targetUrl, {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: urlEncodedData.toString(),
+      });
+
+      toast.success("Message sent successfully!");
+      reset();
+    } catch (error) {
+      console.error("Submission error:", error);
+        toast.error("Failed to send message.");
+      } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   useEffect(() => {
     if (propertyType) {
-      const select = document.querySelector('select[name="requirement"]') as HTMLSelectElement;
-      if (select) {
-        select.value = propertyType;
-      }
+      setValue("requirement", propertyType);
     }
-  }, [propertyType]);
+    if (propertyName) {
+      setValue("message", `I'm interested in "${propertyName}"${propertyLocation ? ` located at ${propertyLocation}` : ""}. Please share more details about this property and schedule a visit.`);
+    }
+  }, [propertyType, propertyName, propertyLocation, setValue]);
 
   return (
     <div className="min-h-screen bg-background">
@@ -188,29 +261,31 @@ const Contact = () => {
                     : "Fill out the form below and we'll get back to you within 24 hours."}
                 </p>
 
-                <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+                <form className="space-y-6" onSubmit={handleSubmit(onSubmit, (errs) => { console.log(errs); alert("Please check the form for errors in red."); })}>
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
                       <label className="block text-foreground font-display font-semibold text-sm mb-2">
                         First Name *
                       </label>
                       <input
+                        {...register("firstName")}
                         type="text"
-                        required
                         placeholder="First Name"
-                        className="w-full px-4 py-3.5 rounded-xl bg-section border border-gray-200 text-foreground placeholder:text-muted-foreground font-body text-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all"
+                        className={`w-full px-4 py-3.5 rounded-xl bg-section border ${errors.firstName ? 'border-red-500' : 'border-gray-200'} text-foreground placeholder:text-muted-foreground font-body text-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all`}
                       />
+                      {errors.firstName && <p className="text-red-500 text-xs mt-1">{errors.firstName.message}</p>}
                     </div>
                     <div>
                       <label className="block text-foreground font-display font-semibold text-sm mb-2">
                         Last Name *
                       </label>
                       <input
+                        {...register("lastName")}
                         type="text"
-                        required
                         placeholder="Last Name"
-                        className="w-full px-4 py-3.5 rounded-xl bg-section border border-gray-200 text-foreground placeholder:text-muted-foreground font-body text-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all"
+                        className={`w-full px-4 py-3.5 rounded-xl bg-section border ${errors.lastName ? 'border-red-500' : 'border-gray-200'} text-foreground placeholder:text-muted-foreground font-body text-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all`}
                       />
+                      {errors.lastName && <p className="text-red-500 text-xs mt-1">{errors.lastName.message}</p>}
                     </div>
                   </div>
 
@@ -220,21 +295,24 @@ const Contact = () => {
                         Phone *
                       </label>
                       <input
+                        {...register("phone")}
                         type="tel"
-                        required
                         placeholder="Phone"
-                        className="w-full px-4 py-3.5 rounded-xl bg-section border border-gray-200 text-foreground placeholder:text-muted-foreground font-body text-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all"
+                        className={`w-full px-4 py-3.5 rounded-xl bg-section border ${errors.phone ? 'border-red-500' : 'border-gray-200'} text-foreground placeholder:text-muted-foreground font-body text-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all`}
                       />
+                      {errors.phone && <p className="text-red-500 text-xs mt-1">{errors.phone.message}</p>}
                     </div>
                     <div>
                       <label className="block text-foreground font-display font-semibold text-sm mb-2">
                         Email
                       </label>
                       <input
+                        {...register("email")}
                         type="email"
                         placeholder="Email Address"
-                        className="w-full px-4 py-3.5 rounded-xl bg-section border border-gray-200 text-foreground placeholder:text-muted-foreground font-body text-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all"
+                        className={`w-full px-4 py-3.5 rounded-xl bg-section border ${errors.email ? 'border-red-500' : 'border-gray-200'} text-foreground placeholder:text-muted-foreground font-body text-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all`}
                       />
+                      {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email.message}</p>}
                     </div>
                   </div>
 
@@ -243,6 +321,7 @@ const Contact = () => {
                       Company Name
                     </label>
                     <input
+                      {...register("companyName")}
                       type="text"
                       placeholder="Company Name"
                       className="w-full px-4 py-3.5 rounded-xl bg-section border border-gray-200 text-foreground placeholder:text-muted-foreground font-body text-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all"
@@ -254,10 +333,8 @@ const Contact = () => {
                       Space Requirement *
                     </label>
                     <select 
-                      name="requirement"
-                      required
-                      defaultValue={propertyType || ""}
-                      className="w-full px-4 py-3.5 rounded-xl bg-section border border-gray-200 text-foreground font-body text-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all"
+                      {...register("requirement")}
+                      className={`w-full px-4 py-3.5 rounded-xl bg-section border ${errors.requirement ? 'border-red-500' : 'border-gray-200'} text-foreground font-body text-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all`}
                     >
                       <option value="" disabled>Space Requirement</option>
                       <option value="Office Space">Office Space</option>
@@ -266,6 +343,7 @@ const Contact = () => {
                       <option value="Godown">Warehouse/Godown</option>
                       <option value="Residential">Residential</option>
                     </select>
+                    {errors.requirement && <p className="text-red-500 text-xs mt-1">{errors.requirement.message}</p>}
                   </div>
 
                   <div>
@@ -273,6 +351,7 @@ const Contact = () => {
                       Preferred Visit Date
                     </label>
                     <input
+                      {...register("visitDate")}
                       type="date"
                       className="w-full px-4 py-3.5 rounded-xl bg-section border border-gray-200 text-foreground font-body text-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all"
                     />
@@ -283,23 +362,31 @@ const Contact = () => {
                       Message
                     </label>
                     <textarea
+                      {...register("message")}
                       placeholder={propertyName 
                         ? `I'm interested in ${propertyName}${propertyLocation ? ` at ${propertyLocation}` : ""}. Please provide more details.`
                         : "Message"}
                       rows={4}
-                      defaultValue={propertyName 
-                        ? `I'm interested in "${propertyName}"${propertyLocation ? ` located at ${propertyLocation}` : ""}. Please share more details about this property and schedule a visit.`
-                        : ""}
                       className="w-full px-4 py-3.5 rounded-xl bg-section border border-gray-200 text-foreground placeholder:text-muted-foreground font-body text-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all resize-none"
                     />
                   </div>
 
                   <button
                     type="submit"
-                    className="w-full gradient-orange text-white font-display font-bold py-4 rounded-xl text-sm tracking-wide hover:opacity-90 transition-all shadow-lg flex items-center justify-center gap-2"
+                    disabled={isSubmitting}
+                    className="w-full gradient-orange text-white font-display font-bold py-4 rounded-xl text-sm tracking-wide hover:opacity-90 transition-all shadow-lg flex items-center justify-center gap-2 disabled:opacity-70"
                   >
-                    <Send className="w-4 h-4" />
-                    {hasProperty ? "Schedule Visit" : "Send Message"}
+                    {isSubmitting ? (
+                      <>
+                        <Loader2 className="w-4 h-4 animate-spin" />
+                        Processing...
+                      </>
+                    ) : (
+                      <>
+                        <Send className="w-4 h-4" />
+                        {hasProperty ? "Schedule Visit" : "Send Message"}
+                      </>
+                    )}
                   </button>
                 </form>
               </div>

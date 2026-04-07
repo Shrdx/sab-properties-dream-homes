@@ -4,6 +4,7 @@ import ServiceBoxes from "@/components/ServiceBoxes";
 import ServicesSection from "@/components/ServicesSection";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import PropertiesSection from "@/components/PropertiesSection";
+import TestimonialsSection from "@/components/TestimonialsSection";
 import TrustedBy from "@/components/TrustedBy";
 import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
@@ -17,6 +18,7 @@ const Index = () => {
       <ServicesSection />
       <WhyChooseUs />
       <PropertiesSection />
+      <TestimonialsSection />
       <TrustedBy />
       <CTASection />
       <Footer />

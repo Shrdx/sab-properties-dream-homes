@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { MapPin, Maximize, ArrowRight, Building2, Phone, Mail, Check, X, Lock } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { allProperties } from "./Properties";
+import { allProperties } from "@/data/properties";
 
 const PropertyDetail = () => {
   const { id } = useParams();
@@ -101,6 +101,21 @@ const PropertyDetail = () => {
                     <p className="font-display font-bold text-lg">{property.age}</p>
                   </div>
                 </div>
+
+                {property.floorPlanUrl && (
+                  <div className="mt-8 pt-8 border-t">
+                    <h2 className="font-display font-bold text-2xl mb-4">Floor Plan</h2>
+                    <a
+                      href={property.floorPlanUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-primary/10 text-primary font-display font-bold hover:bg-primary/20 transition-all"
+                    >
+                      <Maximize className="w-5 h-5" />
+                      View Full Floor Plan
+                    </a>
+                  </div>
+                )}
               </div>
             </div>
 

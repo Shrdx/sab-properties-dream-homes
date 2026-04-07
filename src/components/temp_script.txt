@@ -1,0 +1,31 @@
+function doPost(e) {
+  try {
+    var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+    
+    // Parse URL-encoded data
+    var paramStr = e.postData.contents;
+    var params = {};
+    paramStr.split('&').forEach(function(pair) {
+      var parts = pair.split('=');
+      params[decodeURIComponent(parts[0])] = decodeURIComponent(parts[1] || '');
+    });
+    
+    // Append data to the next empty row
+    sheet.appendRow([
+      new Date(), 
+      params.fullName || '',
+      params.email || '',
+      params.phone || '',
+      params.service || '',
+      params.message || '',
+      params.company || '',
+      params.visitDate || ''
+    ]);
+    
+    return ContentService.createTextOutput(JSON.stringify({ "result": "success" }))
+      .setMimeType(ContentService.MimeType.JSON);
+  } catch (error) {
+    return ContentService.createTextOutput(JSON.stringify({ "result": "error", "error": error.toString() }))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
+}
