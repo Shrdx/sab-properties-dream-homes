@@ -237,6 +237,7 @@ const PropertyDetail = () => {
                   </div>
                 </div>
               </div>
+            </div>
 
             {/* Right Sidebar Column: Lead Form */}
             <div className="lg:col-span-4 space-y-8">
@@ -352,7 +353,6 @@ const PropertyDetail = () => {
             </div>
           </div>
         </div>
-
       </main>
 
       <Footer />
