@@ -14,8 +14,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        display: ["Nunito Sans", "sans-serif"],
-        body: ["DM Sans", "sans-serif"],
+        display: ["Outfit", "sans-serif"],
+        body: ["Inter", "sans-serif"],
       },
       colors: {
         orange: {

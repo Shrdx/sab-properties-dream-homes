@@ -91,10 +91,7 @@ const ServicesPage = () => {
 
       {/* Hero Section */}
       <section className="relative h-[50vh] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0">
-          <img src={servicesHeroImg} alt="Our Services" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-black/60" />
-        </div>
+        <div className="absolute inset-0 bg-slate-900" />
         <motion.div
           initial={{ opacity: 0, scale: 0.95, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -104,7 +101,7 @@ const ServicesPage = () => {
           <h1 className="font-display font-extrabold text-5xl md:text-6xl lg:text-7xl text-white mb-4">
             Our Services
           </h1>
-          <p className="text-white/80 font-body text-xl md:text-2xl max-w-2xl mx-auto">
+          <p className="text-white/80 font-body text-base md:text-xl lg:text-2xl max-w-4xl mx-auto leading-relaxed">
             Comprehensive real estate solutions tailored to your needs
           </p>
         </motion.div>
@@ -112,10 +109,7 @@ const ServicesPage = () => {
 
       {/* Services Section */}
       <section className="py-24 relative">
-        <div className="absolute inset-0">
-          <img src={servicesImg} alt="Services" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-white/90" />
-        </div>
+        <div className="absolute inset-0 bg-slate-50" />
         <div className="relative container mx-auto px-4 lg:px-8">
           <motion.div
             initial={{ opacity: 0, scale: 0.95, y: 15 }}
@@ -130,7 +124,7 @@ const ServicesPage = () => {
             <h2 className="font-display font-extrabold text-4xl md:text-5xl text-foreground mb-6">
               Professional Real Estate Services
             </h2>
-            <p className="text-muted-foreground font-body text-lg max-w-3xl mx-auto leading-relaxed">
+            <p className="text-muted-foreground font-body text-lg md:text-xl lg:text-2xl max-w-4xl mx-auto leading-relaxed">
               We provide end-to-end real estate solutions ensuring a seamless experience for all your property needs. 
               From consultancy to legal assistance, we've got you covered.
             </p>
@@ -158,7 +152,7 @@ const ServicesPage = () => {
                     <h3 className="font-display font-extrabold text-2xl md:text-3xl text-foreground mb-4">
                       {service.title}
                     </h3>
-                    <p className="text-muted-foreground font-body text-base leading-relaxed mb-6">
+                    <p className="text-muted-foreground font-body text-base lg:text-lg leading-relaxed mb-6">
                       {service.description}
                     </p>
                     <ul className="space-y-3 mb-8">
@@ -172,7 +166,7 @@ const ServicesPage = () => {
                           className="flex items-center gap-3"
                         >
                           <CheckCircle className="w-5 h-5 text-primary flex-shrink-0" />
-                          <span className="text-foreground font-body text-sm">{feature}</span>
+                          <span className="text-foreground font-body text-sm lg:text-base">{feature}</span>
                         </motion.li>
                       ))}
                     </ul>
@@ -209,10 +203,10 @@ const ServicesPage = () => {
       {/* CTA Section */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4 lg:px-8 text-center">
-          <h3 className="font-display font-extrabold text-3xl text-foreground mb-4">
+          <h3 className="font-display font-extrabold text-3xl lg:text-4xl text-foreground mb-4">
             Need More Information?
           </h3>
-          <p className="text-muted-foreground font-body text-lg mb-8 max-w-2xl mx-auto">
+          <p className="text-muted-foreground font-body text-lg lg:text-xl mb-8 max-w-2xl mx-auto">
             Contact our team of experts for personalized assistance
           </p>
           <Link

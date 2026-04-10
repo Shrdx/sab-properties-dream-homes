@@ -34,7 +34,7 @@ const TrustedBy = () => {
         <span className="text-primary font-display font-bold text-sm tracking-[0.2em] uppercase">
           Our Partners
         </span>
-        <h2 className="font-display font-extrabold text-3xl md:text-4xl text-foreground mt-3">
+        <h2 className="font-display font-extrabold text-3xl md:text-4xl lg:text-5xl text-foreground mt-3">
           Trusted By Leading Brands
         </h2>
       </motion.div>

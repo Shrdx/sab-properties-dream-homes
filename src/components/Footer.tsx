@@ -26,7 +26,7 @@ const Footer = () => {
             variants={colVariants}
           >
             <div className="flex items-center gap-3 mb-4">
-              <img src="/newlogo.png" alt="SAB Properties Logo" className="h-24 w-auto" />
+              <img src="/newlogo.png" alt="SAB Properties Logo" className="h-32 w-auto" />
             </div>
             <p className="text-primary-foreground/60 font-body text-sm leading-relaxed">
               A trusted and reputable name in the real estate sector, delivering exceptional services since establishment.
@@ -41,7 +41,7 @@ const Footer = () => {
             viewport={{ once: true, margin: "-60px" }}
             variants={colVariants}
           >
-            <h4 className="font-display font-bold text-primary-foreground mb-4">Quick Links</h4>
+            <h4 className="font-display font-bold text-primary-foreground mb-4 text-base md:text-lg">Quick Links</h4>
             <ul className="space-y-2">
               {[
                 { to: "/", label: "Home" },
@@ -57,7 +57,7 @@ const Footer = () => {
                   viewport={{ once: true }}
                   transition={{ type: "spring", stiffness: 150, damping: 20, delay: 0.1 + i * 0.04 }}
                 >
-                  <Link to={link.to} className="text-primary-foreground/60 hover:text-primary font-body text-sm transition-colors">
+                  <Link to={link.to} className="text-primary-foreground/60 hover:text-primary font-body text-sm lg:text-base transition-colors">
                     {link.label}
                   </Link>
                 </motion.li>
@@ -73,7 +73,7 @@ const Footer = () => {
             viewport={{ once: true, margin: "-60px" }}
             variants={colVariants}
           >
-            <h4 className="font-display font-bold text-primary-foreground mb-4">Our Services</h4>
+            <h4 className="font-display font-bold text-primary-foreground mb-4 text-base md:text-lg">Our Services</h4>
             <ul className="space-y-2">
               {[
                 { to: "/services#property-consultancy", label: "Property Consultancy" },
@@ -88,7 +88,7 @@ const Footer = () => {
                   viewport={{ once: true }}
                   transition={{ type: "spring", stiffness: 150, damping: 20, delay: 0.15 + i * 0.04 }}
                 >
-                  <Link to={link.to} className="text-primary-foreground/60 hover:text-primary font-body text-sm transition-colors">
+                  <Link to={link.to} className="text-primary-foreground/60 hover:text-primary font-body text-sm lg:text-base transition-colors">
                     {link.label}
                   </Link>
                 </motion.li>
@@ -104,17 +104,17 @@ const Footer = () => {
             viewport={{ once: true, margin: "-60px" }}
             variants={colVariants}
           >
-            <h4 className="font-display font-bold text-primary-foreground mb-4">Contact Info</h4>
+            <h4 className="font-display font-bold text-primary-foreground mb-4 text-base md:text-lg">Contact Info</h4>
             <ul className="space-y-3">
-              <li className="flex items-start gap-2 text-primary-foreground/60 font-body text-sm">
+              <li className="flex items-start gap-2 text-primary-foreground/60 font-body text-sm lg:text-base">
                 <MapPin className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
                 1/22, Asaf Ali Road, Delhi - 110002
               </li>
-              <li className="flex items-center gap-2 text-primary-foreground/60 font-body text-sm">
+              <li className="flex items-center gap-2 text-primary-foreground/60 font-body text-sm lg:text-base">
                 <Phone className="w-4 h-4 text-primary flex-shrink-0" />
                 8700513200
               </li>
-              <li className="flex items-center gap-2 text-primary-foreground/60 font-body text-sm">
+              <li className="flex items-center gap-2 text-primary-foreground/60 font-body text-sm lg:text-base">
                 <Mail className="w-4 h-4 text-primary flex-shrink-0" />
                 <a href="https://mail.google.com/mail/?view=cm&fs=1&to=info@sabproperties.in" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
                   info@sabproperties.in

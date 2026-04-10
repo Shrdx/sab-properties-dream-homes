@@ -114,7 +114,7 @@ const Contact = () => {
           <h1 className="font-display font-extrabold text-5xl md:text-6xl lg:text-7xl text-white mb-6">
             Contact Us
           </h1>
-          <p className="text-white/80 font-body text-xl md:text-2xl max-w-2xl mx-auto">
+          <p className="text-white/80 font-body text-base md:text-xl lg:text-2xl max-w-4xl mx-auto leading-relaxed">
             Get in touch with our team of experts
           </p>
         </motion.div>
@@ -167,7 +167,7 @@ const Contact = () => {
               <h2 className="font-display font-extrabold text-4xl text-foreground mb-6">
                 Let's Connect
               </h2>
-              <p className="text-muted-foreground font-body text-lg leading-relaxed mb-12">
+              <p className="text-muted-foreground font-body text-lg lg:text-xl leading-relaxed mb-12">
                 {hasProperty 
                   ? "Complete the form to schedule a visit or get more details about this property. We're here to help!"
                   : "Whether you're looking for your dream workspace or have questions about our services, we're here to help."}
@@ -179,8 +179,8 @@ const Contact = () => {
                     <MapPin className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <h4 className="font-display font-bold text-foreground text-lg mb-1">Our Office</h4>
-                    <p className="text-muted-foreground font-body">
+                    <h4 className="font-display font-bold text-foreground text-lg lg:text-xl mb-1">Our Office</h4>
+                    <p className="text-muted-foreground font-body text-base lg:text-lg">
                       1/22, Asaf Ali Road<br />
                       Near Ajmeri Gate<br />
                       Delhi - 110002
@@ -193,8 +193,8 @@ const Contact = () => {
                     <Phone className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <h4 className="font-display font-bold text-foreground text-lg mb-1">Phone</h4>
-                    <p className="text-muted-foreground font-body">
+                    <h4 className="font-display font-bold text-foreground text-lg lg:text-xl mb-1">Phone</h4>
+                    <p className="text-muted-foreground font-body text-base lg:text-lg">
                       +91 8700513200
                     </p>
                   </div>
@@ -205,8 +205,8 @@ const Contact = () => {
                     <Mail className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <h4 className="font-display font-bold text-foreground text-lg mb-1">Email</h4>
-                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=info@sabproperties.in" target="_blank" rel="noopener noreferrer" className="text-muted-foreground font-body hover:text-primary transition-colors">
+                    <h4 className="font-display font-bold text-foreground text-lg lg:text-xl mb-1">Email</h4>
+                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=info@sabproperties.in" target="_blank" rel="noopener noreferrer" className="text-muted-foreground font-body text-base lg:text-lg hover:text-primary transition-colors">
                       info@sabproperties.in
                     </a>
                   </div>
@@ -217,8 +217,8 @@ const Contact = () => {
                     <Clock className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <h4 className="font-display font-bold text-foreground text-lg mb-1">Working Hours</h4>
-                    <p className="text-muted-foreground font-body">
+                    <h4 className="font-display font-bold text-foreground text-lg lg:text-xl mb-1">Working Hours</h4>
+                    <p className="text-muted-foreground font-body text-base lg:text-lg">
                       Monday - Saturday: 9:00 AM - 7:00 PM<br />
                       Sunday: Closed
                     </p>
@@ -228,7 +228,7 @@ const Contact = () => {
 
               {/* Company Note */}
               <div className="mt-12 p-6 bg-section rounded-xl border border-gray-200">
-                <p className="text-muted-foreground font-body text-sm">
+                <p className="text-muted-foreground font-body text-sm lg:text-base">
                   <span className="font-semibold text-foreground">SAB Properties</span> is a subsidiary of 
                   SAB Group, a diversified business conglomerate with interests in real estate, hospitality, 
                   and infrastructure development across India.
@@ -264,14 +264,14 @@ const Contact = () => {
                 <form className="space-y-6" onSubmit={handleSubmit(onSubmit, (errs) => { console.log(errs); alert("Please check the form for errors in red."); })}>
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
-                      <label className="block text-foreground font-display font-semibold text-sm mb-2">
+                      <label className="block text-foreground font-display font-semibold text-sm lg:text-base mb-2">
                         First Name *
                       </label>
                       <input
                         {...register("firstName")}
                         type="text"
                         placeholder="First Name"
-                        className={`w-full px-4 py-3.5 rounded-xl bg-section border ${errors.firstName ? 'border-red-500' : 'border-gray-200'} text-foreground placeholder:text-muted-foreground font-body text-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all`}
+                        className={`w-full px-4 py-3.5 rounded-xl bg-section border ${errors.firstName ? 'border-red-500' : 'border-gray-200'} text-foreground placeholder:text-muted-foreground font-body text-base lg:text-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all`}
                       />
                       {errors.firstName && <p className="text-red-500 text-xs mt-1">{errors.firstName.message}</p>}
                     </div>
@@ -297,7 +297,7 @@ const Contact = () => {
                       <input
                         {...register("phone")}
                         type="tel"
-                        placeholder="Phone"
+                        placeholder="Phone or +91"
                         className={`w-full px-4 py-3.5 rounded-xl bg-section border ${errors.phone ? 'border-red-500' : 'border-gray-200'} text-foreground placeholder:text-muted-foreground font-body text-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all`}
                       />
                       {errors.phone && <p className="text-red-500 text-xs mt-1">{errors.phone.message}</p>}
@@ -309,7 +309,7 @@ const Contact = () => {
                       <input
                         {...register("email")}
                         type="email"
-                        placeholder="Email Address"
+                        placeholder="Email"
                         className={`w-full px-4 py-3.5 rounded-xl bg-section border ${errors.email ? 'border-red-500' : 'border-gray-200'} text-foreground placeholder:text-muted-foreground font-body text-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all`}
                       />
                       {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email.message}</p>}
@@ -337,8 +337,8 @@ const Contact = () => {
                       className={`w-full px-4 py-3.5 rounded-xl bg-section border ${errors.requirement ? 'border-red-500' : 'border-gray-200'} text-foreground font-body text-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all`}
                     >
                       <option value="" disabled>Space Requirement</option>
-                      <option value="Office Space">Office Space</option>
-                      <option value="Retail">Retail Space</option>
+                      <option value="Office/Serviced Office">Office/Serviced Office</option>
+                      <option value="Showroom">Showroom</option>
                       <option value="Co-Working">Co-Working</option>
                       <option value="Godown">Warehouse/Godown</option>
                       <option value="Residential">Residential</option>

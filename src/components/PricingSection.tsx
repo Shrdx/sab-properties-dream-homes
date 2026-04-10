@@ -37,7 +37,7 @@ const plans = [
     ],
   },
   {
-    title: "Retail Space",
+    title: "Showroom",
     price: "₹50",
     unit: "/- Starting Per Sq. Ft.",
     features: [

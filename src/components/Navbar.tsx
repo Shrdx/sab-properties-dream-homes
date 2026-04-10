@@ -11,18 +11,26 @@ const navLinks = [
   { label: "Contact", path: "/contact" },
 ];
 
-const Navbar = () => {
+interface NavbarProps {
+  solid?: boolean;
+}
+
+const Navbar = ({ solid = false }: NavbarProps) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+  const [scrolled, setScrolled] = useState(solid);
   const location = useLocation();
 
   useEffect(() => {
+    if (solid) {
+      setScrolled(true);
+      return;
+    }
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [solid]);
 
   useEffect(() => {
     setIsOpen(false);
@@ -42,7 +50,7 @@ const Navbar = () => {
       >
         <div className="container mx-auto px-4 lg:px-6">
           <div className={`flex items-center justify-between transition-all duration-300 ${
-            scrolled ? "h-16 sm:h-20" : "h-24 sm:h-28"
+            scrolled ? "h-24 sm:h-28" : "h-32 sm:h-36"
           }`}>
             
             {/* Left: Logo */}
@@ -52,7 +60,7 @@ const Navbar = () => {
                   src={!scrolled ? "/newlogo.png" : "/logo.png"}
                   alt="SAB Properties Logo" 
                   className={`w-auto transition-all duration-300 group-hover:scale-105 ${
-                    scrolled ? "h-10 sm:h-12 lg:h-14" : "h-16 sm:h-20 lg:h-24"
+                    scrolled ? "h-16 sm:h-20 lg:h-24" : "h-24 sm:h-28 lg:h-32"
                   } ${
                     !scrolled ? "drop-shadow-[0_2px_10px_rgba(0,0,0,0.3)]" : ""
                   }`} 
@@ -61,7 +69,7 @@ const Navbar = () => {
             </div>
 
             {/* Center: Desktop Nav Links */}
-            <div className="hidden lg:flex flex-1 justify-center items-center gap-6 xl:gap-10">
+            <div className="hidden lg:flex flex-[2] justify-center items-center gap-6 xl:gap-10">
               {navLinks.map((link) => {
                 const isActive = location.pathname === link.path;
                 
@@ -74,7 +82,7 @@ const Navbar = () => {
                   <Link
                     key={link.label}
                     to={link.path}
-                    className={`relative text-[14px] font-display font-semibold sm:font-medium tracking-wide transition-colors duration-300 ${textColorClass}`}
+                    className={`relative text-base xl:text-lg whitespace-nowrap font-display font-semibold transition-colors duration-300 ${textColorClass}`}
                   >
                     <span>{link.label}</span>
                     {isActive && (

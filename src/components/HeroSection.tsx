@@ -57,18 +57,18 @@ const HeroSection = () => {
               Premium Property Solutions
             </motion.span>
             
-            <h1 className="font-display font-black text-5xl md:text-6xl lg:text-[5.5rem] tracking-tight text-white leading-[1.1] mb-8 drop-shadow-2xl">
+            <h1 className="font-display font-black text-4xl md:text-6xl lg:text-7xl tracking-tight text-white leading-[1.1] mb-8 drop-shadow-2xl">
               Elevate Your <br/>
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-orange-400 to-yellow-500 drop-shadow-none relative">
                 Commercial Space
               </span>
             </h1>
             
-            <p className="text-white/80 font-body text-lg md:text-xl leading-relaxed mb-12 max-w-2xl drop-shadow-md">
-              Discover unparalleled excellence in real estate. From state-of-the-art office spaces to prime retail venues, we curate seamless experiences for modern businesses.
+            <p className="text-white/80 font-body text-sm md:text-lg lg:text-xl leading-relaxed mb-12 max-w-3xl drop-shadow-md">
+              Discover unparalleled excellence in real estate. From state-of-the-art office spaces to prime showrooms, we curate seamless experiences for modern businesses.
             </p>
             
-            {/* Quick Contact & Action */}
+            {/* Quick Contact and Action */}
             <motion.div 
                initial={{ opacity: 0, y: 20 }}
                animate={{ opacity: 1, y: 0 }}

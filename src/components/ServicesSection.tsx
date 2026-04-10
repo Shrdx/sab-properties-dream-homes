@@ -55,10 +55,10 @@ const ServicesSection = () => {
           <span className="inline-block text-primary font-display font-bold text-sm tracking-[0.2em] uppercase mb-4">
             What We Offer
           </span>
-          <h2 className="font-display font-extrabold text-4xl md:text-5xl text-foreground mb-6">
+          <h2 className="font-display font-extrabold text-4xl md:text-5xl lg:text-6xl text-foreground mb-6">
             Our Premium Services
           </h2>
-          <p className="text-muted-foreground font-body text-lg max-w-3xl mx-auto leading-relaxed">
+          <p className="text-muted-foreground font-body text-lg md:text-xl lg:text-2xl max-w-4xl mx-auto leading-relaxed">
             From flexible office spaces to comprehensive property management, we provide 
             end-to-end real estate solutions designed for modern businesses.
           </p>
@@ -82,11 +82,11 @@ const ServicesSection = () => {
                 <service.icon className="w-8 h-8 text-primary group-hover:text-white transition-colors duration-300" />
               </div>
 
-              <h3 className="font-display font-extrabold text-xl text-foreground mb-3 group-hover:text-primary transition-colors">
+              <h3 className="font-display font-extrabold text-xl lg:text-2xl text-foreground mb-3 group-hover:text-primary transition-colors">
                 {service.title}
               </h3>
               
-              <p className="text-muted-foreground font-body text-sm leading-relaxed mb-6">
+              <p className="text-muted-foreground font-body text-sm lg:text-base leading-relaxed mb-6">
                 {service.description}
               </p>
 

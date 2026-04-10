@@ -25,9 +25,9 @@ const testimonials = [
   },
   {
     name: "Priya Sharma",
-    role: "Retail Chain Owner",
-    title: "Retail Space Acquisition",
-    content: "Finding the perfect retail location in Mumbai was challenging until we worked with Sab Properties. Their market knowledge and negotiation skills secured us a prime location.",
+    role: "Showroom Owner",
+    title: "Showroom Acquisition",
+    content: "Finding the perfect showroom location in Mumbai was challenging until we worked with Sab Properties. Their market knowledge and negotiation skills secured us a prime location.",
     rating: 5
   }
 ];

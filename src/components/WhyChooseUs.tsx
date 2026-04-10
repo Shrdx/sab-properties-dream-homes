@@ -10,12 +10,12 @@ const benefits = [
   },
   {
     icon: Shield,
-    title: "Trust & Transparency",
+    title: "Trust and Transparency",
     description: "Our transparent approach ensures you have complete visibility into every step of the property transaction process.",
   },
   {
     icon: Zap,
-    title: "Quick & Efficient",
+    title: "Quick and Efficient",
     description: "Our ready-to-move-in properties ensure a seamless setup process, allowing you to focus on what matters most.",
   },
   {
@@ -59,10 +59,10 @@ const WhyChooseUs = () => {
             <span className="text-primary font-display font-bold text-sm tracking-[0.2em] uppercase">
               Your Benefits
             </span>
-            <h2 className="font-display font-extrabold text-3xl md:text-4xl text-primary-foreground mt-2 mb-4">
+            <h2 className="font-display font-extrabold text-3xl md:text-4xl lg:text-5xl text-primary-foreground mt-2 mb-4">
               Why Choose Us
             </h2>
-            <p className="text-primary-foreground/70 font-body leading-relaxed mb-10 max-w-xl">
+            <p className="text-primary-foreground/70 font-body text-sm md:text-base lg:text-lg leading-relaxed mb-10 max-w-2xl">
               At SAB Properties, we prioritize your success, offering tailored real estate solutions 
               and unparalleled service to meet your property needs.
             </p>
@@ -81,10 +81,10 @@ const WhyChooseUs = () => {
                     <benefit.icon className="w-5 h-5 text-primary-foreground" />
                   </div>
                   <div>
-                    <h4 className="font-display font-bold text-primary-foreground text-sm mb-1">
+                    <h4 className="font-display font-bold text-primary-foreground text-sm lg:text-base mb-1">
                       {benefit.title}
                     </h4>
-                    <p className="text-primary-foreground/60 font-body text-xs leading-relaxed">
+                    <p className="text-primary-foreground/60 font-body text-xs lg:text-sm leading-relaxed">
                       {benefit.description}
                     </p>
                   </div>
