@@ -62,7 +62,7 @@ export const allProperties: Property[] = [
   },
   {
     "id": 2,
-    "image": "/officeSpaces/officeSpace2.jpg",
+    "image": "/officeSpaces/officeSpace5.jpg",
     "category": "Office/Serviced Office",
     "status": "Raw",
     "title": "Modern Office Space for 6–10 Team",
@@ -146,7 +146,7 @@ export const allProperties: Property[] = [
   },
   {
     "id": 5,
-    "image": "/officeSpaces/officeSpace5.jpg",
+    "image": "/officeSpaces/officeSpace2.jpg",
     "category": "Office/Serviced Office",
     "status": "Raw",
     "title": "Scalable Office Space for Teams up to 60",
@@ -314,7 +314,7 @@ export const allProperties: Property[] = [
   },
   {
     "id": 11,
-    "image": "/showroom/showroom1.png",
+    "image": "/showroom/showroom2.jpg",
     "category": "Showroom",
     "status": "Raw",
     "title": "Prime Showroom in Asaf Ali Road Market",
@@ -342,7 +342,7 @@ export const allProperties: Property[] = [
   },
   {
     "id": 12,
-    "image": "/showroom/showroom2.jpg",
+    "image": "/showroom/showroom1.png",
     "category": "Showroom",
     "status": "Raw",
     "title": "Large Showroom for Retail Chains",

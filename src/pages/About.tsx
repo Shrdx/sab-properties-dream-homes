@@ -9,20 +9,20 @@ const team = [
   {
     name: "Sanjay Gupta",
     role: "Founder and Managing Director",
-    image: "/images/team/sanjay.jpeg",
-    description: "With over two decades of extensive experience in the commercial real estate industry, Sanjay is the visionary behind SAB Properties. He brings a wealth of market knowledge, strategic foresight, and unparalleled expertise to the team. His leadership ensures exceptional service delivery, driving high-value transactions and securing optimal results for all premium clients.",
+    image: "/images/team/sanjay1.png",
+    description: "With over four decades of extensive experience in the commercial real estate industry, Sanjay Gupta is the visionary behind SAB Properties. He brings a wealth of market knowledge, strategic foresight, and unparalleled expertise to the team. His leadership ensures exceptional service delivery, driving high-value transactions and securing optimal results for all premium clients.",
   },
   {
     name: "Kushagra Gupta",
     role: "Executive Director",
-    image: "/images/team/kushagra.jpeg",
-    description: "A dedicated and innovative professional, Kushagra is committed to transforming the modern workspace experience. He specializes in providing personalized commercial solutions, with a meticulous attention to detail that aligns perfectly with client objectives. His focus on operational excellence ensures seamless execution and sustained business growth.",
+    image: "/images/team/kushagra1.png",
+    description: "Kushagra Gupta is a dedicated and forward-thinking professional committed to transforming the modern workspace experience. He specializes in delivering tailored commercial real estate solutions, with meticulous attention to detail and a deep understanding of client objectives. His focus on operational excellence ensures seamless execution, while contributing to sustained business growth and long-term client success.",
   },
   {
     name: "Kashish Gupta",
     role: "Director of Operations",
-    image: "/images/team/kashish.jpg",
-    description: "Kashish is focused on delivering outstanding end-to-end results and building enduring relationships with clients. Through a steadfast commitment to transparency, reliability, and client-first strategies, he ensures that every portfolio is managed impeccably. His proactive approach is instrumental in scaling SAB Properties' expanding commercial footprint.",
+    image: "/images/team/kashish1.png",
+    description: "Kashish Gupta is focused on delivering outstanding end-to-end results while building long-lasting relationships with clients. With a strong commitment to transparency, reliability, and a client-first approach, she ensures that every portfolio is managed with precision and care. Her proactive leadership and strategic mindset play a key role in driving the growth of SAB Properties’ expanding commercial footprint.",
   },
 ];
 
@@ -41,6 +41,7 @@ const About = () => {
             muted
             loop
             playsInline
+            poster={heroImg}
             className="w-full h-full object-cover"
           >
             <source src="/about-hero.mp4" type="video/mp4" />

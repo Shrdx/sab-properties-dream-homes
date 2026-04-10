@@ -91,7 +91,14 @@ const ServicesPage = () => {
 
       {/* Hero Section */}
       <section className="relative h-[50vh] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-slate-900" />
+        <div className="absolute inset-0">
+          <img 
+            src={servicesHeroImg} 
+            alt="Our Services" 
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-black/60" />
+        </div>
         <motion.div
           initial={{ opacity: 0, scale: 0.95, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}

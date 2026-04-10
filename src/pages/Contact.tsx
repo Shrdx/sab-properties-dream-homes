@@ -194,9 +194,9 @@ const Contact = () => {
                   </div>
                   <div>
                     <h4 className="font-display font-bold text-foreground text-lg lg:text-xl mb-1">Phone</h4>
-                    <p className="text-muted-foreground font-body text-base lg:text-lg">
+                    <a href="tel:+918700513200" className="text-muted-foreground font-body text-base lg:text-lg hover:text-primary transition-colors">
                       +91 8700513200
-                    </p>
+                    </a>
                   </div>
                 </div>
 
@@ -292,12 +292,12 @@ const Contact = () => {
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
                       <label className="block text-foreground font-display font-semibold text-sm mb-2">
-                        Phone *
+                        Phone
                       </label>
                       <input
                         {...register("phone")}
                         type="tel"
-                        placeholder="Phone or +91"
+                        placeholder="Phone"
                         className={`w-full px-4 py-3.5 rounded-xl bg-section border ${errors.phone ? 'border-red-500' : 'border-gray-200'} text-foreground placeholder:text-muted-foreground font-body text-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all`}
                       />
                       {errors.phone && <p className="text-red-500 text-xs mt-1">{errors.phone.message}</p>}

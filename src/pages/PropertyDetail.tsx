@@ -275,7 +275,7 @@ const PropertyDetail = () => {
                         type="tel" 
                         required
                         className={`w-full px-5 py-4 bg-white border rounded-xl text-slate-900 placeholder:text-slate-300 focus:outline-none focus:border-primary/40 transition-all font-normal text-sm ${errors.phone ? 'border-red-500' : 'border-slate-200'}`}
-                        placeholder="Phone or +91"
+                        placeholder="Phone"
                         value={formData.phone}
                         onChange={(e) => {
                           setFormData({...formData, phone: e.target.value});

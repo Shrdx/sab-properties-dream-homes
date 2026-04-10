@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
 import { MapPin, Maximize, ArrowRight, Lock, X, CheckCircle, Star, ShieldCheck, Zap, CheckCircle2, Check } from "lucide-react";
@@ -9,11 +9,21 @@ const PropertiesSection = () => {
   const [selectedProperty, setSelectedProperty] = useState<typeof allProperties[0] | null>(null);
   const [formData, setFormData] = useState({ name: "", phone: "" });
   const [submitted, setSubmitted] = useState(false);
+  const [isUnlocked, setIsUnlocked] = useState(false);
+
+  useEffect(() => {
+    const unlocked = localStorage.getItem("sab_unlocked_all") === "true";
+    setIsUnlocked(unlocked);
+  }, []);
 
   // Focus on top 3 most premium featured properties
   const featuredProperties = allProperties.filter(p => p.featured).slice(0, 3);
 
   const handlePropertyClick = (property: typeof allProperties[0]) => {
+    if (isUnlocked) {
+      navigate(`/property/${property.id}`);
+      return;
+    }
     setSelectedProperty(property);
     setSubmitted(false);
     setFormData({ name: "", phone: "" });
@@ -40,6 +50,8 @@ const PropertiesSection = () => {
     } catch (error) {
       console.error("Error submitting form:", error);
     }
+    localStorage.setItem("sab_unlocked_all", "true");
+    setIsUnlocked(true);
     setSubmitted(true);
   };
 
@@ -185,8 +197,8 @@ const PropertiesSection = () => {
                       </div>
 
                       <button className="flex items-center gap-2 text-sm font-display font-bold text-primary hover:text-orange-600 transition-colors uppercase tracking-widest group/btn">
-                        <Lock className="w-4 h-4" />
-                        <span>Unlock</span>
+                        {!isUnlocked && <Lock className="w-4 h-4" />}
+                        <span>{isUnlocked ? "View Details" : "Unlock"}</span>
                         <ArrowRight className="w-4 h-4 translate-x-0 group-hover/btn:translate-x-1 transition-transform" />
                       </button>
                     </>
@@ -280,7 +292,7 @@ const PropertiesSection = () => {
                         <input
                           type="tel"
                           required
-                          placeholder="Phone Number"
+                          placeholder="Phone"
                           value={formData.phone}
                           onChange={(e) => setFormData({...formData, phone: e.target.value})}
                           className="w-full px-5 py-3.5 rounded-xl bg-slate-50 border border-slate-200 text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all font-body"
@@ -334,7 +346,7 @@ const PropertiesSection = () => {
                   
                   <div className="flex flex-col gap-3">
                     <Link 
-                      to={`/properties/${selectedProperty.id}`} 
+                      to={`/property/${selectedProperty.id}`} 
                       onClick={closeModal} 
                       className="w-full text-center gradient-orange text-white font-display font-bold py-4 rounded-xl shadow-lg hover:shadow-xl transition-all hover:-translate-y-0.5"
                     >

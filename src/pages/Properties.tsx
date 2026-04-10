@@ -25,9 +25,15 @@ const Properties = () => {
   const [activeFiltersCount, setActiveFiltersCount] = useState(0);
   const [selectedProperty, setSelectedProperty] = useState<typeof allProperties[0] | null>(null);
   const [showLeadForm, setShowLeadForm] = useState(false);
-  const [leadFormData, setLeadFormData] = useState({ name: "", phone: "" });
-  const [leadFormErrors, setLeadFormErrors] = useState<{ name?: string; phone?: string }>({});
+  const [leadFormData, setLeadFormData] = useState({ name: "", email: "", phone: "", message: "" });
+  const [leadFormErrors, setLeadFormErrors] = useState<{ name?: string; email?: string; phone?: string }>({});
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [isUnlocked, setIsUnlocked] = useState(false);
+
+  useEffect(() => {
+    const unlocked = localStorage.getItem("sab_unlocked_all") === "true";
+    setIsUnlocked(unlocked);
+  }, []);
 
   useEffect(() => {
     let filtered = [...allProperties];
@@ -87,10 +93,14 @@ const Properties = () => {
   };
 
   const handlePropertyClick = (property: typeof allProperties[0]) => {
+    if (isUnlocked) {
+      navigate(`/property/${property.id}`);
+      return;
+    }
     setSelectedProperty(property);
     setShowLeadForm(true);
     setFormSubmitted(false);
-    setLeadFormData({ name: "", phone: "" });
+    setLeadFormData({ name: "", email: "", phone: "", message: "" });
     setLeadFormErrors({});
   };
 
@@ -135,6 +145,8 @@ const Properties = () => {
       console.error("Error submitting form:", error);
     }
     setShowLeadForm(false);
+    localStorage.setItem("sab_unlocked_all", "true");
+    setIsUnlocked(true);
     navigate(`/property/${selectedProperty?.id}`);
   };
 
@@ -463,8 +475,8 @@ const Properties = () => {
                             </span>
                           </div>
                           <div className="flex items-center gap-2 text-sm font-display font-bold text-primary hover:text-orange-600 transition-colors uppercase tracking-widest group/btn">
-                             <Lock className="w-4 h-4" />
-                             <span>Unlock Info</span>
+                             {!isUnlocked && <Lock className="w-4 h-4" />}
+                             <span>{isUnlocked ? "View Details" : "Unlock Info"}</span>
                              <ArrowRight className="w-4 h-4 translate-x-0 group-hover/btn:translate-x-1 transition-transform" />
                           </div>
                         </>
@@ -566,7 +578,7 @@ const Properties = () => {
                       </div>
 
                       <div className="space-y-2">
-                        <label className="block text-[10px] font-display font-black text-muted-foreground uppercase tracking-widest ml-1">WhatsApp Number</label>
+                        <label className="block text-[10px] font-display font-black text-muted-foreground uppercase tracking-widest ml-1">Phone</label>
                         <div className="relative group">
                           <Phone className="absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground group-focus-within:text-primary transition-colors" />
                           <input
@@ -574,7 +586,7 @@ const Properties = () => {
                             required
                             value={leadFormData.phone}
                             onChange={(e) => setLeadFormData({ ...leadFormData, phone: e.target.value })}
-                            placeholder="Phone or +91"
+                            placeholder="Phone"
                             className={`w-full pl-14 pr-6 py-4 rounded-2xl bg-slate-50 border ${
                               leadFormErrors.phone ? "border-red-500 ring-4 ring-red-500/10" : "border-slate-200"
                             } text-foreground placeholder:text-slate-400 font-body text-base focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all`}
