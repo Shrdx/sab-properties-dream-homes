@@ -74,6 +74,21 @@ const PropertyDetail = () => {
     window.scrollTo(0, 0);
   }, [id]);
 
+  const propertySchema = property ? {
+    "@context": "https://schema.org",
+    "@type": "RealEstateListing",
+    "name": property.title,
+    "description": property.description,
+    "image": `https://sabproperties.in${property.image}`,
+    "url": `https://sabproperties.in/property/${property.id}`,
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": property.location,
+      "addressRegion": "Delhi",
+      "addressCountry": "IN"
+    }
+  } : null;
+
   const normalizedLoc = property ? normalizeLocation(property.location) : "";
 
   const validateForm = () => {
@@ -120,6 +135,13 @@ const PropertyDetail = () => {
 
   return (
     <div className="min-h-screen bg-white font-body">
+      <SEO 
+        title={property.title}
+        description={property.description}
+        canonical={`/property/${property.id}`}
+        ogImage={property.image}
+        structuredData={propertySchema || undefined}
+      />
       <Navbar solid />
       
       <main className="pt-24 pb-40">
@@ -249,7 +271,7 @@ const PropertyDetail = () => {
                         type="text" 
                         required
                         className={`w-full px-5 py-4 bg-white border rounded-xl text-slate-900 placeholder:text-slate-300 focus:outline-none focus:border-primary/40 transition-all font-normal text-sm ${errors.name ? 'border-red-500' : 'border-slate-200'}`}
-                        placeholder="Full Name"
+                        placeholder="e.g. Rahul Sharma"
                         value={formData.name}
                         onChange={(e) => {
                           setFormData({...formData, name: e.target.value});
@@ -264,7 +286,7 @@ const PropertyDetail = () => {
                         type="email" 
                         required
                         className="w-full px-5 py-4 bg-white border border-slate-200 rounded-xl text-slate-900 placeholder:text-slate-300 focus:outline-none focus:border-primary/40 transition-all font-normal text-sm"
-                        placeholder="Email"
+                        placeholder="e.g. rahul@example.com"
                         value={formData.email}
                         onChange={(e) => setFormData({...formData, email: e.target.value})}
                       />
@@ -275,7 +297,7 @@ const PropertyDetail = () => {
                         type="tel" 
                         required
                         className={`w-full px-5 py-4 bg-white border rounded-xl text-slate-900 placeholder:text-slate-300 focus:outline-none focus:border-primary/40 transition-all font-normal text-sm ${errors.phone ? 'border-red-500' : 'border-slate-200'}`}
-                        placeholder="Phone"
+                        placeholder="e.g. +91 98765 43210"
                         value={formData.phone}
                         onChange={(e) => {
                           setFormData({...formData, phone: e.target.value});
@@ -288,7 +310,7 @@ const PropertyDetail = () => {
                       <label className="text-sm font-medium text-slate-900 ml-1">Message</label>
                       <textarea 
                         className="w-full px-5 py-4 bg-white border border-slate-200 rounded-xl text-slate-900 placeholder:text-slate-300 focus:outline-none focus:border-primary/40 transition-all h-32 resize-none font-normal text-sm"
-                        placeholder="Write here..."
+                        placeholder="How can we help you?"
                         value={formData.message}
                         onChange={(e) => setFormData({...formData, message: e.target.value})}
                       />
@@ -350,6 +372,16 @@ const PropertyDetail = () => {
                   </div>
                 )}
               </div>
+            </div>
+          </div>
+
+          {/* Property Image Disclaimer */}
+          <div className="mt-24 pt-12 border-t border-slate-100">
+            <div className="bg-slate-50 rounded-2xl p-6 border border-slate-100">
+              <p className="text-slate-500 font-body text-sm leading-relaxed text-center max-w-4xl mx-auto">
+                <span className="font-bold uppercase tracking-wider mr-2">Disclaimer:</span>
+                Property images are for representational purposes only and may not depict the actual property.
+              </p>
             </div>
           </div>
         </div>

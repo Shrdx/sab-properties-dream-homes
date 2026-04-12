@@ -223,6 +223,14 @@ const PropertiesSection = () => {
             <ArrowRight className="w-5 h-5" />
           </Link>
         </motion.div>
+
+        {/* Property Disclaimer */}
+        <div className="mt-16">
+          <p className="text-slate-400 font-body text-xs leading-relaxed text-center max-w-3xl mx-auto border-t border-slate-100 pt-8">
+            <span className="font-bold uppercase tracking-wider mr-2 text-slate-500">Disclaimer:</span>
+            Property images are for representational purposes only and may not depict the actual property.
+          </p>
+        </div>
       </div>
 
       {/* Modern Glassmorphism Modal */}
@@ -282,7 +290,7 @@ const PropertiesSection = () => {
                         <input
                           type="text"
                           required
-                          placeholder="Your Name"
+                          placeholder="e.g. Rahul Sharma"
                           value={formData.name}
                           onChange={(e) => setFormData({...formData, name: e.target.value})}
                           className="w-full px-5 py-3.5 rounded-xl bg-slate-50 border border-slate-200 text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all font-body"
@@ -292,7 +300,7 @@ const PropertiesSection = () => {
                         <input
                           type="tel"
                           required
-                          placeholder="Phone"
+                          placeholder="e.g. +91 98765 43210"
                           value={formData.phone}
                           onChange={(e) => setFormData({...formData, phone: e.target.value})}
                           className="w-full px-5 py-3.5 rounded-xl bg-slate-50 border border-slate-200 text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all font-body"

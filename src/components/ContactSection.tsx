@@ -156,7 +156,7 @@ const ContactSection = () => {
                   <input
                     {...register("fullName")}
                     type="text"
-                    placeholder="Full Name"
+                    placeholder="e.g. Rahul Sharma"
                     className={`w-full px-4 py-3 rounded-lg bg-background border ${errors.fullName ? "border-red-500" : "border-border"} text-foreground placeholder:text-muted-foreground font-body text-sm focus:outline-none focus:border-primary transition-colors`}
                   />
                   {errors.fullName && <p className="text-red-500 text-xs mt-1">{errors.fullName.message}</p>}
@@ -165,7 +165,7 @@ const ContactSection = () => {
                   <input
                     {...register("email")}
                     type="email"
-                    placeholder="Email Address"
+                    placeholder="e.g. rahul@example.com"
                     className={`w-full px-4 py-3 rounded-lg bg-background border ${errors.email ? "border-red-500" : "border-border"} text-foreground placeholder:text-muted-foreground font-body text-sm focus:outline-none focus:border-primary transition-colors`}
                   />
                   {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email.message}</p>}
@@ -176,7 +176,7 @@ const ContactSection = () => {
                   <input
                     {...register("phone")}
                     type="tel"
-                    placeholder="Phone Number"
+                    placeholder="e.g. +91 98765 43210"
                     className={`w-full px-4 py-3 rounded-lg bg-background border ${errors.phone ? "border-red-500" : "border-border"} text-foreground placeholder:text-muted-foreground font-body text-sm focus:outline-none focus:border-primary transition-colors`}
                   />
                   {errors.phone && <p className="text-red-500 text-xs mt-1">{errors.phone.message}</p>}
@@ -198,7 +198,7 @@ const ContactSection = () => {
               <div className="space-y-1">
                 <textarea
                   {...register("message")}
-                  placeholder="Your Message"
+                  placeholder="How can we help you?"
                   rows={4}
                   className={`w-full px-4 py-3 rounded-lg bg-background border ${errors.message ? "border-red-500" : "border-border"} text-foreground placeholder:text-muted-foreground font-body text-sm focus:outline-none focus:border-primary transition-colors resize-none`}
                 />

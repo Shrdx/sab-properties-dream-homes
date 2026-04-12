@@ -8,6 +8,7 @@ import { MapPin, Phone, Mail, Clock, Send, Building2, X, CheckCircle, Loader2 } 
 import { toast } from "sonner";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import SEO from "@/components/SEO";
 import contactHeroImg from "@/assets/contact-hero.png";
 
 const formSchema = z.object({
@@ -17,7 +18,6 @@ const formSchema = z.object({
   email: z.string().email("Please enter a valid email address").or(z.literal("")).optional(),
   companyName: z.string().optional(),
   requirement: z.string().min(1, "Please select a given requirement"),
-  visitDate: z.string().optional(),
   message: z.string().optional(),
 });
 
@@ -65,7 +65,6 @@ const Contact = () => {
       urlEncodedData.append("service", data.requirement);
       urlEncodedData.append("message", fullMessage || "");
       urlEncodedData.append("company", data.companyName || "");
-      urlEncodedData.append("visitDate", data.visitDate || "");
 
       await fetch(targetUrl, {
         method: "POST",
@@ -114,7 +113,7 @@ const Contact = () => {
           <h1 className="font-display font-extrabold text-5xl md:text-6xl lg:text-7xl text-white mb-6">
             Contact Us
           </h1>
-          <p className="text-white/80 font-body text-base md:text-xl lg:text-2xl max-w-4xl mx-auto leading-relaxed">
+          <p className="text-white/80 font-body text-base md:text-lg lg:text-xl max-w-4xl mx-auto leading-relaxed">
             Get in touch with our team of experts
           </p>
         </motion.div>
@@ -167,7 +166,7 @@ const Contact = () => {
               <h2 className="font-display font-extrabold text-4xl text-foreground mb-6">
                 Let's Connect
               </h2>
-              <p className="text-muted-foreground font-body text-lg lg:text-xl leading-relaxed mb-12">
+              <p className="text-muted-foreground font-body text-base leading-relaxed mb-12">
                 {hasProperty 
                   ? "Complete the form to schedule a visit or get more details about this property. We're here to help!"
                   : "Whether you're looking for your dream workspace or have questions about our services, we're here to help."}
@@ -178,37 +177,48 @@ const Contact = () => {
                   <div className="w-14 h-14 rounded-xl gradient-orange flex items-center justify-center flex-shrink-0">
                     <MapPin className="w-6 h-6 text-white" />
                   </div>
-                  <div>
-                    <h4 className="font-display font-bold text-foreground text-lg lg:text-xl mb-1">Our Office</h4>
-                    <p className="text-muted-foreground font-body text-base lg:text-lg">
-                      1/22, Asaf Ali Road<br />
-                      Near Ajmeri Gate<br />
-                      Delhi - 110002
+                  <div className="w-full">
+                    <h4 className="font-display font-bold text-foreground text-lg mb-1">Main Office</h4>
+                    <p className="text-muted-foreground font-body text-base mb-4">
+                      1/22 Asaf Ali Road Near Ajmeri Gate,<br />
+                      New Delhi - 110002
                     </p>
+                    <div className="w-full h-48 rounded-xl overflow-hidden border border-gray-200">
+                      <iframe 
+                        width="100%" 
+                        height="100%" 
+                        frameBorder="0" 
+                        scrolling="no" 
+                        marginHeight={0} 
+                        marginWidth={0} 
+                        src="https://maps.google.com/maps?q=1/22%20Asaf%20Ali%20Road%20Near%20ajmeri%20gate%20,%20New%20Delhi%20-%20110002&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                      ></iframe>
+                    </div>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-5">
                   <div className="w-14 h-14 rounded-xl gradient-orange flex items-center justify-center flex-shrink-0">
-                    <Phone className="w-6 h-6 text-white" />
+                    <MapPin className="w-6 h-6 text-white" />
                   </div>
-                  <div>
-                    <h4 className="font-display font-bold text-foreground text-lg lg:text-xl mb-1">Phone</h4>
-                    <a href="tel:+918700513200" className="text-muted-foreground font-body text-base lg:text-lg hover:text-primary transition-colors">
-                      +91 8700513200
-                    </a>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-5">
-                  <div className="w-14 h-14 rounded-xl gradient-orange flex items-center justify-center flex-shrink-0">
-                    <Mail className="w-6 h-6 text-white" />
-                  </div>
-                  <div>
-                    <h4 className="font-display font-bold text-foreground text-lg lg:text-xl mb-1">Email</h4>
-                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=info@sabproperties.in" target="_blank" rel="noopener noreferrer" className="text-muted-foreground font-body text-base lg:text-lg hover:text-primary transition-colors">
-                      info@sabproperties.in
-                    </a>
+                  <div className="w-full">
+                    <h4 className="font-display font-bold text-foreground text-lg mb-1">Other Office</h4>
+                    <p className="text-muted-foreground font-body text-base mb-4">
+                      3/8, 31, Asaf Ali Rd, above HDFC Bank,<br />
+                      Kamla Market, Ajmeri Gate,<br />
+                      New Delhi, Delhi, 110002
+                    </p>
+                    <div className="w-full h-48 rounded-xl overflow-hidden border border-gray-200">
+                      <iframe 
+                        width="100%" 
+                        height="100%" 
+                        frameBorder="0" 
+                        scrolling="no" 
+                        marginHeight={0} 
+                        marginWidth={0} 
+                        src="https://maps.google.com/maps?q=3/8,%2031,%20Asaf%20Ali%20Rd,%20above%20HDFC%20Bank,%20Kamla%20Market,%20Ajmeri%20Gate,%20New%20Delhi,%20Delhi,%20110002&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                      ></iframe>
+                    </div>
                   </div>
                 </div>
 
@@ -217,8 +227,8 @@ const Contact = () => {
                     <Clock className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <h4 className="font-display font-bold text-foreground text-lg lg:text-xl mb-1">Working Hours</h4>
-                    <p className="text-muted-foreground font-body text-base lg:text-lg">
+                    <h4 className="font-display font-bold text-foreground text-lg mb-1">Working Hours</h4>
+                    <p className="text-muted-foreground font-body text-base">
                       Monday - Saturday: 9:00 AM - 7:00 PM<br />
                       Sunday: Closed
                     </p>
@@ -228,7 +238,7 @@ const Contact = () => {
 
               {/* Company Note */}
               <div className="mt-12 p-6 bg-section rounded-xl border border-gray-200">
-                <p className="text-muted-foreground font-body text-sm lg:text-base">
+                <p className="text-muted-foreground font-body text-sm">
                   <span className="font-semibold text-foreground">SAB Properties</span> is a subsidiary of 
                   SAB Group, a diversified business conglomerate with interests in real estate, hospitality, 
                   and infrastructure development across India.
@@ -264,14 +274,14 @@ const Contact = () => {
                 <form className="space-y-6" onSubmit={handleSubmit(onSubmit, (errs) => { console.log(errs); alert("Please check the form for errors in red."); })}>
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
-                      <label className="block text-foreground font-display font-semibold text-sm lg:text-base mb-2">
+                      <label className="block text-foreground font-display font-semibold text-sm mb-2">
                         First Name *
                       </label>
                       <input
                         {...register("firstName")}
                         type="text"
-                        placeholder="First Name"
-                        className={`w-full px-4 py-3.5 rounded-xl bg-section border ${errors.firstName ? 'border-red-500' : 'border-gray-200'} text-foreground placeholder:text-muted-foreground font-body text-base lg:text-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all`}
+                        placeholder="e.g. Rahul"
+                        className={`w-full px-4 py-3.5 rounded-xl bg-section border ${errors.firstName ? 'border-red-500' : 'border-gray-200'} text-foreground placeholder:text-muted-foreground font-body text-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all`}
                       />
                       {errors.firstName && <p className="text-red-500 text-xs mt-1">{errors.firstName.message}</p>}
                     </div>
@@ -282,7 +292,7 @@ const Contact = () => {
                       <input
                         {...register("lastName")}
                         type="text"
-                        placeholder="Last Name"
+                        placeholder="e.g. Sharma"
                         className={`w-full px-4 py-3.5 rounded-xl bg-section border ${errors.lastName ? 'border-red-500' : 'border-gray-200'} text-foreground placeholder:text-muted-foreground font-body text-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all`}
                       />
                       {errors.lastName && <p className="text-red-500 text-xs mt-1">{errors.lastName.message}</p>}
@@ -297,7 +307,7 @@ const Contact = () => {
                       <input
                         {...register("phone")}
                         type="tel"
-                        placeholder="Phone"
+                        placeholder="e.g. +91 98765 43210"
                         className={`w-full px-4 py-3.5 rounded-xl bg-section border ${errors.phone ? 'border-red-500' : 'border-gray-200'} text-foreground placeholder:text-muted-foreground font-body text-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all`}
                       />
                       {errors.phone && <p className="text-red-500 text-xs mt-1">{errors.phone.message}</p>}
@@ -309,7 +319,7 @@ const Contact = () => {
                       <input
                         {...register("email")}
                         type="email"
-                        placeholder="Email"
+                        placeholder="e.g. rahul@example.com"
                         className={`w-full px-4 py-3.5 rounded-xl bg-section border ${errors.email ? 'border-red-500' : 'border-gray-200'} text-foreground placeholder:text-muted-foreground font-body text-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all`}
                       />
                       {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email.message}</p>}
@@ -323,7 +333,7 @@ const Contact = () => {
                     <input
                       {...register("companyName")}
                       type="text"
-                      placeholder="Company Name"
+                      placeholder="e.g. ABC Global"
                       className="w-full px-4 py-3.5 rounded-xl bg-section border border-gray-200 text-foreground placeholder:text-muted-foreground font-body text-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all"
                     />
                   </div>
@@ -348,24 +358,13 @@ const Contact = () => {
 
                   <div>
                     <label className="block text-foreground font-display font-semibold text-sm mb-2">
-                      Preferred Visit Date
-                    </label>
-                    <input
-                      {...register("visitDate")}
-                      type="date"
-                      className="w-full px-4 py-3.5 rounded-xl bg-section border border-gray-200 text-foreground font-body text-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-foreground font-display font-semibold text-sm mb-2">
                       Message
                     </label>
                     <textarea
                       {...register("message")}
                       placeholder={propertyName 
                         ? `I'm interested in ${propertyName}${propertyLocation ? ` at ${propertyLocation}` : ""}. Please provide more details.`
-                        : "Message"}
+                        : "How can we help you?"}
                       rows={4}
                       className="w-full px-4 py-3.5 rounded-xl bg-section border border-gray-200 text-foreground placeholder:text-muted-foreground font-body text-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all resize-none"
                     />

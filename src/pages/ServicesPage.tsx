@@ -4,6 +4,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Building2, Shield, TrendingUp, Briefcase, MapPin, Phone, Mail, Clock, ArrowRight, CheckCircle, Users, FileText, BarChart3, Key } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import SEO from "@/components/SEO";
 import servicesImg from "@/assets/services.jpg";
 import servicesHeroImg from "@/assets/services-hero.png";
 import propertyConsultancyImg from "@/assets/property-consultancy.jpg";

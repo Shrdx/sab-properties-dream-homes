@@ -1,0 +1,21 @@
+{
+  "name": "Sab Properties",
+  "short_name": "Sab Properties",
+  "description": "Sab Properties in Delhi is one of the leading businesses in the Estate Agents.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "icons": [
+    {
+      "src": "/favicon.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg"
+    },
+    {
+      "src": "/favicon.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg"
+    }
+  ]
+}

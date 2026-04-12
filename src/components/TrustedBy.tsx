@@ -44,11 +44,18 @@ const TrustedBy = () => {
         <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-white to-transparent z-10" />
 
         <div className="flex animate-marquee">
-          {[...clientLogos, ...clientLogos, ...clientLogos, ...clientLogos].map((logo, i) => (
-            <div key={i} className="flex-shrink-0 mx-10 my-4">
-              <img src={logo} alt={`Client ${i + 1}`} className="h-14 md:h-16 w-auto object-contain" />
-            </div>
-          ))}
+          {[...clientLogos, ...clientLogos, ...clientLogos, ...clientLogos].map((logo, i) => {
+            const brandName = logo.split("/").pop()?.split(".")[0] || `Client ${i + 1}`;
+            return (
+              <div key={i} className="flex-shrink-0 mx-10 my-4">
+                <img 
+                  src={logo} 
+                  alt={`${brandName} logo`} 
+                  className="h-14 md:h-16 w-auto object-contain" 
+                />
+              </div>
+            );
+          })}
         </div>
       </div>
 

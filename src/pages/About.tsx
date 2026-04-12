@@ -3,6 +3,7 @@ import { ArrowRight, Target, Rocket } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import TestimonialsSection from "@/components/TestimonialsSection";
+import SEO from "@/components/SEO";
 import heroImg from "@/assets/picture.jpg";
 
 const team = [
@@ -77,7 +78,7 @@ const About = () => {
               <h2 className="font-display font-extrabold text-3xl text-foreground mb-4">
                 Our Vision
               </h2>
-              <p className="text-muted-foreground font-body text-lg lg:text-xl leading-relaxed">
+              <p className="text-muted-foreground font-body text-base leading-relaxed">
                 We envision a dynamic future of work where businesses thrive in flexible, 
                 innovative spaces designed for growth. We are committed to reshaping how 
                 companies perceive and utilize their workspaces.
@@ -97,7 +98,7 @@ const About = () => {
               <h2 className="font-display font-extrabold text-3xl text-foreground mb-4">
                 Our Mission
               </h2>
-              <p className="text-muted-foreground font-body text-lg lg:text-xl leading-relaxed">
+              <p className="text-muted-foreground font-body text-base leading-relaxed">
                 Our mission is to provide tailored, flexible, and inspiring workspace 
                 solutions with transparency, service excellence, and a client-first 
                 approach that ensures every business finds their perfect space.
@@ -117,7 +118,7 @@ const About = () => {
             transition={{ type: "spring", stiffness: 100, damping: 20, duration: 0.3 }}
             className="text-center"
           >
-            <p className="text-muted-foreground font-body text-lg md:text-xl lg:text-2xl leading-relaxed mb-8">
+            <p className="text-muted-foreground font-body text-base md:text-lg leading-relaxed mb-8">
               We believe in removing traditional workspace limitations. Our approach enables 
               <span className="text-primary font-semibold"> collaboration, innovation, and flexibility</span> 
               at every level. We don't just provide spaces — we act as a 
@@ -157,7 +158,7 @@ const About = () => {
               Meet Our Visionaries
             </h2>
             <div className="w-24 h-1.5 bg-orange mx-auto rounded-full mb-8" />
-            <p className="text-muted-foreground font-body text-xl lg:text-2xl max-w-4xl mx-auto leading-relaxed">
+            <p className="text-muted-foreground font-body text-base md:text-lg max-w-4xl mx-auto leading-relaxed">
               Our dedicated leadership team brings decades of combined experience, 
               committed to transforming your commercial real estate journey.
             </p>
@@ -195,7 +196,7 @@ const About = () => {
                   {/* Decorative Spacer */}
                   <div className="w-8 h-[2px] bg-orange/30 mb-5 rounded-full group-hover:w-16 transition-all duration-500" />
                   
-                  <p className="text-muted-foreground font-body text-sm lg:text-base leading-relaxed mb-6 italic opacity-90 group-hover:opacity-100 transition-opacity">
+                  <p className="text-muted-foreground font-body text-sm leading-relaxed mb-6 italic opacity-90 group-hover:opacity-100 transition-opacity">
                     "{member.description}"
                   </p>
                   

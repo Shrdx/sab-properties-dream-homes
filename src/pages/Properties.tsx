@@ -4,6 +4,7 @@ import { Link, useSearchParams, useNavigate } from "react-router-dom";
 import { MapPin, Maximize, ArrowRight, Building2, Search, SlidersHorizontal, X, ChevronDown, Check, Lock, Phone, User, Star, ShieldCheck, Zap, CheckCircle2 } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import SEO from "@/components/SEO";
 import propertiesImg from "@/assets/properties.jpg";
 import propertyHeroImg from "@/assets/property-hero.png";
 
@@ -488,6 +489,16 @@ const Properties = () => {
             </div>
           )}
         </div>
+
+        {/* Property Disclaimer */}
+        <div className="container mx-auto px-4 lg:px-8 mt-16 mb-8">
+          <div className="bg-slate-100/50 rounded-2xl p-6 border border-slate-200/50">
+            <p className="text-slate-500 font-body text-xs leading-relaxed text-center">
+              <span className="font-bold uppercase tracking-wider mr-2">Disclaimer:</span>
+              Property images are for representational purposes only and may not depict the actual property.
+            </p>
+          </div>
+        </div>
       </section>
 
       {/* Modern Premium Modal Implementation */}
@@ -564,7 +575,7 @@ const Properties = () => {
                             required
                             value={leadFormData.name}
                             onChange={(e) => setLeadFormData({ ...leadFormData, name: e.target.value })}
-                            placeholder="Full Name"
+                            placeholder="e.g. Rahul Sharma"
                             className={`w-full pl-14 pr-6 py-4 rounded-2xl bg-slate-50 border ${
                               leadFormErrors.name ? "border-red-500 ring-4 ring-red-500/10" : "border-slate-200"
                             } text-foreground placeholder:text-slate-400 font-body text-base focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all`}
@@ -586,7 +597,7 @@ const Properties = () => {
                             required
                             value={leadFormData.phone}
                             onChange={(e) => setLeadFormData({ ...leadFormData, phone: e.target.value })}
-                            placeholder="Phone"
+                            placeholder="e.g. +91 98765 43210"
                             className={`w-full pl-14 pr-6 py-4 rounded-2xl bg-slate-50 border ${
                               leadFormErrors.phone ? "border-red-500 ring-4 ring-red-500/10" : "border-slate-200"
                             } text-foreground placeholder:text-slate-400 font-body text-base focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all`}
