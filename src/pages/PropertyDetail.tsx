@@ -10,6 +10,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { allProperties } from "@/data/properties";
 import { toast } from "sonner";
+import SEO from "@/components/SEO";
 
 const normalizeLocation = (loc: string) => {
   if (!loc) return "";
