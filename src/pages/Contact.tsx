@@ -178,7 +178,7 @@ const Contact = () => {
                     <MapPin className="w-6 h-6 text-white" />
                   </div>
                   <div className="w-full">
-                    <h4 className="font-display font-bold text-foreground text-lg mb-1">Main Office</h4>
+                    <h4 className="font-display font-bold text-foreground text-lg mb-1">Primary Office</h4>
                     <p className="text-muted-foreground font-body text-base mb-4">
                       1/22 Asaf Ali Road Near Ajmeri Gate,<br />
                       New Delhi - 110002
@@ -202,7 +202,7 @@ const Contact = () => {
                     <MapPin className="w-6 h-6 text-white" />
                   </div>
                   <div className="w-full">
-                    <h4 className="font-display font-bold text-foreground text-lg mb-1">Other Office</h4>
+                    <h4 className="font-display font-bold text-foreground text-lg mb-1">Secondary Office</h4>
                     <p className="text-muted-foreground font-body text-base mb-4">
                       3/8, 31, Asaf Ali Rd, above HDFC Bank,<br />
                       Kamla Market, Ajmeri Gate,<br />
