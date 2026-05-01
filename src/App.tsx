@@ -11,6 +11,7 @@ import PropertyDetail from "./pages/PropertyDetail.tsx";
 import Contact from "./pages/Contact.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import ServicesPage from "./pages/ServicesPage.tsx";
+import LandingPage from "./pages/LandingPage.tsx";
 import ScrollToTop from "./components/ScrollToTop.tsx";
 import FloatingWhatsApp from "./components/FloatingWhatsApp.tsx";
 
@@ -55,6 +56,7 @@ const AnimatedRoutes = () => {
           <Route path="/properties" element={<Properties />} />
           <Route path="/property/:id" element={<PropertyDetail />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/exclusive-offer" element={<LandingPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </motion.div>
