@@ -8,7 +8,7 @@ import OfficeHero from "@/components/OfficeHero";
 import LocationInsights from "@/components/LocationInsights";
 import TrustedBy from "@/components/TrustedBy";
 import CTASection from "@/components/CTASection";
-import Footer from "@/components/Footer";
+import OfficeFooter from "@/components/OfficeFooter";
 import SEO from "@/components/SEO";
 
 const OfficeLandingPage = () => {
@@ -82,13 +82,6 @@ const OfficeLandingPage = () => {
       <main>
         <OfficeHero />
         
-        {/* Social Proof */}
-        <div className="bg-slate-50 py-16">
-          <div className="container mx-auto px-4">
-            <p className="text-center text-slate-400 font-display font-bold text-xs uppercase tracking-[0.3em] mb-12">Trusted by Industry Leaders</p>
-            <TrustedBy />
-          </div>
-        </div>
 
         {/* Featured Listings Section */}
         <section id="listings" className="py-24 bg-white">
@@ -177,7 +170,7 @@ const OfficeLandingPage = () => {
         <CTASection />
       </main>
 
-      <Footer />
+      <OfficeFooter />
 
       {/* Property Unlock Modal */}
       <AnimatePresence>

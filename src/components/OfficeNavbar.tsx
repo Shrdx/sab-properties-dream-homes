@@ -29,7 +29,7 @@ const OfficeNavbar = () => {
         <div className="flex items-center justify-between">
           <Link to="/" className="flex items-center group">
             <img 
-              src="/logo.png" 
+              src={scrolled ? "/logo.png" : "/newlogo.png"} 
               alt="SAB Properties Logo" 
               className={`w-auto transition-all duration-300 group-hover:scale-105 ${
                 scrolled ? "h-12 md:h-16" : "h-16 md:h-20"

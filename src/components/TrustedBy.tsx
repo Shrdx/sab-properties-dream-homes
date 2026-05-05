@@ -23,7 +23,7 @@ const clientLogos = [
 
 const TrustedBy = () => {
   return (
-    <section className="py-16 bg-white overflow-hidden">
+    <section className="py-16 bg-transparent overflow-hidden">
       <motion.div
         initial={{ opacity: 0, scale: 0.95, y: 15 }}
         whileInView={{ opacity: 1, scale: 1, y: 0 }}
@@ -40,8 +40,8 @@ const TrustedBy = () => {
       </motion.div>
 
       <div className="relative overflow-hidden">
-        <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-white to-transparent z-10" />
-        <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-white to-transparent z-10" />
+        <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-slate-50 to-transparent z-10" />
+        <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-slate-50 to-transparent z-10" />
 
         <div className="flex animate-marquee">
           {[...clientLogos, ...clientLogos, ...clientLogos, ...clientLogos].map((logo, i) => {

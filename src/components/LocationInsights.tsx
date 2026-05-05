@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { MapPin, TrendingUp, Building2, Target } from "lucide-react";
+import TrustedBy from "./TrustedBy";
 
 const locations = [
   {
@@ -90,6 +91,8 @@ const LocationInsights = () => {
             </motion.div>
           ))}
         </div>
+
+        <TrustedBy />
 
         {/* SEO Content Block */}
         <div className="mt-20 p-10 bg-white rounded-[2.5rem] border border-slate-100 shadow-sm">
