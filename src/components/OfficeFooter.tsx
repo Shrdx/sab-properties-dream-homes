@@ -75,12 +75,6 @@ const OfficeFooter = () => {
                   <span>Trusted by businesses across Delhi NCR</span>
                 </div>
              </div>
-             <div className="flex items-center gap-4 opacity-30 grayscale hover:grayscale-0 transition-all">
-                {/* Small trust placeholders */}
-                <div className="w-8 h-8 rounded bg-white/20" />
-                <div className="w-8 h-8 rounded bg-white/20" />
-                <div className="w-8 h-8 rounded bg-white/20" />
-             </div>
           </div>
         </div>
 
