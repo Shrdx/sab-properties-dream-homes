@@ -27,7 +27,10 @@ const OfficeNavbar = () => {
     >
       <div className="container mx-auto px-4 lg:px-8">
         <div className="flex items-center justify-between">
-          <Link to="/" className="flex items-center group">
+          <button 
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} 
+            className="flex items-center group cursor-pointer focus:outline-none"
+          >
             <img 
               src={scrolled ? "/logo.png" : "/newlogo.png"} 
               alt="SAB Properties Logo" 
@@ -35,7 +38,7 @@ const OfficeNavbar = () => {
                 scrolled ? "h-12 md:h-16" : "h-16 md:h-20"
               }`} 
             />
-          </Link>
+          </button>
 
           <div className="flex items-center gap-4">
             <a
