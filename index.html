@@ -11,6 +11,22 @@
       gtag('config', 'AW-11002663060');
     </script>
 
+    <!-- Event snippet for Enquiry conversion page -->
+    <script>
+    function gtag_report_conversion(url) {
+      var callback = function () {
+        if (typeof(url) != 'undefined') {
+          window.location = url;
+        }
+      };
+      gtag('event', 'conversion', {
+          'send_to': 'AW-11002663060/UxbCCOSTmpUZEJShvf4o',
+          'event_callback': callback
+      });
+      return false;
+    }
+    </script>
+
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SAB Properties Private Limited | Real Estate Experts in Delhi</title>

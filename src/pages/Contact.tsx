@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { motion } from "framer-motion";
 import { useSearchParams } from "react-router-dom";
-import { MapPin, Phone, Mail, Clock, Send, Building2, X, CheckCircle, Loader2 } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, Send, Building2, X, CheckCircle, Loader2, Facebook, Instagram } from "lucide-react";
 import { toast } from "sonner";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -232,6 +232,29 @@ const Contact = () => {
                       Monday - Saturday: 9:00 AM - 7:00 PM<br />
                       Sunday: Closed
                     </p>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-6 pt-4 border-t border-gray-100">
+                  <a 
+                    href="https://www.facebook.com/profile.php?id=61579467053882" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="w-14 h-14 rounded-2xl bg-primary/5 border border-primary/10 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all shadow-sm"
+                  >
+                    <Facebook className="w-7 h-7" />
+                  </a>
+                  <a 
+                    href="https://www.instagram.com/sabprop/" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="w-14 h-14 rounded-2xl bg-primary/5 border border-primary/10 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all shadow-sm"
+                  >
+                    <Instagram className="w-7 h-7" />
+                  </a>
+                  <div className="flex flex-col">
+                    <span className="text-xs font-mono uppercase tracking-widest text-slate-400">Follow us</span>
+                    <span className="text-sm font-display font-bold text-slate-600">On Social Media</span>
                   </div>
                 </div>
               </div>

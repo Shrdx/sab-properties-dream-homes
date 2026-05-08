@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Phone } from "lucide-react";
+import { Menu, X, Phone, Facebook, Instagram } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
@@ -97,7 +97,25 @@ const Navbar = ({ solid = false }: NavbarProps) => {
             </div>
 
             {/* Right: Actions */}
-            <div className="hidden lg:flex flex-1 justify-end items-center gap-4">
+            <div className="hidden lg:flex flex-1 justify-end items-center gap-6">
+              <div className="flex items-center gap-4 mr-2">
+                <a 
+                  href="https://www.facebook.com/profile.php?id=61579467053882" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className={`transition-all duration-300 hover:scale-110 ${!scrolled ? "text-white/80 hover:text-white" : "text-gray-600 hover:text-black"}`}
+                >
+                  <Facebook className="w-5 h-5" />
+                </a>
+                <a 
+                  href="https://www.instagram.com/sabprop/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className={`transition-all duration-300 hover:scale-110 ${!scrolled ? "text-white/80 hover:text-white" : "text-gray-600 hover:text-black"}`}
+                >
+                  <Instagram className="w-5 h-5" />
+                </a>
+              </div>
               <a
                 href="tel:+918700513200"
                 className={`group flex items-center justify-center gap-2 font-display font-bold text-sm px-7 py-3 rounded-md transition-all duration-300 active:scale-95 border ${
@@ -182,6 +200,28 @@ const Navbar = ({ solid = false }: NavbarProps) => {
                     <Phone className="w-5 h-5" />
                     Call Now
                   </a>
+                  <div className="flex items-center justify-center gap-6 mt-8">
+                    <a 
+                      href="https://www.facebook.com/profile.php?id=61579467053882" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className={`w-12 h-12 rounded-full flex items-center justify-center transition-all ${
+                        !scrolled ? "bg-white/10 text-white border border-white/10" : "bg-gray-100 text-gray-600 border border-gray-200"
+                      }`}
+                    >
+                      <Facebook className="w-6 h-6" />
+                    </a>
+                    <a 
+                      href="https://www.instagram.com/sabprop/" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className={`w-12 h-12 rounded-full flex items-center justify-center transition-all ${
+                        !scrolled ? "bg-white/10 text-white border border-white/10" : "bg-gray-100 text-gray-600 border border-gray-200"
+                      }`}
+                    >
+                      <Instagram className="w-6 h-6" />
+                    </a>
+                  </div>
                 </motion.div>
               </div>
             </motion.div>

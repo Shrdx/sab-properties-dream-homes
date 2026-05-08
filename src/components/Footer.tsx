@@ -1,4 +1,4 @@
-import { MapPin, Phone, Mail } from "lucide-react";
+import { MapPin, Phone, Mail, Facebook, Instagram } from "lucide-react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
@@ -28,9 +28,27 @@ const Footer = () => {
             <div className="flex items-center gap-3 mb-4">
               <img src="/newlogo.png" alt="SAB Properties Logo" className="h-32 w-auto" />
             </div>
-            <p className="text-primary-foreground/60 font-body text-sm leading-relaxed">
+            <p className="text-primary-foreground/60 font-body text-sm leading-relaxed mb-6">
               A trusted and reputable name in the real estate sector, delivering exceptional services since establishment.
             </p>
+            <div className="flex items-center gap-4">
+              <a 
+                href="https://www.facebook.com/profile.php?id=61579467053882" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full bg-primary-foreground/5 border border-primary-foreground/10 flex items-center justify-center text-primary-foreground/60 hover:text-primary hover:border-primary transition-all group"
+              >
+                <Facebook className="w-5 h-5 group-hover:scale-110 transition-transform" />
+              </a>
+              <a 
+                href="https://www.instagram.com/sabprop/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full bg-primary-foreground/5 border border-primary-foreground/10 flex items-center justify-center text-primary-foreground/60 hover:text-primary hover:border-primary transition-all group"
+              >
+                <Instagram className="w-5 h-5 group-hover:scale-110 transition-transform" />
+              </a>
+            </div>
           </motion.div>
 
           {/* Quick Links */}

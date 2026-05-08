@@ -1,4 +1,4 @@
-import { Phone, Mail, ShieldCheck, CheckCircle } from "lucide-react";
+import { Phone, Mail, ShieldCheck, CheckCircle, Facebook, Instagram } from "lucide-react";
 import { motion } from "framer-motion";
 
 const OfficeFooter = () => {
@@ -48,6 +48,24 @@ const OfficeFooter = () => {
             <p className="text-slate-400 font-body text-sm leading-relaxed max-w-xs mx-auto md:mx-0">
               SAB Properties is Delhi's premier commercial real estate consultancy, specializing in high-end office spaces for growing businesses.
             </p>
+            <div className="flex items-center justify-center md:justify-start gap-4 mt-6">
+              <a 
+                href="https://www.facebook.com/profile.php?id=61579467053882" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-slate-400 hover:text-primary hover:border-primary transition-all group"
+              >
+                <Facebook className="w-5 h-5 group-hover:scale-110 transition-transform" />
+              </a>
+              <a 
+                href="https://www.instagram.com/sabprop/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-slate-400 hover:text-primary hover:border-primary transition-all group"
+              >
+                <Instagram className="w-5 h-5 group-hover:scale-110 transition-transform" />
+              </a>
+            </div>
           </div>
 
           {/* Contact Details */}

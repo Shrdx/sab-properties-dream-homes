@@ -43,6 +43,12 @@ const OfficeHero = () => {
           body: urlEncodedData.toString(),
         });
       }
+      
+      // Track Google Ads Conversion
+      if (typeof (window as any).gtag_report_conversion === 'function') {
+        (window as any).gtag_report_conversion();
+      }
+      
       setSubmitted(true);
     } catch (error) {
       console.error("Error submitting form:", error);

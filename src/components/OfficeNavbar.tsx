@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Phone } from "lucide-react";
+import { Phone, Facebook, Instagram } from "lucide-react";
 import { motion } from "framer-motion";
 
 const OfficeNavbar = () => {
@@ -40,7 +40,25 @@ const OfficeNavbar = () => {
             />
           </button>
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-6">
+            <div className="hidden md:flex items-center gap-4">
+              <a 
+                href="https://www.facebook.com/profile.php?id=61579467053882" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className={`transition-all duration-300 hover:scale-110 ${scrolled ? "text-gray-600 hover:text-black" : "text-white/80 hover:text-white"}`}
+              >
+                <Facebook className="w-5 h-5" />
+              </a>
+              <a 
+                href="https://www.instagram.com/sabprop/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className={`transition-all duration-300 hover:scale-110 ${scrolled ? "text-gray-600 hover:text-black" : "text-white/80 hover:text-white"}`}
+              >
+                <Instagram className="w-5 h-5" />
+              </a>
+            </div>
             <a
               href="tel:+918700513200"
               className="group flex items-center justify-center gap-2 font-display font-bold text-xs md:text-sm px-5 py-2.5 md:px-7 md:py-3 rounded-full transition-all duration-300 active:scale-95 bg-primary text-white hover:bg-primary/90 shadow-lg shadow-primary/20"

@@ -65,6 +65,11 @@ const LandingHero = () => {
         },
         body: urlEncodedData.toString(),
       });
+      
+      // Track Google Ads Conversion
+      if (typeof (window as any).gtag_report_conversion === 'function') {
+        (window as any).gtag_report_conversion();
+      }
 
       toast.success("Thank you! We'll contact you shortly.");
       reset();

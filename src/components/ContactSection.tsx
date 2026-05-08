@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { motion } from "framer-motion";
-import { MapPin, Phone, Mail, Clock, Loader2 } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, Loader2, Facebook, Instagram } from "lucide-react";
 import { toast } from "sonner";
 
 const formSchema = z.object({
@@ -140,6 +140,24 @@ const ContactSection = () => {
                 <h4 className="font-display font-bold text-foreground mb-1">Working Hours</h4>
                 <p className="text-muted-foreground font-body text-sm">Mon - Sat: 9:00 AM - 7:00 PM</p>
               </div>
+            </div>
+            <div className="flex items-center gap-4 pt-4">
+              <a 
+                href="https://www.facebook.com/profile.php?id=61579467053882" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full bg-primary/5 border border-primary/10 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all"
+              >
+                <Facebook className="w-5 h-5" />
+              </a>
+              <a 
+                href="https://www.instagram.com/sabprop/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full bg-primary/5 border border-primary/10 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all"
+              >
+                <Instagram className="w-5 h-5" />
+              </a>
             </div>
           </motion.div>
 
