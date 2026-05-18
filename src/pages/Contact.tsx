@@ -10,12 +10,13 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
 import contactHeroImg from "@/assets/contact-hero.png";
+import { singleNameValidation, phoneValidation, emailValidation, sanitizeName, sanitizePhone, sanitizeEmail } from "@/utils/leadValidation";
 
 const formSchema = z.object({
-  firstName: z.string().min(2, "First name must be at least 2 characters"),
-  lastName: z.string().min(2, "Last name must be at least 2 characters"),
-  phone: z.string().min(10, "Phone number must be at least 10 digits"),
-  email: z.string().email("Please enter a valid email address").or(z.literal("")).optional(),
+  firstName: singleNameValidation.refine(val => val.trim().length >= 2, "First name must be at least 2 characters"),
+  lastName: singleNameValidation.refine(val => val.trim().length >= 2, "Last name must be at least 2 characters"),
+  phone: phoneValidation,
+  email: emailValidation.or(z.literal("")).optional(),
   companyName: z.string().optional(),
   requirement: z.string().min(1, "Please select a given requirement"),
   message: z.string().optional(),
@@ -96,6 +97,12 @@ const Contact = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEO 
+        title="Contact Us | SAB Properties"
+        description="Get in touch with SAB Properties for premium office spaces, commercial properties, and real estate consultancy in Delhi NCR."
+        canonical="/contact"
+        useBusinessSchema={true}
+      />
       <Navbar />
 
       {/* Hero Section with Image */}
@@ -301,7 +308,11 @@ const Contact = () => {
                         First Name *
                       </label>
                       <input
-                        {...register("firstName")}
+                        {...register("firstName", {
+                          onChange: (e) => {
+                            e.target.value = sanitizeName(e.target.value);
+                          }
+                        })}
                         type="text"
                         placeholder="e.g. Rahul"
                         className={`w-full px-4 py-3.5 rounded-xl bg-section border ${errors.firstName ? 'border-red-500' : 'border-gray-200'} text-foreground placeholder:text-muted-foreground font-body text-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all`}
@@ -313,7 +324,11 @@ const Contact = () => {
                         Last Name *
                       </label>
                       <input
-                        {...register("lastName")}
+                        {...register("lastName", {
+                          onChange: (e) => {
+                            e.target.value = sanitizeName(e.target.value);
+                          }
+                        })}
                         type="text"
                         placeholder="e.g. Sharma"
                         className={`w-full px-4 py-3.5 rounded-xl bg-section border ${errors.lastName ? 'border-red-500' : 'border-gray-200'} text-foreground placeholder:text-muted-foreground font-body text-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all`}
@@ -328,7 +343,11 @@ const Contact = () => {
                         Phone
                       </label>
                       <input
-                        {...register("phone")}
+                        {...register("phone", {
+                          onChange: (e) => {
+                            e.target.value = sanitizePhone(e.target.value);
+                          }
+                        })}
                         type="tel"
                         placeholder="e.g. +91 98765 43210"
                         className={`w-full px-4 py-3.5 rounded-xl bg-section border ${errors.phone ? 'border-red-500' : 'border-gray-200'} text-foreground placeholder:text-muted-foreground font-body text-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all`}
@@ -340,7 +359,11 @@ const Contact = () => {
                         Email
                       </label>
                       <input
-                        {...register("email")}
+                        {...register("email", {
+                          onChange: (e) => {
+                            e.target.value = sanitizeEmail(e.target.value);
+                          }
+                        })}
                         type="email"
                         placeholder="e.g. rahul@example.com"
                         className={`w-full px-4 py-3.5 rounded-xl bg-section border ${errors.email ? 'border-red-500' : 'border-gray-200'} text-foreground placeholder:text-muted-foreground font-body text-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all`}

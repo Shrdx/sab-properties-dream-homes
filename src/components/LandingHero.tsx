@@ -5,11 +5,12 @@ import * as z from "zod";
 import { motion, animate, useMotionValue, useTransform } from "framer-motion";
 import { Phone, Loader2, CheckCircle2, Star, ShieldCheck, Trophy } from "lucide-react";
 import { toast } from "sonner";
+import { nameValidation, phoneValidation, emailValidation, sanitizeName, sanitizePhone, sanitizeEmail } from "@/utils/leadValidation";
 
 const formSchema = z.object({
-  fullName: z.string().min(2, "Name must be at least 2 characters"),
-  email: z.string().email("Please enter a valid email address"),
-  phone: z.string().min(10, "Phone number must be at least 10 digits"),
+  fullName: nameValidation,
+  email: emailValidation,
+  phone: phoneValidation,
   service: z.string().min(1, "Please select a service"),
 });
 
@@ -174,7 +175,11 @@ const LandingHero = () => {
               <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
                 <div className="space-y-1">
                   <input
-                    {...register("fullName")}
+                    {...register("fullName", {
+                      onChange: (e) => {
+                        e.target.value = sanitizeName(e.target.value);
+                      }
+                    })}
                     placeholder="Full Name"
                     className={`w-full px-5 py-4 rounded-xl bg-white/5 border ${errors.fullName ? "border-red-500" : "border-white/10"} text-white placeholder:text-white/20 focus:outline-none focus:border-primary transition-all font-display text-sm`}
                   />
@@ -184,7 +189,11 @@ const LandingHero = () => {
                 <div className="grid md:grid-cols-2 gap-5">
                   <div className="space-y-1">
                     <input
-                      {...register("phone")}
+                      {...register("phone", {
+                        onChange: (e) => {
+                          e.target.value = sanitizePhone(e.target.value);
+                        }
+                      })}
                       placeholder="Phone Number"
                       className={`w-full px-5 py-4 rounded-xl bg-white/5 border ${errors.phone ? "border-red-500" : "border-white/10"} text-white placeholder:text-white/20 focus:outline-none focus:border-primary transition-all font-display text-sm`}
                     />
@@ -207,7 +216,11 @@ const LandingHero = () => {
 
                 <div className="space-y-1">
                   <input
-                    {...register("email")}
+                    {...register("email", {
+                      onChange: (e) => {
+                        e.target.value = sanitizeEmail(e.target.value);
+                      }
+                    })}
                     placeholder="Email Address"
                     className={`w-full px-5 py-4 rounded-xl bg-white/5 border ${errors.email ? "border-red-500" : "border-white/10"} text-white placeholder:text-white/20 focus:outline-none focus:border-primary transition-all font-display text-sm`}
                   />

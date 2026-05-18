@@ -32,6 +32,12 @@ const team = [
 const About = () => {
   return (
     <div className="min-h-screen bg-background">
+      <SEO 
+        title="About Us | SAB Properties"
+        description="Learn about SAB Properties, Delhi's premier commercial real estate consultancy with over 40 years of expertise."
+        canonical="/about"
+        useBusinessSchema={true}
+      />
       <Navbar />
 
       {/* Hero Section */}

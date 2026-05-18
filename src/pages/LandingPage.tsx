@@ -14,6 +14,7 @@ const LandingPage = () => {
         title="Exclusive Commercial Property Offers | SAB Properties Delhi"
         description="Get exclusive access to premium office spaces, showrooms, and warehouses in Delhi. Expert consultancy with 15+ years of experience."
         canonical="/exclusive-offer"
+        useBusinessSchema={true}
       />
       
       <LandingNavbar />

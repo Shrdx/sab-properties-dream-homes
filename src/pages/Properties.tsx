@@ -13,6 +13,7 @@ const propertyTypes = ["All Types", "Office/Serviced Office", "Showroom", "Godow
 const sizeRanges = ["Any Size", "Under 1000 sq.ft", "1000-5000 sq.ft", "5000-10000 sq.ft", "10000+ sq.ft"];
 
 import { allProperties } from "@/data/properties";
+import { singleNameValidation, phoneValidation, sanitizeName, sanitizePhone } from "@/utils/leadValidation";
 
 const Properties = () => {
   const [searchParams] = useSearchParams();
@@ -108,14 +109,14 @@ const Properties = () => {
   const validateLeadForm = () => {
     const errors: { name?: string; phone?: string } = {};
     
-    if (leadFormData.name.trim().length < 3) {
-      errors.name = "Name must be at least 3 characters";
-    } else if (!/^[a-zA-Z\s]+$/.test(leadFormData.name)) {
-      errors.name = "Name should only contain letters";
+    const nameResult = singleNameValidation.safeParse(leadFormData.name);
+    if (!nameResult.success) {
+      errors.name = nameResult.error.errors[0].message;
     }
 
-    if (!/^[6-9]\d{9}$/.test(leadFormData.phone)) {
-      errors.phone = "Please enter a valid 10-digit mobile number";
+    const phoneResult = phoneValidation.safeParse(leadFormData.phone);
+    if (!phoneResult.success) {
+      errors.phone = phoneResult.error.errors[0].message;
     }
 
     setLeadFormErrors(errors);
@@ -574,7 +575,11 @@ const Properties = () => {
                             type="text"
                             required
                             value={leadFormData.name}
-                            onChange={(e) => setLeadFormData({ ...leadFormData, name: e.target.value })}
+                            onChange={(e) => {
+                              const sanitized = sanitizeName(e.target.value);
+                              setLeadFormData({ ...leadFormData, name: sanitized });
+                              if (leadFormErrors.name) setLeadFormErrors({ ...leadFormErrors, name: undefined });
+                            }}
                             placeholder="e.g. Rahul Sharma"
                             className={`w-full pl-14 pr-6 py-4 rounded-2xl bg-slate-50 border ${
                               leadFormErrors.name ? "border-red-500 ring-4 ring-red-500/10" : "border-slate-200"
@@ -596,7 +601,11 @@ const Properties = () => {
                             type="tel"
                             required
                             value={leadFormData.phone}
-                            onChange={(e) => setLeadFormData({ ...leadFormData, phone: e.target.value })}
+                            onChange={(e) => {
+                              const sanitized = sanitizePhone(e.target.value);
+                              setLeadFormData({ ...leadFormData, phone: sanitized });
+                              if (leadFormErrors.phone) setLeadFormErrors({ ...leadFormErrors, phone: undefined });
+                            }}
                             placeholder="e.g. +91 98765 43210"
                             className={`w-full pl-14 pr-6 py-4 rounded-2xl bg-slate-50 border ${
                               leadFormErrors.phone ? "border-red-500 ring-4 ring-red-500/10" : "border-slate-200"

@@ -8,6 +8,7 @@ interface SEOProps {
   ogImage?: string;
   twitterHandle?: string;
   structuredData?: object;
+  useBusinessSchema?: boolean;
 }
 
 const SEO = ({
@@ -18,6 +19,7 @@ const SEO = ({
   ogImage = "/og-image.jpg",
   twitterHandle = "@sabproperties",
   structuredData,
+  useBusinessSchema = false,
 }: SEOProps) => {
   const siteName = "SAB Properties Private Limited";
   const fullTitle = title ? `${title} | ${siteName}` : siteName;
@@ -25,6 +27,28 @@ const SEO = ({
   const metaDescription = description || defaultDescription;
   const baseUrl = "https://sabproperties.in";
   const fullCanonical = canonical ? `${baseUrl}${canonical}` : baseUrl;
+
+  const businessSchema = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": siteName,
+    "url": baseUrl,
+    "logo": `${baseUrl}/logo.png`,
+    "image": `${baseUrl}/og-image.jpg`,
+    "description": defaultDescription,
+    "telephone": "+918700513200",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "1/22 Asaf Ali Road",
+      "addressLocality": "New Delhi",
+      "postalCode": "110002",
+      "addressCountry": "IN"
+    },
+    "sameAs": [
+      "https://www.facebook.com/profile.php?id=61579467053882",
+      "https://www.instagram.com/sabprop/"
+    ]
+  };
 
   return (
     <Helmet>
@@ -49,6 +73,11 @@ const SEO = ({
       {twitterHandle && <meta name="twitter:site" content={twitterHandle} />}
 
       {/* Structured Data */}
+      {useBusinessSchema && (
+        <script type="application/ld+json">
+          {JSON.stringify(businessSchema)}
+        </script>
+      )}
       {structuredData && (
         <script type="application/ld+json">
           {JSON.stringify(structuredData)}

@@ -11,6 +11,7 @@ import Footer from "@/components/Footer";
 import { allProperties } from "@/data/properties";
 import { toast } from "sonner";
 import SEO from "@/components/SEO";
+import { nameValidation, phoneValidation, emailValidation, sanitizeName, sanitizePhone, sanitizeEmail } from "@/utils/leadValidation";
 
 const normalizeLocation = (loc: string) => {
   if (!loc) return "";
@@ -95,17 +96,24 @@ const PropertyDetail = () => {
   const validateForm = () => {
     const newErrors: typeof errors = {};
     
-    // Name validation: min 3 chars, letters and spaces only
-    if (formData.name.trim().length < 3) {
-      newErrors.name = "Name must be at least 3 characters long.";
-    } else if (!/^[a-zA-Z\s]+$/.test(formData.name)) {
-      newErrors.name = "Name can only contain letters and spaces.";
+    // Name validation
+    const nameResult = nameValidation.safeParse(formData.name);
+    if (!nameResult.success) {
+      newErrors.name = nameResult.error.errors[0].message;
     }
 
-    // Phone validation: Indian 10-digit mobile number format
-    const phoneDigits = formData.phone.replace(/\D/g, '');
-    if (!/^[6-9]\d{9}$/.test(phoneDigits)) {
-      newErrors.phone = "Please enter a valid 10-digit mobile number.";
+    // Email validation
+    if (formData.email.trim()) {
+      const emailResult = emailValidation.safeParse(formData.email);
+      if (!emailResult.success) {
+        newErrors.email = emailResult.error.errors[0].message;
+      }
+    }
+
+    // Phone validation
+    const phoneResult = phoneValidation.safeParse(formData.phone);
+    if (!phoneResult.success) {
+      newErrors.phone = phoneResult.error.errors[0].message;
     }
 
     setErrors(newErrors);
@@ -145,7 +153,7 @@ const PropertyDetail = () => {
       />
       <Navbar solid />
       
-      <main className="pt-24 pb-40">
+      <main className="pt-32 sm:pt-40 pb-40">
         
         {/* Back Button */}
         <div className="container mx-auto px-4 lg:px-8 mb-8">
@@ -275,7 +283,8 @@ const PropertyDetail = () => {
                         placeholder="e.g. Rahul Sharma"
                         value={formData.name}
                         onChange={(e) => {
-                          setFormData({...formData, name: e.target.value});
+                          const sanitized = sanitizeName(e.target.value);
+                          setFormData({...formData, name: sanitized});
                           if (errors.name) setErrors({...errors, name: undefined});
                         }}
                       />
@@ -286,11 +295,16 @@ const PropertyDetail = () => {
                       <input 
                         type="email" 
                         required
-                        className="w-full px-5 py-4 bg-white border border-slate-200 rounded-xl text-slate-900 placeholder:text-slate-300 focus:outline-none focus:border-primary/40 transition-all font-normal text-sm"
+                        className={`w-full px-5 py-4 bg-white border rounded-xl text-slate-900 placeholder:text-slate-300 focus:outline-none focus:border-primary/40 transition-all font-normal text-sm ${errors.email ? 'border-red-500' : 'border-slate-200'}`}
                         placeholder="e.g. rahul@example.com"
                         value={formData.email}
-                        onChange={(e) => setFormData({...formData, email: e.target.value})}
+                        onChange={(e) => {
+                          const sanitized = sanitizeEmail(e.target.value);
+                          setFormData({...formData, email: sanitized});
+                          if (errors.email) setErrors({...errors, email: undefined});
+                        }}
                       />
+                      {errors.email && <p className="text-red-500 text-xs mt-1 ml-1">{errors.email}</p>}
                     </div>
                     <div className="space-y-1.5">
                       <label className="text-sm font-medium text-slate-900 ml-1">Phone</label>
@@ -301,7 +315,8 @@ const PropertyDetail = () => {
                         placeholder="e.g. +91 98765 43210"
                         value={formData.phone}
                         onChange={(e) => {
-                          setFormData({...formData, phone: e.target.value});
+                          const sanitized = sanitizePhone(e.target.value);
+                          setFormData({...formData, phone: sanitized});
                           if (errors.phone) setErrors({...errors, phone: undefined});
                         }}
                       />

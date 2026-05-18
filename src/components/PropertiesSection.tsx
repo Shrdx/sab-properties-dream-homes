@@ -3,11 +3,13 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
 import { MapPin, Maximize, ArrowRight, Lock, X, CheckCircle, Star, ShieldCheck, Zap, CheckCircle2, Check } from "lucide-react";
 import { allProperties } from "@/data/properties";
+import { singleNameValidation, phoneValidation, sanitizeName, sanitizePhone } from "@/utils/leadValidation";
 
 const PropertiesSection = () => {
   const navigate = useNavigate();
   const [selectedProperty, setSelectedProperty] = useState<typeof allProperties[0] | null>(null);
   const [formData, setFormData] = useState({ name: "", phone: "" });
+  const [errors, setErrors] = useState<{ name?: string; phone?: string }>({});
   const [submitted, setSubmitted] = useState(false);
   const [isUnlocked, setIsUnlocked] = useState(false);
 
@@ -27,10 +29,29 @@ const PropertiesSection = () => {
     setSelectedProperty(property);
     setSubmitted(false);
     setFormData({ name: "", phone: "" });
+    setErrors({});
+  };
+
+  const validateForm = () => {
+    const newErrors: typeof errors = {};
+    
+    const nameResult = singleNameValidation.safeParse(formData.name);
+    if (!nameResult.success) {
+      newErrors.name = nameResult.error.errors[0].message;
+    }
+
+    const phoneResult = phoneValidation.safeParse(formData.phone);
+    if (!phoneResult.success) {
+      newErrors.phone = phoneResult.error.errors[0].message;
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!validateForm()) return;
     try {
       const targetUrl = import.meta.env.VITE_GOOGLE_SHEETS_URL;
       if (targetUrl) {
@@ -58,6 +79,7 @@ const PropertiesSection = () => {
   const closeModal = () => {
     setSelectedProperty(null);
     setSubmitted(false);
+    setErrors({});
   };
 
   return (
@@ -292,9 +314,16 @@ const PropertiesSection = () => {
                           required
                           placeholder="e.g. Rahul Sharma"
                           value={formData.name}
-                          onChange={(e) => setFormData({...formData, name: e.target.value})}
-                          className="w-full px-5 py-3.5 rounded-xl bg-slate-50 border border-slate-200 text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all font-body"
+                          onChange={(e) => {
+                            const sanitized = sanitizeName(e.target.value);
+                            setFormData({...formData, name: sanitized});
+                            if (errors.name) setErrors({...errors, name: undefined});
+                          }}
+                          className={`w-full px-5 py-3.5 rounded-xl bg-slate-50 border ${
+                            errors.name ? 'border-red-500 ring-2 ring-red-500/10' : 'border-slate-200'
+                          } text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all font-body`}
                         />
+                        {errors.name && <p className="text-red-500 text-[10px] mt-1 ml-1 font-bold uppercase">{errors.name}</p>}
                       </div>
                       <div>
                         <input
@@ -302,9 +331,16 @@ const PropertiesSection = () => {
                           required
                           placeholder="e.g. +91 98765 43210"
                           value={formData.phone}
-                          onChange={(e) => setFormData({...formData, phone: e.target.value})}
-                          className="w-full px-5 py-3.5 rounded-xl bg-slate-50 border border-slate-200 text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all font-body"
+                          onChange={(e) => {
+                            const sanitized = sanitizePhone(e.target.value);
+                            setFormData({...formData, phone: sanitized});
+                            if (errors.phone) setErrors({...errors, phone: undefined});
+                          }}
+                          className={`w-full px-5 py-3.5 rounded-xl bg-slate-50 border ${
+                            errors.phone ? 'border-red-500 ring-2 ring-red-500/10' : 'border-slate-200'
+                          } text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all font-body`}
                         />
+                        {errors.phone && <p className="text-red-500 text-[10px] mt-1 ml-1 font-bold uppercase">{errors.phone}</p>}
                       </div>
                       <button type="submit" className="w-full gradient-orange text-white font-display font-bold py-4 rounded-xl shadow-lg hover:shadow-xl transition-all hover:-translate-y-0.5 mt-2">
                         Unlock Details Now

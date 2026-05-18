@@ -3,10 +3,9 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { MapPin, Maximize, ArrowRight, Lock, X, CheckCircle, Zap, Check } from "lucide-react";
 import { allProperties } from "@/data/properties";
-import OfficeNavbar from "@/components/OfficeNavbar";
-import OfficeHero from "@/components/OfficeHero";
-import LocationInsights from "@/components/LocationInsights";
-import TrustedBy from "@/components/TrustedBy";
+import ShowroomGodownNavbar from "@/components/ShowroomGodownNavbar";
+import ShowroomGodownHero from "@/components/ShowroomGodownHero";
+import CommercialLocationInsights from "@/components/CommercialLocationInsights";
 import CTASection from "@/components/CTASection";
 import OfficeFooter from "@/components/OfficeFooter";
 import SEO from "@/components/SEO";
@@ -23,7 +22,7 @@ const formSchema = z.object({
 
 type FormData = z.infer<typeof formSchema>;
 
-const OfficeLandingPage = () => {
+const ShowroomGodownLanding = () => {
   const navigate = useNavigate();
   const [selectedProperty, setSelectedProperty] = useState<typeof allProperties[0] | null>(null);
   const [submitted, setSubmitted] = useState(false);
@@ -45,10 +44,10 @@ const OfficeLandingPage = () => {
     setIsUnlocked(unlocked);
   }, []);
 
-  // Filter for Office Space only (exactly 10 listings)
-  const officeProperties = allProperties.filter(p => 
-    p.category === "Office/Serviced Office"
-  );
+  // Filter for Showroom and Godown (12 listings)
+  const commercialProperties = allProperties.filter(p => 
+    p.category === "Showroom" || p.category === "Godown"
+  ).slice(0, 12);
 
   const handlePropertyClick = (property: typeof allProperties[0]) => {
     if (isUnlocked) {
@@ -68,7 +67,7 @@ const OfficeLandingPage = () => {
         const urlEncodedData = new URLSearchParams();
         urlEncodedData.append("fullName", data.name);
         urlEncodedData.append("phone", data.phone);
-        urlEncodedData.append("service", "Office Property Unlock");
+        urlEncodedData.append("service", "Commercial Property Unlock");
         urlEncodedData.append("message", `Property: ${selectedProperty?.title} | Location: ${selectedProperty?.location}`);
         
         await fetch(targetUrl, {
@@ -79,7 +78,6 @@ const OfficeLandingPage = () => {
         });
       }
       
-      // Track Google Ads Conversion
       if (typeof (window as any).gtag_report_conversion === 'function') {
         (window as any).gtag_report_conversion();
       }
@@ -103,16 +101,16 @@ const OfficeLandingPage = () => {
   return (
     <div className="min-h-screen bg-white">
       <SEO 
-        title="Best Premium Office Space in Delhi | Managed & Raw Spaces"
-        description="Looking for office space in Delhi? Find premium managed, plug-and-play, and raw office spaces in Central Delhi, Asaf Ali Road, and South Delhi. 15+ years of experience."
-        canonical="/office-space-delhi"
+        title="Premium Showrooms & Godowns in Delhi | Retail & Logistics Spaces"
+        description="Discover high-visibility showrooms and secure godowns in Delhi's prime commercial hubs. Find the perfect space for your retail brand or logistics operations."
+        canonical="/commercial-spaces-delhi"
         useBusinessSchema={true}
       />
       
-      <OfficeNavbar />
+      <ShowroomGodownNavbar />
       
       <main>
-        <OfficeHero />
+        <ShowroomGodownHero />
         
 
         {/* Featured Listings Section */}
@@ -121,19 +119,19 @@ const OfficeLandingPage = () => {
             <div className="max-w-3xl mb-16">
               <div className="flex items-center gap-2 mb-4">
                 <span className="w-10 h-[2px] bg-primary"></span>
-                <span className="text-primary font-display font-bold text-xs tracking-widest uppercase">Available Listings</span>
+                <span className="text-primary font-display font-bold text-xs tracking-widest uppercase">Direct Listings</span>
               </div>
               <h2 className="font-display font-extrabold text-4xl md:text-5xl text-foreground mb-6">
-                Explore Current <br />
-                <span className="text-primary">Office Opportunities</span>
+                Premium <span className="text-primary">Commercial</span> <br />
+                Inventory in Delhi
               </h2>
               <p className="text-muted-foreground font-body text-lg leading-relaxed">
-                Browse our curated selection of premium office spaces. Each property is verified for commercial compliance and strategic advantage.
+                Explore our handpicked selection of retail showrooms and storage godowns. Strategic locations with maximum business potential.
               </p>
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {officeProperties.map((property, i) => (
+              {commercialProperties.map((property, i) => (
                 <motion.div
                   key={property.id}
                   initial={{ opacity: 0, y: 20 }}
@@ -150,7 +148,7 @@ const OfficeLandingPage = () => {
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                     />
                     <div className="absolute top-4 left-4">
-                      <span className="bg-white/90 backdrop-blur-md text-foreground font-display font-bold text-[10px] px-3 py-1.5 rounded-full shadow-sm uppercase tracking-tighter">
+                      <span className={`backdrop-blur-md text-foreground font-display font-bold text-[10px] px-3 py-1.5 rounded-full shadow-sm uppercase tracking-tighter ${property.category === 'Showroom' ? 'bg-orange-100/90' : 'bg-blue-100/90'}`}>
                         {property.category}
                       </span>
                     </div>
@@ -165,7 +163,7 @@ const OfficeLandingPage = () => {
                       <MapPin className="w-3.5 h-3.5 text-primary" />
                       <span>{property.location}</span>
                       <span className="text-slate-300">•</span>
-                      <span>{property.seats}</span>
+                      <span>{property.area}</span>
                     </div>
 
                     <div className="space-y-2 mb-8">
@@ -179,10 +177,10 @@ const OfficeLandingPage = () => {
 
                     <div className="flex items-center justify-between pt-5 border-t border-slate-100">
                       <div className="flex flex-col">
-                        <span className="text-[9px] text-muted-foreground uppercase font-bold tracking-tighter">Space Area</span>
+                        <span className="text-[9px] text-muted-foreground uppercase font-bold tracking-tighter">Usage Type</span>
                         <span className="flex items-center gap-1 text-sm font-display font-bold text-foreground">
-                          <Maximize className="w-3.5 h-3.5 text-primary" />
-                          {property.area}
+                          {property.category === 'Showroom' ? <Zap className="w-3.5 h-3.5 text-primary" /> : <Maximize className="w-3.5 h-3.5 text-primary" />}
+                          {property.category}
                         </span>
                       </div>
                       <div className="flex items-center gap-1.5 text-primary font-display font-bold text-xs uppercase tracking-widest group-hover:gap-2 transition-all">
@@ -197,7 +195,7 @@ const OfficeLandingPage = () => {
           </div>
         </section>
 
-        <LocationInsights />
+        <CommercialLocationInsights />
 
         <CTASection />
       </main>
@@ -281,7 +279,7 @@ const OfficeLandingPage = () => {
                     <CheckCircle className="w-10 h-10 text-green-500" />
                   </div>
                   <h3 className="font-display font-bold text-2xl text-foreground mb-2">Access Granted</h3>
-                  <p className="text-muted-foreground text-sm mb-8">You can now view all technical specifications and pricing for this office space.</p>
+                  <p className="text-muted-foreground text-sm mb-8">You can now view all technical specifications and pricing for this commercial space.</p>
                   <button 
                     onClick={() => {
                       closeModal();
@@ -301,4 +299,4 @@ const OfficeLandingPage = () => {
   );
 };
 
-export default OfficeLandingPage;
+export default ShowroomGodownLanding;

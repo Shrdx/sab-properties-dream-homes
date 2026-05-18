@@ -5,11 +5,12 @@ import * as z from "zod";
 import { motion } from "framer-motion";
 import { MapPin, Phone, Mail, Clock, Loader2, Facebook, Instagram } from "lucide-react";
 import { toast } from "sonner";
+import { nameValidation, phoneValidation, emailValidation, sanitizeName, sanitizePhone, sanitizeEmail } from "@/utils/leadValidation";
 
 const formSchema = z.object({
-  fullName: z.string().min(2, "Name must be at least 2 characters"),
-  email: z.string().email("Please enter a valid email address"),
-  phone: z.string().min(10, "Phone number must be at least 10 digits"),
+  fullName: nameValidation,
+  email: emailValidation,
+  phone: phoneValidation,
   service: z.string().min(1, "Please select a service"),
   message: z.string().min(10, "Message must be at least 10 characters"),
 });
@@ -172,7 +173,11 @@ const ContactSection = () => {
               <div className="grid md:grid-cols-2 gap-5">
                 <div className="space-y-1">
                   <input
-                    {...register("fullName")}
+                    {...register("fullName", {
+                      onChange: (e) => {
+                        e.target.value = sanitizeName(e.target.value);
+                      }
+                    })}
                     type="text"
                     placeholder="e.g. Rahul Sharma"
                     className={`w-full px-4 py-3 rounded-lg bg-background border ${errors.fullName ? "border-red-500" : "border-border"} text-foreground placeholder:text-muted-foreground font-body text-sm focus:outline-none focus:border-primary transition-colors`}
@@ -181,7 +186,11 @@ const ContactSection = () => {
                 </div>
                 <div className="space-y-1">
                   <input
-                    {...register("email")}
+                    {...register("email", {
+                      onChange: (e) => {
+                        e.target.value = sanitizeEmail(e.target.value);
+                      }
+                    })}
                     type="email"
                     placeholder="e.g. rahul@example.com"
                     className={`w-full px-4 py-3 rounded-lg bg-background border ${errors.email ? "border-red-500" : "border-border"} text-foreground placeholder:text-muted-foreground font-body text-sm focus:outline-none focus:border-primary transition-colors`}
@@ -192,7 +201,11 @@ const ContactSection = () => {
               <div className="grid md:grid-cols-2 gap-5">
                 <div className="space-y-1">
                   <input
-                    {...register("phone")}
+                    {...register("phone", {
+                      onChange: (e) => {
+                        e.target.value = sanitizePhone(e.target.value);
+                      }
+                    })}
                     type="tel"
                     placeholder="e.g. +91 98765 43210"
                     className={`w-full px-4 py-3 rounded-lg bg-background border ${errors.phone ? "border-red-500" : "border-border"} text-foreground placeholder:text-muted-foreground font-body text-sm focus:outline-none focus:border-primary transition-colors`}

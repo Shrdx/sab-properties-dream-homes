@@ -1,11 +1,19 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Phone, ArrowRight, ShieldCheck, CheckCircle, Users, Building, Star } from "lucide-react";
+import { Phone, ArrowRight, ShieldCheck, CheckCircle, Building, Star, Warehouse, Store } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { toast } from "sonner";
 import { singleNameValidation, phoneValidation, sanitizeName, sanitizePhone } from "@/utils/leadValidation";
+
+const commercialImages = [
+  "/godown/godown.jpg",
+  "/showroom/showroom.jpg",
+  "/godown/godown2.jpg",
+  "/showroom/showroom2.jpg",
+  "/godown/godown1.png",
+];
 
 const formSchema = z.object({
   name: singleNameValidation,
@@ -14,15 +22,7 @@ const formSchema = z.object({
 
 type FormData = z.infer<typeof formSchema>;
 
-const officeImages = [
-  "/officeSpaces/officeSpace1.jpg",
-  "/officeSpaces/officeSpace10.jpg",
-  "/officeSpaces/officeSpace3.jpg",
-  "/officeSpaces/officeSpace4.jpg",
-  "/officeSpaces/officeSpace6.jpg",
-];
-
-const OfficeHero = () => {
+const ShowroomGodownHero = () => {
   const [currentImage, setCurrentImage] = useState(0);
   const [submitted, setSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -39,7 +39,7 @@ const OfficeHero = () => {
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentImage((prev) => (prev + 1) % officeImages.length);
+      setCurrentImage((prev) => (prev + 1) % commercialImages.length);
     }, 6000);
     return () => clearInterval(timer);
   }, []);
@@ -52,8 +52,8 @@ const OfficeHero = () => {
         const urlEncodedData = new URLSearchParams();
         urlEncodedData.append("fullName", data.name);
         urlEncodedData.append("phone", data.phone);
-        urlEncodedData.append("service", "Premium Office Lead");
-        urlEncodedData.append("message", "Lead from High-Converting Office Hero Section");
+        urlEncodedData.append("service", "Showroom & Godown Lead");
+        urlEncodedData.append("message", "Lead from Showroom and Godown Hero Section");
         
         await fetch(targetUrl, {
           method: "POST",
@@ -105,7 +105,7 @@ const OfficeHero = () => {
             className="absolute inset-0 w-full h-full"
           >
             <img
-              src={officeImages[currentImage]}
+              src={commercialImages[currentImage]}
               alt="Premium Commercial Space in Delhi"
               className="w-full h-full object-cover"
             />
@@ -120,7 +120,6 @@ const OfficeHero = () => {
 
       <div className="container relative z-30 mx-auto px-4 lg:px-8 pt-32 pb-16 lg:pt-40 lg:pb-24 flex-grow flex flex-col justify-center">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-          
           <motion.div 
             variants={staggerContainer}
             initial="hidden"
@@ -133,44 +132,42 @@ const OfficeHero = () => {
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
               </span>
               <span className="text-white font-mono text-[11px] font-medium tracking-wide uppercase">
-                45+ Premium Spaces Available Now
+                Premium Retail & Logistics Spaces
               </span>
             </motion.div>
 
-            <motion.h1 variants={fadeUp} className="font-display font-black text-5xl md:text-6xl lg:text-[5.5rem] text-white leading-[1.05] tracking-tight mb-8 drop-shadow-xl">
-              Stop Searching <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-200 to-slate-500">
-                Get Delhi's Best Offices Handpicked for You
-              </span>
-            </motion.h1>
+            <h1 className="font-display font-black text-5xl md:text-6xl lg:text-[5rem] text-white leading-[1.05] tracking-tight mb-8 drop-shadow-xl">
+              High-Impact <span className="text-primary">Showrooms</span> & <br />
+              Secure <span className="text-primary">Godowns</span> in Delhi
+            </h1>
 
             <motion.p variants={fadeUp} className="text-slate-300 font-body text-lg md:text-xl leading-relaxed mb-10 max-w-2xl font-light">
-              Skip the endless browsing. Tell us your requirements, and our experts will instantly share a curated shortlist of move-in-ready, verified commercial spaces tailored for your growth.
+              From high-visibility retail fronts to heavy-duty storage hubs. We offer a curated portfolio of commercial spaces across Delhi's prime trade zones.
             </motion.p>
 
             <motion.div variants={fadeUp} className="flex flex-col sm:flex-row gap-8 mb-12">
               <ul className="space-y-4">
                 <li className="flex items-center gap-3 text-slate-200 font-medium">
-                  <CheckCircle className="w-5 h-5 text-primary shrink-0" />
-                  <span>Move-in Ready Workspaces</span>
+                  <Store className="w-5 h-5 text-primary shrink-0" />
+                  <span>Premium High-Street Showrooms</span>
                 </li>
                 <li className="flex items-center gap-3 text-slate-200 font-medium">
-                  <CheckCircle className="w-5 h-5 text-primary shrink-0" />
-                  <span>Zero Brokerage Support</span>
+                  <Warehouse className="w-5 h-5 text-primary shrink-0" />
+                  <span>Secure & Accessible Warehouses</span>
                 </li>
                 <li className="flex items-center gap-3 text-slate-200 font-medium">
-                  <CheckCircle className="w-5 h-5 text-primary shrink-0" />
-                  <span>Verified Business Locations</span>
+                  <ShieldCheck className="w-5 h-5 text-primary shrink-0" />
+                  <span>Verified Commercial Compliance</span>
                 </li>
               </ul>
             </motion.div>
 
             <motion.div variants={fadeUp} className="flex flex-wrap items-center gap-6">
               <a href="#listings" className="group flex items-center gap-2 text-white font-mono text-sm tracking-wider uppercase hover:text-primary transition-colors border-b border-transparent hover:border-primary pb-1">
-                Explore All Listings <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                View All Listings <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </a>
               <a href="tel:+918700513200" className="flex items-center gap-2 px-6 py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-medium transition-all backdrop-blur-sm">
-                <Phone className="w-4 h-4 text-primary" /> Talk to an Expert
+                <Phone className="w-4 h-4 text-primary" /> Talk to Logistics Expert
               </a>
             </motion.div>
           </motion.div>
@@ -188,8 +185,8 @@ const OfficeHero = () => {
                 {!submitted ? (
                   <>
                     <div className="mb-8">
-                      <h3 className="font-display font-semibold text-2xl text-white mb-2 tracking-tight">Get Your Shortlist</h3>
-                      <p className="text-slate-400 text-sm font-light">Enter details to get 3-5 matching options within 30 mins.</p>
+                      <h3 className="font-display font-semibold text-2xl text-white mb-2 tracking-tight">Enquire Now</h3>
+                      <p className="text-slate-400 text-sm font-light">Get custom recommendations for your retail or storage needs.</p>
                     </div>
 
                     <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
@@ -230,7 +227,7 @@ const OfficeHero = () => {
                           <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
                         ) : (
                           <>
-                            <span>Get Available Offices</span>
+                            <span>Get Property Details</span>
                             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                           </>
                         )}
@@ -239,7 +236,7 @@ const OfficeHero = () => {
                     
                     <div className="mt-8 pt-6 border-t border-white/10 flex items-center justify-center gap-2 text-xs text-slate-500 font-mono text-center">
                        <ShieldCheck className="w-4 h-4" />
-                       <span>No spam. Zero brokerage fees.</span>
+                       <span>Direct Listings. Zero Brokerage Support.</span>
                     </div>
                   </>
                 ) : (
@@ -253,7 +250,7 @@ const OfficeHero = () => {
                       <CheckCircle className="w-10 h-10 text-green-500" />
                     </motion.div>
                     <h3 className="font-display font-semibold text-2xl text-white mb-3">Request Received</h3>
-                    <p className="text-slate-400 text-sm mb-8 font-light leading-relaxed">Our experts are curating your custom shortlist. We'll contact you within 30 minutes.</p>
+                    <p className="text-slate-400 text-sm mb-8 font-light leading-relaxed">Our experts will contact you shortly with matching showroom and godown options.</p>
                     <button 
                       onClick={() => setSubmitted(false)}
                       className="text-primary font-mono text-xs uppercase tracking-wider hover:text-white transition-colors border-b border-primary hover:border-white pb-1"
@@ -271,15 +268,15 @@ const OfficeHero = () => {
       <div className="relative z-30 w-full mt-auto border-t border-white/10 bg-black/60 backdrop-blur-xl">
         <div className="container mx-auto px-4 lg:px-8 py-6">
           <div className="flex flex-wrap items-center justify-center md:justify-between gap-6 md:gap-8">
-            <p className="text-slate-400 font-mono text-xs uppercase tracking-widest hidden lg:block">Trusted By Industry Leaders</p>
+            <p className="text-slate-400 font-mono text-xs uppercase tracking-widest hidden lg:block">Trusted By Trade Leaders</p>
             <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-10 lg:gap-16">
               <div className="flex items-center gap-2.5">
-                <Users className="w-5 h-5 text-primary/70" />
-                <span className="text-slate-300 font-medium text-sm">120+ Companies</span>
+                <Store className="w-5 h-5 text-primary/70" />
+                <span className="text-slate-300 font-medium text-sm">200+ Retailers</span>
               </div>
               <div className="flex items-center gap-2.5">
-                <Building className="w-5 h-5 text-primary/70" />
-                <span className="text-slate-300 font-medium text-sm">500+ Offices</span>
+                <Warehouse className="w-5 h-5 text-primary/70" />
+                <span className="text-slate-300 font-medium text-sm">150+ Warehouses</span>
               </div>
               <div className="flex items-center gap-2.5">
                 <Star className="w-5 h-5 text-primary/70" />
@@ -293,4 +290,4 @@ const OfficeHero = () => {
   );
 };
 
-export default OfficeHero;
+export default ShowroomGodownHero;
