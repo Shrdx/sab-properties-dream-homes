@@ -510,7 +510,7 @@ export const allProperties: Property[] = [
   },
   {
     "id": 18,
-    "image": "/showroom/showroom3.jpg",
+    "image": "/showroom/showroom3.png",
     "category": "Showroom",
     "status": "Raw",
     "title": "Retail Showroom in CP Inner Circle",
