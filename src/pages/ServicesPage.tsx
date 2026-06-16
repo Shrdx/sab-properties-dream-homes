@@ -88,6 +88,32 @@ const ServicesPage = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEO 
+        title="Our Services | SAB Properties"
+        description="Comprehensive commercial real estate solutions in Delhi including Property Consultancy, Legal Assistance, Market Insights, and Portfolio Management."
+        canonical="/services"
+        structuredData={{
+          "@context": "https://schema.org",
+          "@type": "Service",
+          "serviceType": "Commercial Real Estate Services",
+          "provider": {
+            "@type": "LocalBusiness",
+            "name": "SAB Properties"
+          },
+          "areaServed": "Delhi NCR",
+          "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Real Estate Services",
+            "itemListElement": services.map((s, index) => ({
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": s.title
+              }
+            }))
+          }
+        }}
+      />
       <Navbar />
 
       {/* Hero Section */}

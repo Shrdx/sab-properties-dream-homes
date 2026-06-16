@@ -140,7 +140,7 @@ const PreRentedHero = () => {
             </h1>
 
             <motion.p variants={fadeUp} className="text-slate-300 font-body text-lg md:text-xl leading-relaxed mb-10 max-w-2xl font-light">
-              Secure your capital with high-yield pre-rented commercial assets across Delhi. Guaranteed rental income from day one with top-tier corporate tenants.
+              Build passive wealth and secure your capital with high-yield pre-rented commercial assets across Delhi NCR. Enjoy guaranteed rental income from day one with blue-chip corporate tenants, ensuring maximum ROI.
             </motion.p>
 
             <motion.div variants={fadeUp} className="flex flex-col sm:flex-row gap-8 mb-12">

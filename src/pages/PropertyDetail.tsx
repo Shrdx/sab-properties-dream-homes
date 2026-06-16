@@ -83,6 +83,13 @@ const PropertyDetail = () => {
     "description": property.description,
     "image": `https://sabproperties.in${property.image}`,
     "url": `https://sabproperties.in/property/${property.id}`,
+    "datePosted": "2024-01-01",
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "INR",
+      "price": typeof property.salePrice === 'number' ? property.salePrice * 10000000 : (typeof property.rent === 'number' ? property.rent : "Contact for price"),
+      "url": `https://sabproperties.in/property/${property.id}`
+    },
     "address": {
       "@type": "PostalAddress",
       "addressLocality": property.location,

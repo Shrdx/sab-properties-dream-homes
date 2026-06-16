@@ -62,8 +62,11 @@ const About = () => {
           className="relative text-center px-4"
         >
           <h1 className="font-display font-extrabold text-5xl md:text-6xl lg:text-7xl text-white mb-6">
-            About Us
+            About SAB Properties
           </h1>
+          <p className="text-xl text-white/90 max-w-2xl mx-auto font-body">
+            Delhi's Premier Commercial Real Estate Consultancy with Over 40 Years of Excellence
+          </p>
         </motion.div>
       </section>
 

@@ -59,10 +59,11 @@ const HeroSection = () => {
             </motion.span>
             
             <h1 className="font-display font-black text-4xl md:text-6xl lg:text-7xl tracking-tight text-white leading-[1.1] mb-8 drop-shadow-2xl">
-              Elevate Your <br/>
+              Leading Commercial <br/>
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-orange-400 to-yellow-500 drop-shadow-none relative">
-                Commercial Space
+                Property Consultants
               </span>
+              <br/> in Delhi
             </h1>
             
             <p className="text-white/80 font-body text-sm md:text-lg lg:text-xl leading-relaxed mb-12 max-w-3xl drop-shadow-md">
