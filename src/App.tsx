@@ -15,6 +15,8 @@ import LandingPage from "./pages/LandingPage.tsx";
 import OfficeLandingPage from "./pages/OfficeLandingPage.tsx";
 import ShowroomGodownLanding from "./pages/ShowroomGodownLanding.tsx";
 import PreRentedLanding from "./pages/PreRentedLanding.tsx";
+import Blog from "./pages/Blog.tsx";
+import BlogPost from "./pages/BlogPost.tsx";
 import ScrollToTop from "./components/ScrollToTop.tsx";
 import FloatingWhatsApp from "./components/FloatingWhatsApp.tsx";
 
@@ -63,6 +65,8 @@ const AnimatedRoutes = () => {
           <Route path="/office-space-delhi" element={<OfficeLandingPage />} />
           <Route path="/commercial-spaces-delhi" element={<ShowroomGodownLanding />} />
           <Route path="/pre-rented-properties-delhi" element={<PreRentedLanding />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:slug" element={<BlogPost />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </motion.div>
