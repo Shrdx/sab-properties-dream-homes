@@ -3,8 +3,6 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { blogs } from "@/data/blogs";
-import { ArrowRight, Calendar, User } from "lucide-react";
 
 import heroImg from "@/assets/market-insights.jpg";
 
@@ -46,60 +44,18 @@ const Blog = () => {
         </motion.div>
       </section>
 
-      <main className="flex-grow py-16">
-        <div className="container mx-auto px-4 md:px-6">
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {blogs.map((post, index) => (
-              <motion.article 
-                key={post.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-                className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow border border-gray-100 flex flex-col"
-              >
-                <Link to={`/blog/${post.slug}`} className="block overflow-hidden h-48">
-                  <img 
-                    src={post.coverImage} 
-                    alt={post.title} 
-                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
-                  />
-                </Link>
-                
-                <div className="p-6 flex flex-col flex-grow">
-                  <div className="flex items-center text-sm text-gray-500 mb-3 space-x-4">
-                    <span className="flex items-center">
-                      <Calendar className="w-4 h-4 mr-1" />
-                      {new Date(post.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
-                    </span>
-                  </div>
-                  
-                  <Link to={`/blog/${post.slug}`}>
-                    <h2 className="text-xl font-bold text-slate-900 mb-3 hover:text-blue-600 transition-colors line-clamp-2">
-                      {post.title}
-                    </h2>
-                  </Link>
-                  
-                  <p className="text-slate-600 mb-6 line-clamp-3 flex-grow">
-                    {post.excerpt}
-                  </p>
-                  
-                  <div className="mt-auto flex items-center justify-between pt-4 border-t border-gray-100">
-                    <div className="flex items-center text-sm font-medium text-slate-900">
-                      <User className="w-4 h-4 mr-2 text-slate-500" />
-                      {post.author}
-                    </div>
-                    <Link 
-                      to={`/blog/${post.slug}`}
-                      className="text-blue-600 font-semibold text-sm flex items-center hover:text-blue-800 transition-colors"
-                    >
-                      Read More <ArrowRight className="w-4 h-4 ml-1" />
-                    </Link>
-                  </div>
-                </div>
-              </motion.article>
-            ))}
-          </div>
+      <main className="flex-grow py-24 flex items-center justify-center bg-white">
+        <div className="container mx-auto px-4 md:px-6 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <h2 className="font-display font-extrabold text-4xl md:text-5xl text-slate-800 mb-4">Coming Soon</h2>
+            <p className="font-body text-slate-600 text-lg md:text-xl max-w-2xl mx-auto">
+              We are working hard to bring you exciting real estate insights and market trends. Stay tuned for our upcoming articles!
+            </p>
+          </motion.div>
         </div>
       </main>
 

@@ -11,6 +11,7 @@ import propertyConsultancyImg from "@/assets/property-consultancy.jpg";
 import portfolioManagementImg from "@/assets/portfolio-management.jpg";
 import legalAssistanceImg from "@/assets/legal-assistance.jpg";
 import marketInsightsImg from "@/assets/market-insights.jpg";
+import FAQSection from "@/components/FAQSection";
 
 const services = [
   {
@@ -233,6 +234,8 @@ const ServicesPage = () => {
           </div>
         </div>
       </section>
+
+      <FAQSection />
 
       {/* CTA Section */}
       <section className="py-16 bg-white">

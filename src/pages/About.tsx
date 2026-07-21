@@ -10,7 +10,7 @@ const team = [
   {
     name: "Sanjay Gupta",
     role: "Founder and Managing Director",
-    image: "/images/team/sanjay1.png",
+    image: "/images/team/sanjay2_final.png",
     description: "With over four decades of extensive experience in the commercial real estate industry, Sanjay Gupta is the visionary behind SAB Properties. He brings a wealth of market knowledge, strategic foresight, and unparalleled expertise to the team. His leadership ensures exceptional service delivery, driving high-value transactions and securing optimal results for all premium clients.",
   },
   {
