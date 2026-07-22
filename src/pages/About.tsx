@@ -8,17 +8,18 @@ import heroImg from "@/assets/picture.jpg";
 
 const team = [
   {
+    name: "Kushagra Gupta",
+    role: "Executive Director",
+    image: "/images/team/kushagra.png",
+    description: "Kushagra Gupta is a dedicated and forward-thinking professional committed to transforming the modern workspace experience. He specializes in delivering tailored commercial real estate solutions, with meticulous attention to detail and a deep understanding of client objectives. His focus on operational excellence ensures seamless execution, while contributing to sustained business growth and long-term client success.",
+  },
+  {
     name: "Sanjay Gupta",
     role: "Founder and Managing Director",
     image: "/images/team/sanjay_unified.png",
     description: "With over four decades of extensive experience in the commercial real estate industry, Sanjay Gupta is the visionary behind SAB Properties. He brings a wealth of market knowledge, strategic foresight, and unparalleled expertise to the team. His leadership ensures exceptional service delivery, driving high-value transactions and securing optimal results for all premium clients.",
   },
-  {
-    name: "Kushagra Gupta",
-    role: "Executive Director",
-    image: "/images/team/kushagra_unified.png",
-    description: "Kushagra Gupta is a dedicated and forward-thinking professional committed to transforming the modern workspace experience. He specializes in delivering tailored commercial real estate solutions, with meticulous attention to detail and a deep understanding of client objectives. His focus on operational excellence ensures seamless execution, while contributing to sustained business growth and long-term client success.",
-  },
+
   {
     name: "Kashish Gupta",
     role: "Director of Operations",
@@ -32,7 +33,7 @@ const team = [
 const About = () => {
   return (
     <div className="min-h-screen bg-background">
-      <SEO 
+      <SEO
         title="About Us | SAB Properties"
         description="Learn about SAB Properties, Delhi's premier commercial real estate consultancy with over 40 years of expertise."
         canonical="/about"
@@ -88,8 +89,8 @@ const About = () => {
                 Our Vision
               </h2>
               <p className="text-muted-foreground font-body text-base leading-relaxed">
-                We envision a dynamic future of work where businesses thrive in flexible, 
-                innovative spaces designed for growth. We are committed to reshaping how 
+                We envision a dynamic future of work where businesses thrive in flexible,
+                innovative spaces designed for growth. We are committed to reshaping how
                 companies perceive and utilize their workspaces.
               </p>
             </motion.div>
@@ -108,8 +109,8 @@ const About = () => {
                 Our Mission
               </h2>
               <p className="text-muted-foreground font-body text-base leading-relaxed">
-                Our mission is to provide tailored, flexible, and inspiring workspace 
-                solutions with transparency, service excellence, and a client-first 
+                Our mission is to provide tailored, flexible, and inspiring workspace
+                solutions with transparency, service excellence, and a client-first
                 approach that ensures every business finds their perfect space.
               </p>
             </motion.div>
@@ -128,10 +129,10 @@ const About = () => {
             className="text-center"
           >
             <p className="text-muted-foreground font-body text-base md:text-lg leading-relaxed mb-8">
-              We believe in removing traditional workspace limitations. Our approach enables 
-              <span className="text-primary font-semibold"> collaboration, innovation, and flexibility</span> 
-              at every level. We don't just provide spaces — we act as a 
-              <span className="text-primary font-semibold"> catalyst for business growth</span>, 
+              We believe in removing traditional workspace limitations. Our approach enables
+              <span className="text-primary font-semibold"> collaboration, innovation, and flexibility</span>
+              at every level. We don't just provide spaces — we act as a
+              <span className="text-primary font-semibold"> catalyst for business growth</span>,
               creating environments where companies can flourish and achieve their full potential.
             </p>
             <div className="flex justify-center gap-4">
@@ -151,7 +152,7 @@ const About = () => {
       <section className="py-24 bg-white relative">
         <div className="absolute top-10 left-10 w-64 h-64 bg-orange/5 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute bottom-10 right-10 w-64 h-64 bg-primary/5 rounded-full blur-3xl pointer-events-none" />
-        
+
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -168,7 +169,7 @@ const About = () => {
             </h2>
             <div className="w-24 h-1.5 bg-orange mx-auto rounded-full mb-8" />
             <p className="text-muted-foreground font-body text-base md:text-lg max-w-4xl mx-auto leading-relaxed">
-              Our dedicated leadership team brings decades of combined experience, 
+              Our dedicated leadership team brings decades of combined experience,
               committed to transforming your commercial real estate journey.
             </p>
           </motion.div>
@@ -187,12 +188,12 @@ const About = () => {
                 <div className="relative aspect-[4/5] overflow-hidden bg-gradient-to-b from-slate-100 via-gray-100 to-slate-200/90 shrink-0 flex items-center justify-center p-3">
                   {/* Subtle Background Glow Accent for visual unity */}
                   <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,rgba(249,115,22,0.12),transparent_70%)] opacity-80 group-hover:opacity-100 transition-opacity duration-500" />
-                  
+
                   {/* Portrait Frame */}
                   <div className="relative w-full h-full rounded-2xl overflow-hidden border border-white/60 shadow-inner">
-                    <img 
-                      src={member.image} 
-                      alt={member.name} 
+                    <img
+                      src={member.image}
+                      alt={member.name}
                       className="w-full h-full object-cover object-top filter contrast-[1.03] brightness-[1.02] group-hover:scale-105 transition-transform duration-700 ease-out"
                     />
                     {/* Uniform Top Gradient Overlay */}
@@ -208,14 +209,14 @@ const About = () => {
                   <h3 className="font-display font-black text-2xl text-foreground mb-4 leading-tight">
                     {member.name}
                   </h3>
-                  
+
                   {/* Decorative Accent Line */}
                   <div className="w-10 h-[2px] bg-orange/40 mb-5 rounded-full group-hover:w-20 group-hover:bg-orange transition-all duration-500" />
-                  
+
                   <p className="text-muted-foreground font-body text-sm leading-relaxed mb-4 opacity-90 group-hover:opacity-100 transition-opacity">
                     {member.description}
                   </p>
-                  
+
                   {/* Bottom Border Glow Accent */}
                   <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[3px] gradient-orange group-hover:w-full transition-all duration-700" />
                 </div>
