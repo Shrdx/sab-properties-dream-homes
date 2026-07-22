@@ -10,19 +10,19 @@ const team = [
   {
     name: "Sanjay Gupta",
     role: "Founder and Managing Director",
-    image: "/images/team/sanjay2_final.png",
+    image: "/images/team/sanjay_unified.png",
     description: "With over four decades of extensive experience in the commercial real estate industry, Sanjay Gupta is the visionary behind SAB Properties. He brings a wealth of market knowledge, strategic foresight, and unparalleled expertise to the team. His leadership ensures exceptional service delivery, driving high-value transactions and securing optimal results for all premium clients.",
   },
   {
     name: "Kushagra Gupta",
     role: "Executive Director",
-    image: "/images/team/kushagra1.png",
+    image: "/images/team/kushagra_unified.png",
     description: "Kushagra Gupta is a dedicated and forward-thinking professional committed to transforming the modern workspace experience. He specializes in delivering tailored commercial real estate solutions, with meticulous attention to detail and a deep understanding of client objectives. His focus on operational excellence ensures seamless execution, while contributing to sustained business growth and long-term client success.",
   },
   {
     name: "Kashish Gupta",
     role: "Director of Operations",
-    image: "/images/team/kashish1.png",
+    image: "/images/team/kashish_unified.png",
     description: "Kashish Gupta is focused on delivering outstanding end-to-end results while building long-lasting relationships with clients. With a strong commitment to transparency, reliability, and a client-first approach, she ensures that every portfolio is managed with precision and care. Her proactive leadership and strategic mindset play a key role in driving the growth of SAB Properties’ expanding commercial footprint.",
   },
 ];
@@ -173,7 +173,7 @@ const About = () => {
             </p>
           </motion.div>
 
-          <div className="grid lg:grid-cols-3 gap-16 max-w-7xl mx-auto">
+          <div className="grid lg:grid-cols-3 gap-12 max-w-7xl mx-auto">
             {team.map((member, i) => (
               <motion.div
                 key={member.name}
@@ -181,36 +181,43 @@ const About = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.6, delay: i * 0.15 }}
-                className="group relative rounded-3xl overflow-hidden card-3d bg-white shadow-xl hover:shadow-orange/20 border border-gray-100 flex flex-col h-full max-w-[340px] mx-auto border-glow"
+                className="group relative rounded-3xl overflow-hidden bg-white shadow-xl hover:shadow-2xl hover:shadow-orange/20 border border-slate-100/80 flex flex-col h-full max-w-[360px] w-full mx-auto transition-all duration-500"
               >
-                {/* Image Area */}
-                <div className="relative aspect-square overflow-hidden bg-gray-100 shrink-0">
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent z-10 opacity-40 group-hover:opacity-10 transition-opacity duration-500" />
-                  <img 
-                    src={member.image} 
-                    alt={member.name} 
-                    className="w-full h-full object-cover object-top filter grayscale-[20%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 ease-in-out"
-                  />
+                {/* Image Container with Matching Backdrop Styling */}
+                <div className="relative aspect-[4/5] overflow-hidden bg-gradient-to-b from-slate-100 via-gray-100 to-slate-200/90 shrink-0 flex items-center justify-center p-3">
+                  {/* Subtle Background Glow Accent for visual unity */}
+                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,rgba(249,115,22,0.12),transparent_70%)] opacity-80 group-hover:opacity-100 transition-opacity duration-500" />
+                  
+                  {/* Portrait Frame */}
+                  <div className="relative w-full h-full rounded-2xl overflow-hidden border border-white/60 shadow-inner">
+                    <img 
+                      src={member.image} 
+                      alt={member.name} 
+                      className="w-full h-full object-cover object-top filter contrast-[1.03] brightness-[1.02] group-hover:scale-105 transition-transform duration-700 ease-out"
+                    />
+                    {/* Uniform Top Gradient Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent opacity-60 group-hover:opacity-30 transition-opacity duration-500" />
+                  </div>
                 </div>
 
                 {/* Information Body */}
                 <div className="relative p-8 flex-grow flex flex-col items-center text-center">
-                  <span className="text-orange font-body font-bold text-[10px] tracking-[0.3em] uppercase mb-2 inline-block">
+                  <span className="text-orange font-body font-bold text-[11px] tracking-[0.25em] uppercase mb-2 inline-block">
                     {member.role}
                   </span>
                   <h3 className="font-display font-black text-2xl text-foreground mb-4 leading-tight">
                     {member.name}
                   </h3>
                   
-                  {/* Decorative Spacer */}
-                  <div className="w-8 h-[2px] bg-orange/30 mb-5 rounded-full group-hover:w-16 transition-all duration-500" />
+                  {/* Decorative Accent Line */}
+                  <div className="w-10 h-[2px] bg-orange/40 mb-5 rounded-full group-hover:w-20 group-hover:bg-orange transition-all duration-500" />
                   
-                  <p className="text-muted-foreground font-body text-sm leading-relaxed mb-6 italic opacity-90 group-hover:opacity-100 transition-opacity">
-                    "{member.description}"
+                  <p className="text-muted-foreground font-body text-sm leading-relaxed mb-4 opacity-90 group-hover:opacity-100 transition-opacity">
+                    {member.description}
                   </p>
                   
-                  {/* Bottom Border Glow Hint */}
-                  <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[2px] gradient-orange group-hover:w-full transition-all duration-700" />
+                  {/* Bottom Border Glow Accent */}
+                  <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[3px] gradient-orange group-hover:w-full transition-all duration-700" />
                 </div>
               </motion.div>
             ))}
