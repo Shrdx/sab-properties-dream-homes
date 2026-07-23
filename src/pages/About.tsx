@@ -8,22 +8,21 @@ import heroImg from "@/assets/picture.jpg";
 
 const team = [
   {
+    name: "Sanjay Gupta",
+    role: "Founder and Managing Director",
+    image: "/images/team/SG.png",
+    description: "With over four decades of extensive experience in the commercial real estate industry, Sanjay Gupta is the visionary behind SAB Properties. He brings a wealth of market knowledge, strategic foresight, and unparalleled expertise to the team. His leadership ensures exceptional service delivery, driving high-value transactions and securing optimal results for all premium clients.",
+  },
+  {
     name: "Kushagra Gupta",
     role: "Executive Director",
-    image: "/images/team/kushagra.png",
+    image: "/images/team/KG2.png",
     description: "Kushagra Gupta is a dedicated and forward-thinking professional committed to transforming the modern workspace experience. He specializes in delivering tailored commercial real estate solutions, with meticulous attention to detail and a deep understanding of client objectives. His focus on operational excellence ensures seamless execution, while contributing to sustained business growth and long-term client success.",
   },
   {
-    name: "Sanjay Gupta",
-    role: "Founder and Managing Director",
-    image: "/images/team/sanjay_unified.png",
-    description: "With over four decades of extensive experience in the commercial real estate industry, Sanjay Gupta is the visionary behind SAB Properties. He brings a wealth of market knowledge, strategic foresight, and unparalleled expertise to the team. His leadership ensures exceptional service delivery, driving high-value transactions and securing optimal results for all premium clients.",
-  },
-
-  {
     name: "Kashish Gupta",
     role: "Director of Operations",
-    image: "/images/team/kashish_unified.png",
+    image: "/images/team/KaG.jpg",
     description: "Kashish Gupta is focused on delivering outstanding end-to-end results while building long-lasting relationships with clients. With a strong commitment to transparency, reliability, and a client-first approach, she ensures that every portfolio is managed with precision and care. Her proactive leadership and strategic mindset play a key role in driving the growth of SAB Properties’ expanding commercial footprint.",
   },
 ];
